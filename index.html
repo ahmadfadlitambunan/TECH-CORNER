@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<style>
+     /* The sticky class is added to the navbar with JS when it reaches its scroll position */
+  .sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
+  
+  /* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
+  .sticky + .content{
+    padding-top: 60px;
+  }
+
+
+
+  body {
+    font-family: "Lato", sans-serif;
+  
+  }
+  
+  .sidenav {
+    height: 100%;
+    width: 165px;
+    position: fixed;
+   
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    
+  }
+  
+  .sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #818181;
+    display: block;
+  }
+  
+  .sidenav a:hover {
+    color: #f1f1f1;
+  }
+  
+  .main {
+   
+    margin-left: 160px; /* Same as the width of the sidenav */
+    font-size: 18px; /* Increased text to enable scrolling */
+ 
+  }
+h6{
+  color: red;
+}
+ 
+
+.card{
+ display: inline-block;
+
+}
+
+.navbar{
+  background-color: orange;
+}
+
+</style>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css1/a1.css">
+    <link href="fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
+
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- Header  -->
+    <div id="headers">
+        <nav class="navbar navbar-fixed-top navbar-expand navbar-light  topbar static-top shadow">
+            <!--Tech Corner-->
+            <div class="mx-4">
+                <h2>Tech Corner</h2>
+            </div>
+            <!-- Topbar Search -->
+            <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                <div class="input-group">
+                    <input type="text" class="form-control bg-light border-0 small " size="100"
+                        placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                        <button class="btn btn-success" type="button">
+                            <i class="fas fa-search fa-sm"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <div><a href="menu.html"><button class="btn btn-primary mr-2" type="button"><i
+                            class="fas fa-home"></i></button></a></div>
+        </nav>
+    </div>
+
+
+
+    <div class="content">
+        <div class="sidenav ">
+
+
+            <h6><a>Category</a></h6>
+            <a href="index.html">Processor</a>
+            <a href="#services">Motherboard</a>
+            <a href="#services">RAM</a>
+            <a href="#services">VGA</a>
+            <a href="#services">SSD</a>
+            <a href="#services">HDD</a>
+            <a href="#services">Cooler</a>
+            <a href="#services">Casing</a>
+            <a href="#services">PowerSupply</a>
+            <hr>
+            <h6><a>Brand</a></h6>
+            <a href="#clients">Sort By</a>
+
+        </div>
+
+        <div class="main">
+
+
+        </div>
+
+</body>
+<script src="js1a/sticky.js"></script>
+
+</html>
