@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TECH CORNER | Tulis Thread</title>
+    <!-- Icon CDN untuk Modal dan Header -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- Boostrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <!-- CSS Eksternal -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="buat.css">
+    <!-- Bar Icon -->
+    <link rel="shortcut icon" href="asset/icon.png" type="image/x-icon">
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+    <!-- JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <!-- CDN Font Awesome -->
+    <script src="https://use.fontawesome.com/57879be922.js"></script>   
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+
+<body class="body">
+    <!-- Header -->
+    <div class="header">
+        <div class="container mb-3 mt-2">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+                <a href="index.html"><img src="asset/logo.png" width="100"></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <form class="search">
+                    <div class="search__wrapper">
+                      <input type="text" name="" placeholder="Cari..." class="search__field">
+                      <button type="submit" class="fa fa-search search__icon"></button>
+                    </div>
+                </form>
+          
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="forum.html"><i class="fa fa-users" aria-hidden="true"></i>
+                                Forum<span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="buat.html"><i class="fa fa-pencil" aria-hidden="true"></i>
+                                Tulis Thread
+                            </a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-tasks" aria-hidden="true"></i>
+                            Kategori
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="komputer.html">Komputer</a>
+                                <a class="dropdown-item" href="laptop.html">Laptop</a>
+                                <a class="dropdown-item" href="gadget.html">Gadget</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="forum.html">Semua</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                &nbsp; &nbsp; &nbsp;  
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                Masuk
+                            </a>
+                        </li>
+                        <div style="border: 1px #706c6c solid; height: 40px; width: 0px;"></div>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                Daftar
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mb-3 mt-3 align-self-center">
+        <div class="main-content">
+            <!-- Breadcrumb -->
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Tulis Thread</li>
+                </ol>
+            </nav>
+
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-body">
+                            CK Editor
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-6 col-md-4">
+                    <div class="card">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link btn-success dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Pilih Kategori
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#">Komputer</a>
+                                <a class="dropdown-item" href="#">Laptop</a>
+                                <a class="dropdown-item" href="#">Gadget</a>
+                            </div>
+                            <a class="btn btn-outline-success my-2" href="#" role="button">
+                            Post
+                            </a>
+                        </li>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer-green">
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 col-md-4 item">
+                        <h3>Layanan</h3>
+                        <ul>
+                            <li><a href="forum.html">Forum</a></li>
+                            <li><a href="buat.html">Tulis Thread</a></li>
+                            <li><a href="#">Rakit PC</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-6 col-md-4 item">
+                        <h3>Tentang</h3>
+                        <ul>
+                            <li><a href="#">Tim</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4 item text">
+                        <a href="index.html"><img src="asset/logo.png" alt="" width="200px"></a>
+                    </div>
+                    <div class="col item social">
+                        <a href="#"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>
+                        <a href="#"><i class="fa fa-github" aria-hidden="true"></i></a>
+                        <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                        <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                        <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+                <p class="copyright">Tech Corner © 2021</p>
+            </div>
+        </footer>
+    </div>
+
+</body>
+</html>
