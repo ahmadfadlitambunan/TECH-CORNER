@@ -51,7 +51,7 @@
                                     <h4 class="media-heading">
                                     <a href="html/thread.html" target="_self"><b>Canon launches photo centric 00214 Model supper shutter camera</b></a>
                                     </h4><span class="media-date"><a href="#">10Aug- 2015</a>,  by: <a href="#">Eric joan</a></span>
-                                    <br><a href="html/thread.html"><img class="media-object" src="assets/img/pict1.png" width="300px" alt=""></a>
+                                    <br><a href="html/thread.html"><img src="assets/img/pict1.png" width="300px" alt=""></a>
                                     <div class="widget_article_social">
                                         <span>
                                             <a href="#" target="_self"> <i class="fa fa-share-alt"></i>424</a> Shares &nbsp; &nbsp; &nbsp;
