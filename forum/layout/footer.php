@@ -6,15 +6,15 @@
                     <div class="col-sm-6 col-md-4 item">
                         <h3>Layanan</h3>
                         <ul>
-                            <li><a href="html/forum.html">Forum</a></li>
-                            <li><a href="html/buat.html">Tulis Thread</a></li>
+                            <li><a href="index.php">Forum</a></li>
+                            <li><a href="buat.php">Tulis Thread</a></li>
                             <li><a href="#">Rakit PC</a></li>
                         </ul>
                     </div>
                     <div class="col-sm-6 col-md-4 item">
                         <h3>Tentang</h3>
                         <ul>
-                            <li><a href="html/tim.html">Tim</a></li>
+                            <li><a href="tim.php">Tim</a></li>
                         </ul>
                     </div>
                     <div class="col-md-4 item text">

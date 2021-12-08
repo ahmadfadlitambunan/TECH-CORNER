@@ -1,4 +1,5 @@
 <?php include('layout/header.php'); ?>
+<?php include('layout/navbar.php'); ?>
 
 <!-- Main Content -->
     <div class="container mb-3 mt-3 align-self-center">

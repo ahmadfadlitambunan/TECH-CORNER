@@ -1,4 +1,5 @@
 <?php include('layout/header.php'); ?>
+<?php include('layout/navbar.php'); ?>
 
 <!-- Forum -->
     <div class="forum">

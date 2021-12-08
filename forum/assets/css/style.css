@@ -201,6 +201,11 @@ h2 {
     font-size: 25px;
 }
 
+.nav-item .nav-link .img-profile {
+  height: 2rem;
+  width: 2rem;
+}
+
 .media-heading a {
     color: black;
     font-family: 'Yeseva One', cursive;

@@ -66,7 +66,7 @@
                 <div class="col-6 col-md-4">
                     <div class="card">
                         <img src="https://i.pinimg.com/736x/41/81/0a/41810acd7e15633293a7c6c0309c11e5.jpg" class="card-img-top">
-                        <a class="btn btn-outline-success" href="buat.html" role="button">
+                        <a class="btn btn-outline-success" href="buat.php" role="button">
                         <i>Tulis Thread</i>
                         </a>
                     </div>

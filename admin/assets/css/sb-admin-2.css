@@ -4023,7 +4023,7 @@ input[type="button"].btn-block {
 
 .nav-link {
   display: block;
-  padding: 0.5rem 1rem;
+  padding: 
 }
 
 .nav-link:hover, .nav-link:focus {
@@ -10150,6 +10150,7 @@ a:focus {
 .sidebar .nav-item .nav-link,
 .topbar .nav-item .nav-link {
   position: relative;
+  padding: 0;
 }
 
 .sidebar .nav-item .nav-link .badge-counter,

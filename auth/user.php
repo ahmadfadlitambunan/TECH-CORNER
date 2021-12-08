@@ -41,7 +41,7 @@ if($_GET["aksi"] == 'register'){
             <h2>You Have Registered to TECH CORNER</h2>
             <h5>Verify your email address to Login with the given link below</h5>
             <br><br>
-            <a href='http://localhost/project/auth/verify.php?vkey=$vkey'>Verify Now</a>
+            <a href='http://localhost/techcorner/auth/verify.php?vkey=$vkey'>Verify Now</a>
             ";
         $headers = "From: techcornerPW@gmail.com\r\n";
         $headers .= "MIME-Version: 1.0\r\n";
@@ -171,7 +171,7 @@ if($_GET["aksi"] == "logout"){
     session_unset();
     session_destroy();
 
-    header("Location: login.php");
+    header("Location: ../forum/index.php");
     exit();
 
 }
@@ -202,7 +202,7 @@ if($_GET["aksi"] == "reset-password"){
                 <h2>Reset Password</h2>
                 <h5>Here is your reset-password request. Click the link given below to reset your password</h5>
                 <br><br>
-                <a href='http://localhost/project/auth/reset-password.php?vkey=$vkey&email=$get_email'>Reset Password</a>
+                <a href='http://localhost/techcorner/auth/reset-password.php?vkey=$vkey&email=$get_email'>Reset Password</a>
                 ";
             $headers = "From: techcornerPW@gmail.com\r\n";
             $headers .= "MIME-Version: 1.0\r\n";
