@@ -109,7 +109,7 @@ if(isset($_POST["resend"])){
                                     </div>
                                     <?php endif; ?>
 
-                                	<button class="btn btn-primary btn-user btn-block" name="resend">Resend</button>
+                                	<button class="btn btn-success btn-user btn-block" name="resend">Resend</button>
                                 	<hr>
                                 	<div class="text-center">
                                         <a class="small" href="register.php">Create an Account!</a>

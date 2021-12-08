@@ -7,7 +7,7 @@ session_start();
 ?>
 
 
-<body>
+<body class="bg-gradient-success">
 
     <div class="container">
         <!-- Outer Row -->
@@ -64,7 +64,7 @@ session_start();
                                                 Me</label>
                                             </div>
                                         </div>
-                                        <button class="btn btn-primary btn-user btn-block" type="submit" name="login">Login</button>
+                                        <button class="btn btn-success btn-user btn-block" type="submit" name="login">Login</button>
                                     </form>
                                     <hr>
                                     <div class="text-center">

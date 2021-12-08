@@ -86,7 +86,7 @@ session_start()
                                         placeholder="Confirmation Password">
                                         <div id="pass2-validation"></div>
                                 	</div>
-                                	<button class="btn btn-primary btn-user btn-block" name="change">Reset</button>
+                                	<button class="btn btn-success btn-user btn-block" name="change">Reset</button>
                                 	<hr>
                                 	<div class="text-center">
                                         <a class="small" href="register.php">Create an Account!</a>

@@ -1,0 +1,202 @@
+<?php include('layout/header.php'); ?>
+
+<!-- Main Content -->
+    <div class="container mb-3 mt-3 align-self-center">
+        <div class="main-content">
+            <!-- Breadcrumb -->
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                  <li class="breadcrumb-item"><a href="forum.html">All</a></li>
+                  <li class="breadcrumb-item"><a href="#">Nama Kategori</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Judul Thread</li>
+                </ol>
+            </nav>
+
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                Ini Judul Thread!!!
+                            </h5>
+                            <img src="../img/pict1.png" width="200px" class="card-img-top">
+                            <p>
+                                A paragraph of placeholder text. We're using it here to show the use of the clearfix class. We're adding quite a few meaningless phrases here to demonstrate how the columns interact here with the floated image.
+                                </p>
+                            
+                                <p>
+                                As you can see the paragraphs gracefully wrap around the floated image. Now imagine how this would look with some actual content in here, rather than just this boring placeholder text that goes on and on, but actually conveys no tangible information at. It simply takes up space and should not really be read.
+                                </p>
+                            
+                                <p>
+                                And yet, here you are, still persevering in reading this placeholder text, hoping for some more insights, or some hidden easter egg of content. A joke, perhaps. Unfortunately, there's none of that here.
+                                </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-6 col-md-4">
+                    <div class="card">
+                        <img src="https://i.pinimg.com/736x/41/81/0a/41810acd7e15633293a7c6c0309c11e5.jpg" class="card-img-top">
+                        <a class="btn btn-outline-success" href="buat.html" role="button">
+                        <i>Tulis Thread</i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Komentar -->
+            <div class="row mb-3 mt-3">
+            <div class="col-md-8 bootstrap snippets">
+            <div class="panel">
+            <div class="panel-body">
+                <textarea class="form-control" rows="2" placeholder="Bagaimana pendapatmu?"></textarea>
+                <div class="mar-top clearfix">
+                <button class="btn btn-sm btn-success pull-right" type="submit"><i class="fa fa-pencil fa-fw"></i>Share</button>
+                <a class="btn btn-trans btn-icon fa fa-video-camera add-tooltip" href="#"></a>
+                <a class="btn btn-trans btn-icon fa fa-camera add-tooltip" href="#"></a>
+                <a class="btn btn-trans btn-icon fa fa-file add-tooltip" href="#"></a>
+                </div>
+            </div>
+            </div>
+            <div class="panel">
+                <div class="panel-body">
+                <!-- Newsfeed Content -->
+                <!--===================================================-->
+                <div class="media-block">
+                <a class="media-left" href="#"><img class="img-circle img-sm mr-3" alt="Profile Picture" src="https://bootdey.com/img/Content/avatar/avatar1.png"></a>
+                <div class="media-body">
+                    <div class="mar-btm">
+                    <a href="#" class="btn-link text-semibold media-heading box-inline">Lisa D.</a>
+                    </div>
+                    <br>
+                    <p>consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
+                    <div class="pad-ver">
+                    <div class="btn-group">
+                        <a class="btn" href="#"><i class="fa fa-thumbs-up"></i></a>
+                        <a class="btn" href="#"><i class="fa fa-thumbs-down"></i></a>
+                    </div>
+                    <a class="btn" href="#">Komentar</a>
+                    </div>
+                    <hr>
+
+                    <!-- Comments -->
+                    <div>
+                    <div class="media-block">
+                        <a class="media-left" href="#"><img class="img-circle img-sm mr-3" alt="Profile Picture" src="https://bootdey.com/img/Content/avatar/avatar2.png"></a>
+                        <div class="media-body">
+                        <div class="mar-btm">
+                            <a href="#" class="btn-link text-semibold media-heading box-inline">Bobby Marz</a>
+                        </div>
+                        <br>
+                        <p>Sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
+                        <div class="pad-ver">
+                            <div class="btn-group">
+                                <a class="btn" href="#"><i class="fa fa-thumbs-up"></i></a>
+                                <a class="btn" href="#"><i class="fa fa-thumbs-down"></i></a>
+                            </div>
+                            <a class="btn" href="#">Komentar</a>
+                        </div>
+                        <hr>
+                        </div>
+                    </div>
+
+                    <div class="media-block">
+                        <a class="media-left" href="#"><img class="img-circle img-sm mr-3" alt="Profile Picture" src="https://bootdey.com/img/Content/avatar/avatar3.png">
+                        </a>
+                        <div class="media-body">
+                        <div class="mar-btm">
+                            <a href="#" class="btn-link text-semibold media-heading box-inline">Lucy Moon</a>
+                        </div>
+                        <br>
+                        <p>Duis autem vel eum iriure dolor in hendrerit in vulputate ?</p>
+                        <div class="pad-ver">
+                            <div class="btn-group">
+                                <a class="btn" href="#"><i class="fa fa-thumbs-up"></i></a>
+                                <a class="btn" href="#"><i class="fa fa-thumbs-down"></i></a>
+                            </div>
+                                <a class="btn" href="#">Komentar</a>
+                        </div>
+                        <hr>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+                <!--===================================================-->
+                <!-- End Newsfeed Content -->
+
+
+                <!-- Newsfeed Content -->
+                <!--===================================================-->
+                <div class="media-block pad-all">
+                <a class="media-left" href="#"><img class="img-circle img-sm mr-3" alt="Profile Picture" src="https://bootdey.com/img/Content/avatar/avatar1.png"></a>
+                <div class="media-body">
+                    <div class="mar-btm">
+                    <a href="#" class="btn-link text-semibold media-heading box-inline">John Doe</a>
+                    </div>
+                    <br>
+                    <p>Lorem ipsum dolor sit amet.</p>
+                    <img class="img-responsive thumbnail" src="https://via.placeholder.com/400x300" alt="Image">
+                    <div class="pad-ver">
+                        <div class="btn-group">
+                            <a class="btn" href="#"><i class="fa fa-thumbs-up"></i></a>
+                            <a class="btn" href="#"><i class="fa fa-thumbs-down"></i></a>
+                        </div>
+                        <a class="btn" href="#">Komentar</a>
+                    </div>
+                    <hr>
+
+                    <!-- Comments -->
+                    <div>
+                    <div class="media-block pad-all">
+                        <a class="media-left" href="#"><img class="img-circle img-sm mr-3" alt="Profile Picture" src="https://bootdey.com/img/Content/avatar/avatar2.png"></a>
+                        <div class="media-body">
+                        <div class="mar-btm">
+                            <a href="#" class="btn-link text-semibold media-heading box-inline">Maria Leanz</a>
+                        </div>
+                        <br>
+                        <p>Duis autem vel eum iriure dolor in hendrerit in vulputate ?</p>
+                        <div>
+                            <div class="btn-group">
+                                <a class="btn" href="#"><i class="fa fa-thumbs-up"></i></a>
+                                <a class="btn" href="#"><i class="fa fa-thumbs-down"></i></a>
+                            </div>
+                            <a class="btn" href="#">Komentar</a>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+                <!--===================================================-->
+                <!-- End Newsfeed Content -->
+            </div>
+            </div>
+
+            <!-- Pagination -->
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+                </ul>
+            </nav>
+
+            </div>
+            </div>
+        </div>
+    </div>
+    
+<?php include('layout/footer.php'); ?>

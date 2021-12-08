@@ -42,7 +42,7 @@ session_start()
                                         <div class="form-group">
                                             <input type="email" class="form-control form-control-user"  id="email" name="email" aria-describedby="emailHelp" placeholder="Enter Email Address...">
                                         </div>
-                                        <button class="btn btn-primary btn-user btn-block" name="reset-password">Reset Password</button>
+                                        <button class="btn btn-success btn-user btn-block" name="reset-password">Reset Password</button>
                                     </form>
                                     <hr>
                                     <div class="text-center">

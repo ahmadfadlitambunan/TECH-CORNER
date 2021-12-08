@@ -41,7 +41,7 @@ session_start();
                                         <div id="pass2-validation"></div>
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-user btn-primary btn-block" name="register">Register</button>
+                                <button type="submit" class="btn btn-user btn-success btn-block" name="register">Register</button>
                             </form>
                             <hr>
                             <div class="text-center">
