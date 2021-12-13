@@ -1,4 +1,4 @@
-
+    
 <?php 
 
 include('layout/header.php');
@@ -19,8 +19,10 @@ session_start()
                         <div class="row">
                             <div class="col-lg-6 d-none d-lg-block bg-password-image"></div>
                             <div class="col-lg-6">
-                                <div class="p-5">
+                                <div class="p-3">
                                     <div class="text-center">
+                                        <a href="../forum/index.php"><img src="assets/img/logo.png" width="150px"></a>
+                                        <hr>
                                         <h1 class="h4 text-gray-900 mb-2">Forgot Your Password?</h1>
                                     <?php if(isset($_SESSION["reset"])) { ?>
                                     <div class="alert alert-danger" role="alert">
@@ -42,7 +44,7 @@ session_start()
                                         <div class="form-group">
                                             <input type="email" class="form-control form-control-user"  id="email" name="email" aria-describedby="emailHelp" placeholder="Enter Email Address...">
                                         </div>
-                                        <button class="btn btn-primary btn-user btn-block" name="reset-password">Reset Password</button>
+                                        <button class="btn btn-success btn-user btn-block" name="reset-password">Reset Password</button>
                                     </form>
                                     <hr>
                                     <div class="text-center">

@@ -21,7 +21,7 @@ if(isset($_POST["resend"])){
                     <h2>You Have Registered to TECH CORNER</h2>
                     <h5>Verify your email address to Login with the given link below</h5>
                     <br><br>
-                    <a href='http://localhost/project/auth/verify.php?vkey=$vkey'>Verify Now</a>
+                    <a href='http://localhost/techcorner/auth/verify.php?vkey=$vkey'>Verify Now</a>
                     ";
                 $headers = "From: techcornerPW@gmail.com\r\n";
                 $headers .= "MIME-Version: 1.0\r\n";
@@ -63,9 +63,10 @@ if(isset($_POST["resend"])){
                         <div class="row">
                             <div class="col">
                             	<div class="text-center">
-                            		<h3 class="text-gray-900">Resend Email Verification</h3>
+                                    <a href="../forum/index.php"><img src="assets/img/logo.png" width="150px"></a>
+                                    <hr>
+                            		<h5 class="text-gray-900">Resend Email Verification</h5>
                             	</div>
-                            	<hr>
                             	<form class="user" action="" method="POST">
 
                                     <?php if(isset($error3)) : ?>
@@ -109,7 +110,7 @@ if(isset($_POST["resend"])){
                                     </div>
                                     <?php endif; ?>
 
-                                	<button class="btn btn-primary btn-user btn-block" name="resend">Resend</button>
+                                	<button class="btn btn-success btn-user btn-block" name="resend">Resend</button>
                                 	<hr>
                                 	<div class="text-center">
                                         <a class="small" href="register.php">Create an Account!</a>

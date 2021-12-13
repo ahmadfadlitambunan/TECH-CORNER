@@ -7,7 +7,7 @@ session_start();
 ?>
 
 
-<body>
+<body class="bg-gradient-success">
 
     <div class="container">
         <!-- Outer Row -->
@@ -19,8 +19,10 @@ session_start();
                         <div class="row">
                             <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
                             <div class="col-lg-6">
-                                <div class="p-5">
+                                <div class="p-3">
                                     <div class="text-center">
+                                        <a href="../forum/index.php"><img src="assets/img/logo.png" width="150px"></a>
+                                        <hr>
                                         <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                                     </div>
                                     <form class="user" method="POST" action="user.php?aksi=login">
@@ -64,7 +66,7 @@ session_start();
                                                 Me</label>
                                             </div>
                                         </div>
-                                        <button class="btn btn-primary btn-user btn-block" type="submit" name="login">Login</button>
+                                        <button class="btn btn-success btn-user btn-block" type="submit" name="login">Login</button>
                                     </form>
                                     <hr>
                                     <div class="text-center">

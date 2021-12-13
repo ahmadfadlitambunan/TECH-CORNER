@@ -14,8 +14,10 @@ session_start();
                 <div class="row">
                     <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
                     <div class="col-lg-7">
-                        <div class="p-5">
+                        <div class="p-3">
                             <div class="text-center">
+                                <a href="../forum/index.php"><img src="assets/img/logo.png" width="150px"></a>
+                                <hr>
                                 <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
                             </div>
                             <form class="user" id="form-reg" novalidate action="user.php?aksi=register" method="POST">
@@ -41,7 +43,7 @@ session_start();
                                         <div id="pass2-validation"></div>
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-user btn-primary btn-block" name="register">Register</button>
+                                <button type="submit" class="btn btn-user btn-success btn-block" name="register">Register</button>
                             </form>
                             <hr>
                             <div class="text-center">

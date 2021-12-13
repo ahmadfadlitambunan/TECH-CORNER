@@ -36,7 +36,7 @@
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="assets/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="assets/css/sb-admin-2.css" rel="stylesheet">
 
 </head>
 
@@ -64,6 +64,23 @@
                 <a class="nav-link" href="index.html">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
+            </li>
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <div class="sidebar-heading">
+                WEB
+            </div>
+
+            <li class="nav-item">
+                <a class="nav-link" href="../forum/index.php">
+                    <i class="fas fa-fw fa-users"></i>
+                    <span>Forum</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="../carikom">
+                    <i class="fas fa-fw fa-users"></i>
+                    <span>CariKom</span></a>
             </li>
 
             <!-- Divider -->

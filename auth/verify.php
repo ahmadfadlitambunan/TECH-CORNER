@@ -60,7 +60,9 @@ if(isset($_GET["vkey"])){
                         <div class="row">
                             <div class="col">
                                 <div class="text-center">
-                                    <h3 class="text-gray-900">Email Verification</h3>
+                                    <a href="../forum/index.php"><img class="" src="assets/img/logo.png" width="150px"></a>
+                                    <hr>
+                                    <h5 class="text-gray-900">Email Verification</h5>
                                 </div>
                                 <hr>
 

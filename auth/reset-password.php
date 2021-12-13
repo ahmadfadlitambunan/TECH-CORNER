@@ -10,12 +10,13 @@ session_start()
         <div class="row justify-content-center">
             <div class="col-xl-6 col-lg6 col-md-6">
                 <div class="card o-hidden border-0 shadow-lg my-5">
-                	<div class="card-header"></div>
                     <div class="card-body p-4">
                         <!-- Nested Row within Card Body -->
                         <div class="row">
                             <div class="col">
                             	<div class="text-center">
+                            		<a href="../forum/index.php"><img class="" src="assets/img/logo.png" width="150px"></a>
+                                    <hr>
                             		<h5 class="text-gray-900">Change Password</h5>
                             	</div>
                             	<hr>
@@ -54,7 +55,7 @@ session_start()
 
 	                                <?php if($_SESSION["changeStat"] == "success") : ?>
                             		<div class="alert alert-success" role="alert">
-                                        <h4 class="alert-heading">Error</h4>
+                                        <h4 class="alert-heading">Success</h4>
                                         <hr>
                                         <p>Your password account has been changed successfully. You may now login with your new password</p>
                                         <hr>
@@ -86,7 +87,7 @@ session_start()
                                         placeholder="Confirmation Password">
                                         <div id="pass2-validation"></div>
                                 	</div>
-                                	<button class="btn btn-primary btn-user btn-block" name="change">Reset</button>
+                                	<button class="btn btn-success btn-user btn-block" name="change">Reset</button>
                                 	<hr>
                                 	<div class="text-center">
                                         <a class="small" href="register.php">Create an Account!</a>

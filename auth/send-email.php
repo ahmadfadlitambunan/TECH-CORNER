@@ -15,6 +15,8 @@ session_start();
                         <!-- Nested Row within Card Body -->
                         <div class="row">
                             <div class="col">
+                                <div class="text-center"><a href="../forum/index.php"><img class="" src="assets/img/logo.png" width="150px"></a>
+                            </div>
                             <?php if (isset($_SESSION["regStat"])) : ?>
                                 <?php if($_SESSION["regStat"] == "success") : ?>
                             	<div class="text-center">
@@ -51,7 +53,7 @@ session_start();
                             <?php if(isset($_SESSION["reset"])): ?>
                                 <?php if($_SESSION["reset"] == "success") : ?>
                                 <div class="text-center">
-                                    <h3 class="text-gray-900">Reset Password</h3>
+                                    <h5 class="text-gray-900">Reset Password</h5>
                                 </div>
                                 <hr>
 
@@ -60,7 +62,7 @@ session_start();
                                 </div>
                                     <p class="text-center">We have sent E-mail for your reset-password request. Please check your E-mail inbox</p>
                                 <div class="text-center">
-                                    <a class="small" href="forgot-password.php">Did not receive any Email? Try again</a>
+                                    <a class="small" href="resend-email.php">Did not receive any Email? Try again</a>
                                 </div>
                                 <?php endif; ?>
 
