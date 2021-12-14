@@ -41,8 +41,8 @@
                             </div>
                             <hr>
                             <div class="form-group">
-                                <label for="thread">Isi Thread</label>
-                                <textarea class="form-control" id="konten" name="konten" required>Mulai menulis.!</textarea>
+                                <label for="konten">Isi Thread</label>
+                                <textarea class="form-control" name="konten" id="konten" required>Mulai menulis.!</textarea>
                             </div>
                         </div>
                     </div>
@@ -69,8 +69,38 @@
 
         </div>
     </div>
+    <script src="assets\ckeditor5-build-classic\ckeditor.js"></script>
+    <script src="assets\ckfinder\ckfinder.js"></script>
+
     <script>
-    	CKEDITOR.replace( 'konten' );
+
+    ClassicEditor
+    .create( document.querySelector( '#konten' ), {
+        ckfinder: {
+            uploadUrl: 'http://localhost/techcorner/forum/assets/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files&responseType=json',
+        },
+        toolbar: {
+        items: [
+            'heading',
+            '|',
+            'alignment',                                               
+            'bold',
+            'italic',
+            'link',
+            'bulletedList',
+            'numberedList',
+            'CKFinder',
+            'uploadImage',
+            'blockQuote',
+            'undo',
+            'redo'
+        ]
+    },
+    } )
+    .catch( error => {
+        console.error( error );
+    } );
+
     </script>
 
 
