@@ -1,36 +1,47 @@
 <?php include('layout/header.php'); ?>
 <?php include('layout/navbar.php'); ?>
-<?php include('config.php'); ?>
 
-<div class="container mb-3 mt-3 align-self-center">
-  <div class="card-fitur text-center">
+<div class="forum">
+  <div class="container align-self-center">
+    <div class="card mb-3 mt-3">
+      <div class="card-header pl-0 pr-0">
+        <div class="row no-gutters w-100 align-items-center">
+          <div class="col ml-3">Topik</div>
+        </div>
+      </div>
 
-    <?php
-      $keywords = $_GET['keywords'];
-      $query = "SELECT * FROM posting WHERE judul LIKE '%$keywords%' OR konten LIKE '%$keywords%'";
-      $result = mysqli_query($conn, $query);
-      if(mysqli_num_rows($result) > 0) {
-        while ($rows = $result->fetch_assoc()) {
+      <?php
+        $keywords = $_GET['keywords'];
+        $query = "SELECT * FROM posting WHERE judul LIKE '%$keywords%' OR konten LIKE '%$keywords%'";
+        $result = mysqli_query($conn, $query);
+        if(mysqli_num_rows($result) > 0) {
+          while ($rows = $result->fetch_assoc()) {
       ?>
-    <div class="card media">
-      <div class="card-body">
-        <div class="media-body">
-          <h4 class="media-heading">
-            <a href="view.php?thread=<?php echo $rows['id_thread']; ?>"><?php echo $rows['judul']; ?></a>
-          </h4>
+
+      <div class="card-body py-3">
+        <div class="row no-gutters align-items-center">
+          <div class="col">
+            <h6 class="media-heading">
+              <a href="view.php?thread=<?php echo $rows['id_thread']; ?>"><?php echo $rows['judul']; ?></a>
+            </h6>
+            <div class="text-muted small mt-1"><?php echo $rows['konten']; ?></div>
+          </div>
         </div>
       </div>
-    </div>
+      <hr class="m-0">
 
-    <?php } 
+      <?php } 
       } else {  ?>
-      <div class="container align-self-center">
-        <div class="col-lg-6 col-sm-12 text-center">
-          <h4>Data tidak ditemukan!</h4>
+        <div class="card-body py-3">
+          <div class="row no-gutters align-items-center">
+            <div class="col">
+              <h6 class="media-heading">Topik yang Anda cari tidak tersedia!</h6>
+            </div>
+          </div>
         </div>
-      </div>
-    <?php } ?>
+      <?php } ?>
 
+    </div>
   </div>
 </div>
 
