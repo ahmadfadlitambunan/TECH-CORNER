@@ -21,22 +21,23 @@
                                 Carikom<span class="sr-only">(current)</span>
                             </a>
                         </li>
-                        <?php if(isset($_SESSION["level"])) {
-                                if($_SESSION["level"] == "admin") { ?>
+                        <?php if(isset($_SESSION["level"])) { ?>
+                            <?php if($_SESSION["level"] == "admin") { ?>
                         <li class="nav-item active">
                             <a class="nav-link" href="../admin/index.php"><i class="fa fa-users" aria-hidden="true"></i>
                                 Admin<span class="sr-only">(current)</span>
                             </a>
                         </li>
-                            <?php } 
-                        } ?>
+                            <?php }?>
+                        <?php } ?>
+
                     </ul>
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <form class="search">
+                            <form method="GET" action="action.php" class="search">
                                 <div class="search__wrapper">
-                                <input type="text" name="" placeholder="Cari..." class="search__field">
-                                <button type="submit" class="fa fa-search search__icon"></button>
+                                <input type="text" name="search" id="search" placeholder="Cari thread..." class="search__field">
+                                <button type="submit" name="search" class="fa fa-search search__icon"></button>
                                 </div>
                             </form>
                         </li>
