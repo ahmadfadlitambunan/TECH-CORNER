@@ -87,24 +87,35 @@ if ($_GET["aksi"] == "login"){
                 $_SESSION["level"] = $row['level'];
                 $_SESSION["email"] = $row['email'];
 
-                // cek apakah rememberme dipencet
-                if (isset($_POST["remember"])) {
-                    // set cookie
-                    // setcookie('key', hash('sha256', $row['username']), time() + 60);
-                    // setcookie('id', $row['id'], time() + 60);       
+                // // cek apakah rememberme dipencet
+                // if (isset($_POST["remember"])) {
+                //     // set cookie
+                //     // setcookie('key', hash('sha256', $row['username']), time() + 60);
+                //     // setcookie('id', $row['id'], time() + 60);       
+                // }
+                if(isset($_SESSION["for"])) {
+                    header("Location: ../forum/buat.php");
+                    exit();
                 }
 
-                header("Location: ../admin/index.php");
-                exit();
+                if($_SESSION["level"] = 'member' || $_SESSION["level"] == "moderator"){
+                    header("Location: ../forum/index.php");
+                    exit();
+                } else {
+                    header("Location: ../admin/index.php");
+                    exit();
+                }
             }  
 
         } else {
+            // akun belum teverifikasi
             $_SESSION["error1"] = true;
             header("Location: login.php");
             exit();
         }
             
     } 
+        // akun tidak terdaftar
         $_SESSION["error2"] = true;
         header("Location: login.php");
         exit();

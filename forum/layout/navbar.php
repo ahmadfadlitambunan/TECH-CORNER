@@ -34,10 +34,10 @@
                     </ul>
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <form class="search">
+                            <form method="GET" action="action.php" class="search">
                                 <div class="search__wrapper">
-                                <input type="text" name="" placeholder="Cari..." class="search__field">
-                                <button type="submit" class="fa fa-search search__icon"></button>
+                                <input type="text" name="keywords" id="search" placeholder="Cari thread..." class="search__field">
+                                <button type="submit" name="search" class="fa fa-search search__icon"></button>
                                 </div>
                             </form>
                         </li>
@@ -56,7 +56,7 @@
                                 <a class="dropdown-item" href="kategori/laptop.php">Laptop</a>
                                 <a class="dropdown-item" href="kategori/gadget.php">Gadget</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="kategori/all.php">Semua</a>
+                                <a class="dropdown-item" href="all.php">Semua</a>
                             </div>
                         </li>
                         <?php if(isset($_SESSION["login"])) { ?>

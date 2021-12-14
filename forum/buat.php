@@ -1,5 +1,13 @@
-<?php include('layout/header.php'); ?>
-<?php include('layout/navbar.php'); ?>
+<?php 
+    include('layout/header.php');
+    include('layout/navbar.php');
+
+    if(!isset($_SESSION["login"])){
+        echo("<script>location.href = '../auth/login.php?for=tulis';</script>");
+    }
+
+
+?>
 
 <!-- Main Content -->
     <div class="container mb-3 mt-3 align-self-center">
@@ -7,11 +15,11 @@
             <!-- Breadcrumb -->
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                  <li class="breadcrumb-item"><a href="../index.php">Home</a></li>
                   <li class="breadcrumb-item active" aria-current="page">Tulis Thread</li>
                 </ol>
             </nav>
-            <form action="" method="">
+            <form action="thread.php?aksi=buat" method="POST">
             <div class="row">
                 <div class="col-md-8">
                     <div class="card">
@@ -21,8 +29,8 @@
                                 	<img width="50px" src="assets/img/icon.png" alt="">
                                 </div>
                                 <div class="d-flex flex-column fw-bold">
-                                    <a class="text-dark mb-1" href="#!">Sid Rooney</a>
-                                    <div class="small text-muted">Position</div>
+                                    <a class="text-dark mb-1" ><?=$_SESSION["username"]?></a>
+                                    <div class="small text-muted"><?=$_SESSION["level"]?></div>
                                 </div>
                             </div>            
                     	</div>
@@ -33,8 +41,8 @@
                             </div>
                             <hr>
                             <div class="form-group">
-                                <label for="thread">Isi Thread</label>
-                                <textarea class="form-control" id="konten" name="konten" required>Mulai menulis.!</textarea>
+                                <label for="konten">Isi Thread</label>
+                                <textarea class="form-control" name="konten" id="konten" required>Mulai menulis.!</textarea>
                             </div>
                         </div>
                     </div>
@@ -45,13 +53,13 @@
                     <div class="card">
                     	<div class="card-body">
                     		<label for="kategori">Pilih Kategori</label>
-                        	<select class="custom-select" id="kategori">
+                        	<select class="custom-select" id="kategori" name="kategori">
 								<option selected>-- Pilih Kategori --</option>
-								<option value="1">One</option>
-								<option value="2">Two</option>
-								<option value="3">Three</option>
+								<option value="komputer">Komputer & PC</option>
+								<option value="laptop">Laptop / Notebook</option>
+								<option value="gadget">Gadget</option>
 							</select>
-                            <button class="btn btn-success btn-block my-2" type="submit" name="post">POST</button>		
+                            <button class="btn btn-success btn-block my-2" type="submit" name="posting">POST</button>		
 	                    </div>
                     </div>
                 </div>
@@ -61,8 +69,39 @@
 
         </div>
     </div>
+    <script src="assets\ckeditor5-build-classic\ckeditor.js"></script>
+    <script src="assets\ckfinder\ckfinder.js"></script>
+
     <script>
-    	CKEDITOR.replace( 'konten' );
+
+    ClassicEditor
+    .create( document.querySelector( '#konten' ), {
+        ckfinder: {
+            uploadUrl: 'http://localhost/techcorner/forum/assets/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files&responseType=json',
+        },
+        toolbar: {
+        items: [
+            'heading',
+            '|',
+            'alignment',                                               
+            'bold',
+            'italic',
+            'link',
+            'bulletedList',
+            'numberedList',
+            'CKFinder',
+            'uploadImage',
+            'blockQuote',
+            'undo',
+            'redo'
+            ]
+        },
+
+    } )
+    .catch( error => {
+        console.error( error );
+    } );
+
     </script>
 
 
