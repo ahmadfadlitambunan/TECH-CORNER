@@ -23,7 +23,15 @@ session_start();
                                     <div class="text-center">
                                         <a href="../forum/index.php"><img src="assets/img/logo.png" width="150px"></a>
                                         <hr>
-                                        <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                                        <?php if(isset($_GET["for"])) {
+                                                $_SESSION["for"] = "tulis";
+                                                if($_GET["for"] == "tulis") { ?>
+                                        <h1 class="h5 text-gray-900 mb-4">Silahkan Login Untuk Menulis Thread Baru</h1>
+                                        <?php }
+                                            } else { ?>
+                                        <h1 class="h4 text-gray-900 mb-4">Selamat Datang</h1>
+                                        <?php } ?>
+
                                     </div>
                                     <form class="user" method="POST" action="user.php?aksi=login">
 
