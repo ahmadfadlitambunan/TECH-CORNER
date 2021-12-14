@@ -1,3 +1,14 @@
+<?php
+require("../_config/connect.php");
+require("funct/function.php");
+if(isset($_GET['thread'])&& $_GET['thread'] !="")
+{
+    $id_thread=$_GET['thread'];
+}
+$thread=query("SELECT * FROM posting WHERE id_thread='$id_thread'");
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,10 +44,12 @@
             <!-- Breadcrumb -->
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
-                  <li class="breadcrumb-item"><a href="forum.html">All</a></li>
-                  <li class="breadcrumb-item"><a href="#">Nama Kategori</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Judul Thread</li>
+                  <li class="breadcrumb-item"><a href="../index.php">Home</a></li>
+                  <li class="breadcrumb-item"><a href="all.php">All</a></li>
+                  
+                  <?php foreach($thread as $data):?>
+                    <li class="breadcrumb-item"><a href="#"><?=$data['kategori']?></a></li>
+                  <li class="breadcrumb-item active" aria-current="page"><?=$data['judul']?></li>
                 </ol>
             </nav>
 
@@ -45,23 +58,18 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">
-                                Ini Judul Thread!!!
+                            <?=$data['judul']?>
                             </h5>
                             <img src="assets/img/pict1.png" width="200px" class="card-img-top">
                             <p>
-                                A paragraph of placeholder text. We're using it here to show the use of the clearfix class. We're adding quite a few meaningless phrases here to demonstrate how the columns interact here with the floated image.
+                            <?=$data['konten']?>
                                 </p>
                             
-                                <p>
-                                As you can see the paragraphs gracefully wrap around the floated image. Now imagine how this would look with some actual content in here, rather than just this boring placeholder text that goes on and on, but actually conveys no tangible information at. It simply takes up space and should not really be read.
-                                </p>
-                            
-                                <p>
-                                And yet, here you are, still persevering in reading this placeholder text, hoping for some more insights, or some hidden easter egg of content. A joke, perhaps. Unfortunately, there's none of that here.
-                                </p>
+                               
                         </div>
                     </div>
                 </div>
+                <?php endforeach; ?>
                 
                 <div class="col-6 col-md-4">
                     <div class="card">

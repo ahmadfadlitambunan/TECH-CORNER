@@ -56,7 +56,7 @@
                                 <a class="dropdown-item" href="kategori/laptop.php">Laptop</a>
                                 <a class="dropdown-item" href="kategori/gadget.php">Gadget</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="kategori/all.php">Semua</a>
+                                <a class="dropdown-item" href="all.php">Semua</a>
                             </div>
                         </li>
                         <?php if(isset($_SESSION["login"])) { ?>

@@ -15,7 +15,7 @@
             <!-- Breadcrumb -->
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                  <li class="breadcrumb-item"><a href="../index.php">Home</a></li>
                   <li class="breadcrumb-item active" aria-current="page">Tulis Thread</li>
                 </ol>
             </nav>
@@ -29,8 +29,8 @@
                                 	<img width="50px" src="assets/img/icon.png" alt="">
                                 </div>
                                 <div class="d-flex flex-column fw-bold">
-                                    <a class="text-dark mb-1" href="#!">Sid Rooney</a>
-                                    <div class="small text-muted">Position</div>
+                                    <a class="text-dark mb-1" ><?=$_SESSION["username"]?></a>
+                                    <div class="small text-muted"><?=$_SESSION["level"]?></div>
                                 </div>
                             </div>            
                     	</div>
