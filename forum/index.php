@@ -33,11 +33,11 @@ $list = query("SELECT * FROM posting  LIMIT $awal,$jumlah_data_perhalaman")
                     <h1>Selamat datang di<br>Tech Corner!</h1>
                     <p>
                         Tech Corner adalah ruang untukmu yang ingin menjelajahi dunia teknologi.
-                        Mari diskusi terkait perkembangan era 4.0 bersama <a class="banner-link" href="#">di sini</a>.
-                        <br>Kamu tertarik dengan komponen-komponen PC? Atau ingin mencoba merakit milikmu sendiri?
-                        Ayo lakukan itu di sini!
+                        Di sini akan ada teman untuk saling belajar dan berbagi pengetahuan bersama. 
+                        Yuk, diskusi terkait perkembangan era 4.0 yang sudah kita duduki. Ada banyak yang harus disampaikan.
+                        <br>Ayo lakukan itu di sini!
                     </p>
-                    <a class="btn btn-success" href="#" role="button">Rakit PC</a>
+                    <a class="btn btn-success" href="../auth/login.php" role="button">Masuk</a>
                 </div>
             </div>
         </div>
@@ -48,7 +48,7 @@ $list = query("SELECT * FROM posting  LIMIT $awal,$jumlah_data_perhalaman")
 <div class="container mb-3 mt-3 align-self-center">
     <div class="card-fitur text-center">
         <div class="row">
-            <div class="col-6 col-md-4">
+            <div class="col-6 col-md-4 mb-3">
                 <h2><i class="fa fa-comments-o" aria-hidden="true"></i>Obrolan Hangat</h2>
                 <div class="card">
                     <ul class="list-group list-group-flush">
