@@ -21,16 +21,15 @@
                                 Carikom<span class="sr-only">(current)</span>
                             </a>
                         </li>
-                        <?php if(isset($_SESSION["level"])) { ?>
-                            <?php if($_SESSION["level"] == "admin") { ?>
+                        <?php if(isset($_SESSION["level"])) {
+                                if($_SESSION["level"] == "admin") { ?>
                         <li class="nav-item active">
                             <a class="nav-link" href="../admin/index.php"><i class="fa fa-users" aria-hidden="true"></i>
                                 Admin<span class="sr-only">(current)</span>
                             </a>
                         </li>
-                            <?php }?>
-                        <?php } ?>
-
+                            <?php } 
+                        } ?>
                     </ul>
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">

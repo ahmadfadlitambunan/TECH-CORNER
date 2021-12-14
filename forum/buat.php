@@ -1,5 +1,13 @@
-<?php include('layout/header.php'); ?>
-<?php include('layout/navbar.php'); ?>
+<?php 
+    include('layout/header.php');
+    include('layout/navbar.php');
+
+    if(!isset($_SESSION["login"])){
+        echo("<script>location.href = '../auth/login.php?for=tulis';</script>");
+    }
+
+
+?>
 
 <!-- Main Content -->
     <div class="container mb-3 mt-3 align-self-center">
@@ -11,7 +19,7 @@
                   <li class="breadcrumb-item active" aria-current="page">Tulis Thread</li>
                 </ol>
             </nav>
-            <form action="" method="">
+            <form action="thread.php?aksi=buat" method="POST">
             <div class="row">
                 <div class="col-md-8">
                     <div class="card">
@@ -45,13 +53,13 @@
                     <div class="card">
                     	<div class="card-body">
                     		<label for="kategori">Pilih Kategori</label>
-                        	<select class="custom-select" id="kategori">
+                        	<select class="custom-select" id="kategori" name="kategori">
 								<option selected>-- Pilih Kategori --</option>
-								<option value="1">One</option>
-								<option value="2">Two</option>
-								<option value="3">Three</option>
+								<option value="komputer">Komputer & PC</option>
+								<option value="laptop">Laptop / Notebook</option>
+								<option value="gadget">Gadget</option>
 							</select>
-                            <button class="btn btn-success btn-block my-2" type="submit" name="post">POST</button>		
+                            <button class="btn btn-success btn-block my-2" type="submit" name="posting">POST</button>		
 	                    </div>
                     </div>
                 </div>
