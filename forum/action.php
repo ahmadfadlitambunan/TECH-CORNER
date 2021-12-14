@@ -1,6 +1,6 @@
 <?php include('layout/header.php'); ?>
 <?php include('layout/navbar.php'); ?>
-<?php include('config.php'); ?>
+
 
 <div class="container mb-3 mt-3 align-self-center">
   <div class="card-fitur text-center">
