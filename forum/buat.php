@@ -94,8 +94,9 @@
             'blockQuote',
             'undo',
             'redo'
-        ]
-    },
+            ]
+        },
+
     } )
     .catch( error => {
         console.error( error );

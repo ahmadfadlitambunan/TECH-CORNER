@@ -36,7 +36,7 @@
                         <li class="nav-item">
                             <form method="GET" action="action.php" class="search">
                                 <div class="search__wrapper">
-                                <input type="text" name="search" id="search" placeholder="Cari thread..." class="search__field">
+                                <input type="text" name="keywords" id="search" placeholder="Cari thread..." class="search__field">
                                 <button type="submit" name="search" class="fa fa-search search__icon"></button>
                                 </div>
                             </form>

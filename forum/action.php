@@ -6,26 +6,24 @@
   <div class="card-fitur text-center">
 
     <?php
-      $search = $_GET['search'];
-      $query = "SELECT * FROM posting WHERE judul LIKE '%$search' OR konten LIKE '%$search'";
-      $db = new Database();
-      $post = $db->select($query);
-      if($post) {
-        while ($result = $post->fetch_assoc()) {
-    ?>
-
+      $keywords = $_GET['keywords'];
+      $query = "SELECT * FROM posting WHERE judul LIKE '%$keywords%' OR konten LIKE '%$keywords%'";
+      $result = mysqli_query($conn, $query);
+      if(mysqli_num_rows($result) > 0) {
+        while ($rows = $result->fetch_assoc()) {
+      ?>
     <div class="card media">
       <div class="card-body">
         <div class="media-body">
           <h4 class="media-heading">
-            <a href="post.php?id_thread=<?php echo $result['id_thread']; ?>"><?php echo $result['judul']; ?></a>
+            <a href="view.php?thread=<?php echo $rows['id_thread']; ?>"><?php echo $rows['judul']; ?></a>
           </h4>
-          <?php echo $result['konten']; ?>
         </div>
       </div>
     </div>
 
-    <?php } } else {  ?>
+    <?php } 
+      } else {  ?>
       <div class="container align-self-center">
         <div class="col-lg-6 col-sm-12 text-center">
           <h4>Data tidak ditemukan!</h4>
