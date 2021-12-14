@@ -1,5 +1,9 @@
 <?php include('layout/header.php'); ?>
 <?php include('layout/navbar.php'); ?>
+<<<<<<< HEAD
+
+=======
+>>>>>>> 1ae7d0b720a65c24644f4e3c54a2111e3b86e217
 
 <div class="forum">
   <div class="container align-self-center">
