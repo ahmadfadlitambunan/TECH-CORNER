@@ -11,20 +11,10 @@
                 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-3">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="all.php"><i class="fa fa-users" aria-hidden="true"></i>
-                                Forum<span class="sr-only">(current)</span>
-                            </a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#"><i class="fa fa-users" aria-hidden="true"></i>
-                                Carikom<span class="sr-only">(current)</span>
-                            </a>
-                        </li>
                         <?php if(isset($_SESSION["level"])) { ?>
                             <?php if($_SESSION["level"] == "admin") { ?>
                         <li class="nav-item active">
-                            <a class="nav-link" href="../admin/index.php"><i class="fa fa-users" aria-hidden="true"></i>
+                            <a class="nav-link" href="../admin/index.php"><i class="fa fa-user" aria-hidden="true"></i>
                                 Admin<span class="sr-only">(current)</span>
                             </a>
                         </li>
@@ -41,6 +31,11 @@
                                 </div>
                             </form>
                         </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="all.php"><i class="fa fa-users" aria-hidden="true"></i>
+                                Forum<span class="sr-only">(current)</span>
+                            </a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="buat.php"><i class="fa fa-pencil" aria-hidden="true"></i>
                                 Tulis Thread
@@ -52,8 +47,8 @@
                             Kategori
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="kategori/komputer.php">Komputer</a>
-                                <a class="dropdown-item" href="kategori/laptop.php">Laptop</a>
+                                <a class="dropdown-item" href="kategori/komputer.php">Komputer & PC</a>
+                                <a class="dropdown-item" href="kategori/laptop.php">Laptop / Notebook</a>
                                 <a class="dropdown-item" href="kategori/gadget.php">Gadget</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="all.php">Semua</a>
