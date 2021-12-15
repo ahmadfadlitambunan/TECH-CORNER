@@ -24,29 +24,34 @@ session_start();
                                         <a href="../forum/index.php"><img src="assets/img/logo.png" width="150px"></a>
                                         <hr>
                                         <?php if(isset($_GET["for"])) {
+                                            if($_GET["for"] == "tulis") { 
                                                 $_SESSION["for"] = "tulis";
-                                                if($_GET["for"] == "tulis") { ?>
-                                        <h1 class="h5 text-gray-900 mb-4">Silahkan Login Untuk Menulis Thread Baru</h1>
-                                        <?php }
-                                            } else { ?>
-                                        <h1 class="h4 text-gray-900 mb-4">Selamat Datang</h1>
+                                                ?>
+                                                <h1 class="h5 text-gray-900 mb-4">Silahkan Login Untuk Menulis Thread Baru</h1>
+                                            <?php } ?>
+                                            <?php if($_GET["for"] == 'komen') {
+                                                $_SESSION["for"] = 'komen' ?>
+                                                <h1 class="h5 text-gray-900 mb-4">Silahkan Login Untuk Berkomentar</h1>
+                                            <?php } ?>
+                                        <?php } else { ?>
+                                            <h1 class="h4 text-gray-900 mb-4">Selamat Datang</h1>
                                         <?php } ?>
 
                                     </div>
                                     <form class="user" method="POST" action="user.php?aksi=login">
 
                                         <?php if(isset($_SESSION["error1"])) : ?>
-                                        <div class="alert alert-danger" role="alert">
-                                            <h4 class="alert-heading">Failed</h4>
-                                            <p>Your account has not been verified. Please verify your account.!</p>
-                                            <hr>
-                                            <div class="text-center">
-                                                <a class="small" href="resend-email.php">Did not receive any Email Verification? Resend Email</a>
+                                            <div class="alert alert-danger" role="alert">
+                                                <h4 class="alert-heading">Failed</h4>
+                                                <p>Your account has not been verified. Please verify your account.!</p>
+                                                <hr>
+                                                <div class="text-center">
+                                                    <a class="small" href="resend-email.php">Did not receive any Email Verification? Resend Email</a>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <?php unset($_SESSION["error1"]); ?>
+                                            <?php unset($_SESSION["error1"]); ?>
                                         <?php endif; ?>
-                                     
+
 
                                         <div class="form-group">
                                             <input type="email" class="form-control form-control-user"
@@ -59,12 +64,12 @@ session_start();
                                         </div>
 
                                         <?php if(isset($_SESSION["error2"])) : ?>
-                                        <div class="text-center">
-                                            <p class="text-danger">
-                                                You entered the wrong Email/Password. Fill in the data correctly.!
-                                            </p>
-                                        </div>
-                                        <?php unset($_SESSION["error2"]); ?>
+                                            <div class="text-center">
+                                                <p class="text-danger">
+                                                    You entered the wrong Email/Password. Fill in the data correctly.!
+                                                </p>
+                                            </div>
+                                            <?php unset($_SESSION["error2"]); ?>
                                         <?php endif; ?>
 
                                         <div class="form-group">
