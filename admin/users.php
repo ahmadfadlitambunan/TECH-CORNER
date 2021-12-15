@@ -25,7 +25,7 @@ $list = query("SELECT * FROM posting  LIMIT $awal,$jumlah_data_perhalaman")
 
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">Posting</h1>
+                    <h1 class="h3 mb-0 text-gray-800">Pengguna</h1>
                     
                 </div>
 
@@ -47,29 +47,30 @@ $list = query("SELECT * FROM posting  LIMIT $awal,$jumlah_data_perhalaman")
                             <div class="card-body">
                                 <?php
 
-                                $query = "SELECT * FROM posting";
+                                $query = "SELECT * FROM users";
                                 $hasil = mysqli_query ($conn, $query);
 
                                 echo "<table class = 'table table-bordered'>";
                                 echo "<tr>";
-                                echo "<th>Judul</th><th>Konten</th><th>Kategori</th>";
+                                echo "<th>Id</th><th>Username</th><th>Email</th><th>Nama</th><th>Level</th>";
                                 echo "</tr>";
 
                                 foreach ($hasil as $data) {
                                     echo "<tr>";
-                                    echo "<td>$data[judul]</td>";
-                                    echo "<td>$data[konten]</td>";
-                                    echo "<td>$data[kategori]</td>";
-                                    
+                                    echo "<td>$data[id_user]</td>";
+                                    echo "<td>$data[username]</td>";
+                                    echo "<td>$data[email]</td>";
+                                    echo "<td>$data[name]</td>";
+                                    echo "<td>$data[level]</td>";
                                     
                                     //tombol update
                                     echo "<td><form method='POST' action='ubah.php'>
-                                    <input hidden type='text' name='id' value=$data[id_thread]>
+                                    <input hidden type='text' name='id' value=$data[id_user]>
                                     <button type='submit' name='btnUpdate' class='btn btn-success'>Update</button></form></td>";
 
                                     //tombol delete
                                     echo "<td><form onsubmit=\"return confirm ('Anda Yakin Mau Menghapus Data?');\" method='POST'>";
-                                    echo "<input hidden type='text' name='id' value=$data[id_thread]>";
+                                    echo "<input hidden type='text' name='id' value=$data[id_user]>";
                                     echo "<button type='submit' name='btnHapus' class='btn btn-danger'>Delete</button></form></td>";
 
                                     echo "</tr>";
@@ -84,7 +85,7 @@ $list = query("SELECT * FROM posting  LIMIT $awal,$jumlah_data_perhalaman")
                                 $id=$_POST['id'];
 
                                 if ($conn){
-                                $sql = "DELETE FROM posting WHERE id_thread=$id";
+                                $sql = "DELETE FROM users WHERE id_user=$id";
                                 mysqli_query($conn,$sql);
                                 echo "<p class='alert alert-success text-center'><b>Data Akun Berhasil Dihapus.</b></p>";
                                 } elseif ($conn->connect_error){
