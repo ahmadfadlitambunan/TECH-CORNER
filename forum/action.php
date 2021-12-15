@@ -1,9 +1,5 @@
 <?php include('layout/header.php'); ?>
 <?php include('layout/navbar.php'); ?>
-<<<<<<< HEAD
-
-=======
->>>>>>> 1ae7d0b720a65c24644f4e3c54a2111e3b86e217
 
 <div class="forum">
   <div class="container align-self-center">
@@ -39,7 +35,9 @@
         <div class="card-body py-3">
           <div class="row no-gutters align-items-center">
             <div class="col">
-              <h6 class="media-heading">Topik yang Anda cari tidak tersedia!</h6>
+              <h6 class="media-heading">
+                <a href="index.php">Topik yang Anda cari tidak tersedia!</a>
+              </h6>
             </div>
           </div>
         </div>
