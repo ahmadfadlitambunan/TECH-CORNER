@@ -144,8 +144,8 @@ if(isset($_POST["balas"])) {
                                 <img width="50px" src="assets/img/icon.png" alt="">
                             </div>
                             <div class="d-flex flex-column fw-bold">
-                                <a href="#" class="btn-link text-semibold media-heading box-inline">Johndoe</a>
-                                <div class="small text-muted">member</div>
+                                <a href="#" class="btn-link text-semibold media-heading box-inline"><?= $_SESSION["username"]; ?></a>
+                                <div class="small text-muted"><?= $_SESSION["level"]; ?></div>
                             </div>
                         </div>     
                         <br>
