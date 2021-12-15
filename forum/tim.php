@@ -19,9 +19,9 @@
         <div class="col-12 col-sm-6 col-lg-4">
             <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
             <!-- Team Thumb-->
-            <div class="advisor_thumb"><img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="">
+            <div class="advisor_thumb"><img src="../forum/assets/img/maria.jpeg" alt="">
                 <!-- Social Info-->
-                <div class="social-info"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-instagram"></i></a></div>
+                <div class="social-info"><a href="https://www.facebook.com/profile.php?id=100009120955022"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="https://www.instagram.com/maria_purba_03/"><i class="fa fa-instagram"></i></a></div>
             </div>
             <!-- Team Details-->
             <div class="single_advisor_details_info">
@@ -34,9 +34,9 @@
         <div class="col-12 col-sm-6 col-lg-4">
             <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.3s" style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;">
             <!-- Team Thumb-->
-            <div class="advisor_thumb"><img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="">
+            <div class="advisor_thumb"><img src="../forum/assets/img/nadya.jpeg" alt="">
                 <!-- Social Info-->
-                <div class="social-info"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-instagram"></i></a></div>
+                <div class="social-info"><a href="#"><i class="fa fa-facebook"></i></a><a href="https://www.twitter.com/nadyeax/"><i class="fa fa-twitter"></i></a><a href="https://www.instagram.com/naadyazhr/"><i class="fa fa-instagram"></i></a></div>
             </div>
             <!-- Team Details-->
             <div class="single_advisor_details_info">
@@ -49,9 +49,9 @@
         <div class="col-12 col-sm-6 col-lg-4">
             <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.4s" style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
             <!-- Team Thumb-->
-            <div class="advisor_thumb"><img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="">
+            <div class="advisor_thumb"><img src="../forum/assets/img/arya.jpeg" alt="">
                 <!-- Social Info-->
-                <div class="social-info"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-instagram"></i></a></div>
+                <div class="social-info"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="https://www.instagram.com/_aryaananda_/"><i class="fa fa-instagram"></i></a></div>
             </div>
             <!-- Team Details-->
             <div class="single_advisor_details_info">
@@ -67,9 +67,9 @@
             <div class="col-12 col-sm-6 col-lg-4">
                 <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
                 <!-- Team Thumb-->
-                <div class="advisor_thumb"><img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="">
+                <div class="advisor_thumb"><img src="../forum/assets/img/fadli.jpeg" alt="">
                     <!-- Social Info-->
-                    <div class="social-info"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-instagram"></i></a></div>
+                    <div class="social-info"><a href="https://www.facebook.com/ahmadfadlitambunan/"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="https://www.instagram.com/ahmadfadlitambunan_/ "><i class="fa fa-instagram"></i></a></div>
                 </div>
                 <!-- Team Details-->
                 <div class="single_advisor_details_info">
@@ -82,9 +82,9 @@
             <div class="col-12 col-sm-6 col-lg-4">
                 <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.3s" style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;">
                 <!-- Team Thumb-->
-                <div class="advisor_thumb"><img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="">
+                <div class="advisor_thumb"><img src="../forum/assets/img/kenzie.jpeg" alt="">
                     <!-- Social Info-->
-                    <div class="social-info"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-instagram"></i></a></div>
+                    <div class="social-info"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="https://www.instagram.com/kenzie_fu_"><i class="fa fa-instagram"></i></a></div>
                 </div>
                 <!-- Team Details-->
                 <div class="single_advisor_details_info">
@@ -97,9 +97,9 @@
             <div class="col-12 col-sm-6 col-lg-4">
                 <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.4s" style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
                 <!-- Team Thumb-->
-                <div class="advisor_thumb"><img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="">
+                <div class="advisor_thumb"><img src="../forum/assets/img/ferdi.jpeg" alt="">
                     <!-- Social Info-->
-                    <div class="social-info"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-instagram"></i></a></div>
+                    <div class="social-info"><a href="https://m.facebook.com/ferdiakbar.nasution"><i class="fa fa-facebook"></i></a><a href="https://mobile.twitter.com/halfienerdd"><i class="fa fa-twitter"></i></a><a href="https://www.instagram.com/ferdinasution_/"><i class="fa fa-instagram"></i></a></div>
                 </div>
                 <!-- Team Details-->
                 <div class="single_advisor_details_info">
