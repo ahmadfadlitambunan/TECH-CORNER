@@ -114,12 +114,9 @@ if(isset($_POST["balas"])) {
                         <h5 class="card-title">
                             <?=$data['judul']?>
                         </h5>
-                        <img src="assets/img/pict1.png" width="200px" class="card-img-top">
                         <p>
                             <?=$data['konten']?>
                         </p>
-
-
                     </div>
                 </div>
             </div>
