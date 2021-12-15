@@ -165,24 +165,24 @@ if(isset($_POST["balas"])) {
                 </div>
             <?php endif; ?>
 
+            <?php 
 
-            <div class="panel">
-                <div class="panel-body">
-                    <!-- LOOPING KOMENTAR PARENT -->
-                    <?php 
+            $thread_id = $_GET["thread"];
+            $result1 = query("SELECT * FROM komentar WHERE thread_id = '$thread_id' AND parent = 0");
 
-                    $thread_id = $_GET["thread"];
-                    $result1 = query("SELECT * FROM komentar WHERE thread_id = '$thread_id' AND parent = 0");
+            foreach ($result1 as $komen) :
+                ?>
+                <div class="panel">
+                    <div class="panel-body">
+                        <!-- LOOPING KOMENTAR PARENT -->
 
-                    foreach ($result1 as $komen) :
-                        ?>
                         <?php 
                         $id_user = $komen['id_user'];
                         $rows = query("SELECT * FROM users WHERE id_user = $id_user LIMIT 1");
 
                         foreach($rows as $row) :
                             ?>
-                            <div class="media-block">
+                            <div class="media-block pad-all">
                                 <a class="media-left" href="#"><img class="img-circle img-sm mr-3" alt="Profile Picture" src="https://bootdey.com/img/Content/avatar/avatar1.png"></a>
                                 <div class="media-body">
                                     <div class="d-flex flex-column fw-bold">
@@ -197,9 +197,21 @@ if(isset($_POST["balas"])) {
                                         <a class="btn" href=""><i class="fa fa-thumbs-up"></i></a>
                                         <a class="btn" href=""><i class="fa fa-thumbs-down"></i></a>
                                     </div>
-                                    <button class="btn btn-outline-success btn-sm balas"><i class="fa fa-share"></i> Balas</button>
+                                    <a href="../auth/login.php?for=komen" class="btn btn-outline-success btn-sm"><i class="fa fa-share"></i>Balas</a>
                                 </div>
                                 <hr>
+                                <?php if(isset($_SESSION["login"])) : ?>
+                                    <!-- form balas -->
+                                    <form method="POST" action="" id="form-balas">
+                                        <input type="hidden" name="parent" value="<?= $komen['id']; ?>">
+                                        <textarea class="form-control" rows="2" name="komentar" id="balas" placeholder="Balas komentar"></textarea>
+                                        <div class="mar-top clearfix">
+                                            <button class="btn btn-sm btn-success pull-right" type="submit" name="balas"><i class="fa fa-pencil fa-fw"></i>balas</button>
+                                        </div>
+                                    </form>
+                                <?php endif; ?>
+
+
                                 <?php 
                                 $thread_id = $_GET["thread"];
                                 $parent = $komen['id'];
@@ -220,75 +232,58 @@ if(isset($_POST["balas"])) {
 
                                     foreach($users as $user) :
                                         ?>
-                                        <div class="media-block">
+                                        <div class="media-block pad-all">
                                             <a class="media-left" href="#"><img class="img-circle img-sm mr-3" alt="Profile Picture" src="https://bootdey.com/img/Content/avatar/avatar2.png"></a>
                                             <div class="media-body">
                                                 <div class="d-flex flex-column fw-bold">
                                                     <a href="#" class="btn-link text-semibold media-heading box-inline"><?= $user['username']; ?></a>
-                                                    <div class="small text-muted"><?= $user['level']; ?></div>
+                                                    <div class="small text-muted">
+                                                        <?= $user['level']; ?>
+                                                    </div>
                                                 </div>
                                             <?php endforeach; ?>
 
 
-                                            <p><?= $balas['konten']; ?></p>
+                                            <?= $balas['konten']; ?>
                                             <div class="pad-ver">
                                                 <div class="btn-group">
                                                     <a class="btn" href=""><i class="fa fa-thumbs-up"></i></a>
                                                     <a class="btn" href=""><i class="fa fa-thumbs-down"></i></a>
                                                 </div>
-                                                <button class="btn btn-outline-success btn-sm balas"><i class="fa fa-share"></i> Balas</button>
+                                                <a href="../auth/login.php?for=komen" class="btn btn-outline-success btn-sm"><i class="fa fa-share"></i>Balas</a>
                                             </div>
-                                            <hr>
                                         </div>
+                                        <hr>
                                     </div>
-                                <?php endforeach; ?>
-
-                                <!-- form balas -->
-                                <form method="POST" action="" id="form-balas" style="display:none;">
-                                    <input type="hidden" name="parent" value="<?= $komen['id']; ?>">
-                                    <textarea class="form-control" rows="2" name="komentar" id="balas" placeholder="Balas komentar"></textarea>
-                                    <div class="mar-top clearfix">
-                                        <button class="btn btn-sm btn-success pull-right" type="submit" name="balas"><i class="fa fa-pencil fa-fw"></i>balas</button>
-                                    </form>
-                                </div>
+                                <?php endforeach; ?> 
                             </div>
                         </div>
-                    <?php endforeach; ?> 
+                    </div>
                 </div>
-
-            </div> 
-            <div>
-                <!-- Pagination -->
-                <nav aria-label="Page navigation example">
-                    <ul class="pagination justify-content-center">
-                        <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Previous">
-                                <span aria-hidden="true">&laquo;</span>
-                            </a>
-                        </li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Next">
-                                <span aria-hidden="true">&raquo;</span>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
+            <?php endforeach; ?>
         </div>
+    </div> 
+    <div>
+        <!-- Pagination -->
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
     </div>
-
 </div>
-</div>
-<script>
-    $(document).ready(function(){
-        $('.balas').click(function(){
-            $("#form-balas").toggle('slide');
-        })
-    });
-</script>
 
 <script src="assets\ckeditor5-build-classic\ckeditor.js"></script>
 <script src="assets\ckfinder\ckfinder.js"></script>
@@ -321,33 +316,6 @@ if(isset($_POST["balas"])) {
         console.error( error );
     } );
 
-    ClassicEditor
-    .create( document.querySelector( '#balas'), {
-        ckfinder: {
-            uploadUrl: 'http://localhost/techcorner/forum/assets/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files&responseType=json',
-        },
-        toolbar: {
-            items: [
-            'heading',
-            '|',
-            'alignment',                                               
-            'bold',
-            'italic',
-            'link',
-            'bulletedList',
-            'numberedList',
-            'CKFinder',
-            'uploadImage',
-            'blockQuote',
-            'undo',
-            'redo'
-            ]
-        },
-
-    } )
-    .catch( error => {
-        console.error( error );
-    } );
 
 </script>
 
