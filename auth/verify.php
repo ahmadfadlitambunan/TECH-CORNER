@@ -62,7 +62,7 @@ if(isset($_GET["vkey"])){
                                 <div class="text-center">
                                     <a href="../forum/index.php"><img class="" src="assets/img/logo.png" width="150px"></a>
                                     <hr>
-                                    <h5 class="text-gray-900">Email Verification</h5>
+                                    <h5 class="text-gray-900">Verifikasi E-mail</h5>
                                 </div>
                                 <hr>
 
@@ -70,8 +70,8 @@ if(isset($_GET["vkey"])){
                                     <!-- Success: Verifying -->
                                     <div>
                                         <div class="alert alert-success" role="alert">
-                                            <h4 class="alert-heading">SUCCESS</h4>
-                                            <p>Your account has been verified succesfully. You may now login to <a href="login.php">TECH CORNER</a></p>
+                                            <h4 class="alert-heading">BERHASIL</h4>
+                                            <p>Akun Anda telah berhasil diverifikasi. Anda sekarang dapat login ke <a href="login.php">TECH CORNER</a></p>
                                         </div>
                                     </div>
                                 <?php endif; ?>
@@ -80,8 +80,8 @@ if(isset($_GET["vkey"])){
                                     <!-- Success: Already -->
                                     <div>
                                         <div class="alert alert-success" role="alert">
-                                            <h4 class="alert-heading">Already Verified</h4>
-                                            <p>Email already verify. You may now login to <a href="login.php">TECH CORNER</a></p>
+                                            <h4 class="alert-heading">Sudah Diverifikasi</h4>
+                                            <p>Akun Anda telah berhasil diverifikasi. Anda sekarang dapat login ke  <a href="login.php">TECH CORNER</a></p>
                                         </div>
                                     </div>
                                 <?php endif; ?>
@@ -91,10 +91,10 @@ if(isset($_GET["vkey"])){
                                     <div>
                                         <div class="alert alert-danger" role="alert">
                                             <h4 class="alert-heading">Error</h4>
-                                            <p>There is something wrong. We cannot verify your account</p>
+                                            <p>Ada sesuatu yang salah. Kami tidak dapat memverifikasi akun Anda</p>
                                             <hr>
                                             <div class="text-center">
-                                                <a class="small" href="resend-email.php">Want to resend Email?</a>
+                                                <a class="small" href="resend-email.php">Ingin mengirim ulang e-mail?</a>
                                             </div>
                                         </div>
                                     </div>
@@ -105,10 +105,10 @@ if(isset($_GET["vkey"])){
                                     <div>
                                         <div class="alert alert-danger" role="alert">
                                             <h4 class="alert-heading">Error</h4>
-                                            <p>Vkey does not exist. We cannot verify your account</p>
+                                            <p>Vkey tidak ada. Kami tidak dapat memverifikasi akun Anda</p>
                                             <hr>
                                             <div class="text-center">
-                                                <a class="small" href="resend-email.php">Want to resend Email?</a>
+                                                <a class="small" href="resend-email.php">Ingin mengirim ulang Email?</a>
                                             </div>
                                         </div>
                                     </div>
@@ -119,14 +119,14 @@ if(isset($_GET["vkey"])){
                                     <div>
                                         <div class="alert alert-danger" role="alert">
                                             <h4 class="alert-heading">Error</h4>
-                                            <p>You are not allowed to access this page</p>
+                                            <p>Anda tidak diperbolehkan mengakses halaman ini</p>
                                         </div>
                                         <hr>
                                         <div class="text-center">
-                                            <a class="small" href="register.php">Create an Account!</a>
+                                            <a class="small" href="register.php">Buat akun!</a>
                                         </div>
                                         <div class="text-center">
-                                            <a class="small" href="login.php">Already have an account? Login!</a>
+                                            <a class="small" href="login.php">Sudah punya akun? Login!</a>
                                         </div>
                                     </div>
                                 <?php endif; ?>

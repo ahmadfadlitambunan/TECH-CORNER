@@ -17,7 +17,7 @@ session_start()
                             	<div class="text-center">
                             		<a href="../forum/index.php"><img class="" src="assets/img/logo.png" width="150px"></a>
                                     <hr>
-                            		<h5 class="text-gray-900">Change Password</h5>
+                            		<h5 class="text-gray-900">Ubah Password</h5>
                             	</div>
                             	<hr>
                             	<?php if(isset($_SESSION["changeStat"])) { ?>
@@ -25,7 +25,7 @@ session_start()
                             		<div class="alert alert-danger" role="alert">
                                         <h4 class="alert-heading">Error</h4>
                                         <hr>
-                                        <p>Token does not exist</p>
+                                        <p>Token tidak ada</p>
                                     </div>
 	                                <?php endif; ?>
 
@@ -33,7 +33,7 @@ session_start()
                             		<div class="alert alert-danger" role="alert">
                                         <h4 class="alert-heading">Error</h4>
                                         <hr>
-                                        <p>Token is invalid	</p>
+                                        <p>Token tidak valid</p>
                                     </div>
 	                                <?php endif; ?>
 
@@ -41,7 +41,7 @@ session_start()
                             		<div class="alert alert-danger" role="alert">
                                         <h4 class="alert-heading">Error</h4>
                                         <hr>
-                                        <p>Password and confirmation password do not match</p>
+                                        <p>Password dan password konfirmasi tidak cocok</p>
                                     </div>
 	                                <?php endif; ?>
 
@@ -49,15 +49,15 @@ session_start()
                             		<div class="alert alert-danger" role="alert">
                                         <h4 class="alert-heading">Error</h4>
                                         <hr>
-                                        <p>Cannot change your password. Something went wrong</p>
+                                        <p>Tidak dapat mengubah password Anda. Ada yang salah</p>
                                     </div>
 	                                <?php endif; ?>
 
 	                                <?php if($_SESSION["changeStat"] == "success") : ?>
                             		<div class="alert alert-success" role="alert">
-                                        <h4 class="alert-heading">Success</h4>
+                                        <h4 class="alert-heading">Berhasil</h4>
                                         <hr>
-                                        <p>Your password account has been changed successfully. You may now login with your new password</p>
+                                        <p>Password dari akun Anda telah berhasil diubah. Silakan login dengan password baru Anda!</p>
                                         <hr>
                                         <div class="text-center">
 	                                        <a class="small" href="login.php">Login</a>
@@ -71,7 +71,7 @@ session_start()
                             		} else { 
                             	?>
                             	<div class="text-center">
-                            		<p>Enter Your New Password</p>
+                            		<p>Masukkan Password Baru Anda</p>
                             	</div>
 	                            <?php } ?>
                             	<form class="user" id="form-reset" action="user.php?aksi=change-password" method="POST">
@@ -79,21 +79,21 @@ session_start()
                             		<input type="hidden" name="email" value="<?php if(isset($_GET["email"])){echo $_GET["email"]; } ?>">
                                 	<div class="form-group">
                                     	<input type="password" class="form-control form-control-user" name="pass1" id="pass1"
-                                        placeholder="New Password">
+                                        placeholder="Password Baru">
                                         <div id="pass1-validation"></div>
                                 	</div>
                                 	<div class="form-group">
                                     	<input type="password" class="form-control form-control-user" name="pass2" id="pass2"
-                                        placeholder="Confirmation Password">
+                                        placeholder="Konfirmasi Password">
                                         <div id="pass2-validation"></div>
                                 	</div>
                                 	<button class="btn btn-success btn-user btn-block" name="change">Reset</button>
                                 	<hr>
                                 	<div class="text-center">
-                                        <a class="small" href="register.php">Create an Account!</a>
+                                        <a class="small" href="register.php">Buat akun!</a>
                                     </div>
                                     <div class="text-center">
-                                        <a class="small" href="login.php">Already have an account? Login!</a>
+                                        <a class="small" href="login.php">Sudah punya akun? Login!</a>
                                     </div>
                                 	
                                 </form>

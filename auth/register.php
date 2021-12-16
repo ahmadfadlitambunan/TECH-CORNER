@@ -18,11 +18,11 @@ session_start();
                             <div class="text-center">
                                 <a href="../forum/index.php"><img src="assets/img/logo.png" width="150px"></a>
                                 <hr>
-                                <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+                                <h1 class="h4 text-gray-900 mb-4">Buat Akun!</h1>
                             </div>
                             <form class="user" id="form-reg" novalidate action="user.php?aksi=register" method="POST">
                                 <div class="form-group">
-                                    <input type="email" class="form-control form-control-user" name="email" id="email" placeholder="Email Address" required>
+                                    <input type="email" class="form-control form-control-user" name="email" id="email" placeholder="Alamat E-mail" required>
                                     <div id="email-validation"></div>
                                 </div>
                                 <div class="form-group">
@@ -30,7 +30,7 @@ session_start();
                                     <div id="uname-validation"></div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control form-control-user" name="name" id="name" placeholder="Name" required>  
+                                    <input type="text" class="form-control form-control-user" name="name" id="name" placeholder="Nama" required>  
                                     <div id="name-validation"></div>
                                 </div>
                                 <div class="form-group row">
@@ -39,7 +39,7 @@ session_start();
                                         <div id="pass1-validation" ></div>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="password" class="form-control form-control-user" id="pass2" placeholder="Repeat Password" required>
+                                        <input type="password" class="form-control form-control-user" id="pass2" placeholder="Ulangi Password" required>
                                         <div id="pass2-validation"></div>
                                     </div>
                                 </div>
@@ -47,10 +47,10 @@ session_start();
                             </form>
                             <hr>
                             <div class="text-center">
-                                <a class="small" href="forgot-password.php">Forgot Password?</a>
+                                <a class="small" href="forgot-password.php">Lupa Password?</a>
                             </div>
                             <div class="text-center">
-                                <a class="small" href="login.php">Already have an account? Login!</a>
+                                <a class="small" href="login.php">Sudah punya akun? Login!</a>
                             </div>
                         </div>
                     </div>

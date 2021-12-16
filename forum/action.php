@@ -1,5 +1,8 @@
 <?php include('layout/header.php'); ?>
+<link rel="stylesheet" href="assets/css/forum.css">
 <?php include('layout/navbar.php'); ?>
+<?php include('funct/function.php'); ?>
+<?php $list = query("SELECT * FROM posting"); ?>
 
 <div class="forum">
   <div class="container align-self-center">
@@ -18,17 +21,17 @@
           while ($rows = $result->fetch_assoc()) {
       ?>
 
-      <div class="card-body py-3">
-        <div class="row no-gutters align-items-center">
-          <div class="col">
-            <h6 class="media-heading">
-              <a href="view.php?thread=<?php echo $rows['id_thread']; ?>"><?php echo $rows['judul']; ?></a>
-            </h6>
-            <div class="text-muted small mt-1"><?php echo $rows['konten']; ?></div>
-          </div>
+      <?php foreach ($res = users($rows['user_id']) as $user) : ?>
+        <div class="card-body py-3">
+            <div class="row no-gutters align-items-center">
+                <div class="col"> <a href="view.php?thread=<?= $rows['id_thread']; ?>" class="text-big" data-abc="true"><?= $rows['judul']; ?></a>
+                    <div class="text-muted small mt-1"> <?= $user['username'] ?>, <?= times(strtotime($rows['tanggal_posting'])) ?> ·&nbsp;·&nbsp; <a href="javascript:void(0)" class="text-muted" data-abc="true"></a></div>
+                </div>
+            </div>
         </div>
-      </div>
-      <hr class="m-0">
+        <hr class="m-0">
+      <?php endforeach; ?>
+
 
       <?php } 
       } else {  ?>
