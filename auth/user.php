@@ -20,13 +20,13 @@ if($_GET["aksi"] == 'register'){
 
     // insert data
     $query = "INSERT INTO users (email, username, password, name, level, vkey) VALUES (
-                '".$email."',
-                '".$uname."',
-                '".$pass1."',
-                '".$name."',
-                '".$level."',
-                '".$vkey."'
-                )";
+        '".$email."',
+        '".$uname."',
+        '".$pass1."',
+        '".$name."',
+        '".$level."',
+        '".$vkey."'
+    )";
 
     $result = mysqli_query($conn, $query);
 
@@ -38,11 +38,11 @@ if($_GET["aksi"] == 'register'){
         $to = $email;
         $subject = "Email Verification";
         $message = "
-            <h2>You Have Registered to TECH CORNER</h2>
-            <h5>Verify your email address to Login with the given link below</h5>
-            <br><br>
-            <a href='http://localhost/techcorner/auth/verify.php?vkey=$vkey'>Verify Now</a>
-            ";
+        <h2>You Have Registered to TECH CORNER</h2>
+        <h5>Verify your email address to Login with the given link below</h5>
+        <br><br>
+        <a href='http://localhost/techcorner/auth/verify.php?vkey=$vkey'>Verify Now</a>
+        ";
         $headers = "From: techcornerPW@gmail.com\r\n";
         $headers .= "MIME-Version: 1.0\r\n";
         $headers .= "Content-type: text/html; charset=UTF-8\r\n";
@@ -78,14 +78,14 @@ if ($_GET["aksi"] == "login"){
         // cek password
         $row = mysqli_fetch_assoc($result);
         if($row['verified'] == 1){
-           if ( password_verify($password, $row["password"]) ) {
+         if ( password_verify($password, $row["password"]) ) {
                 // set session
-                $_SESSION["login"] = true;
-                $_SESSION["id"] = $row['id_user'];
-                $_SESSION["name"] = $row['name'];
-                $_SESSION["username"] = $row['username'];
-                $_SESSION["level"] = $row['level'];
-                $_SESSION["email"] = $row['email'];
+            $_SESSION["login"] = true;
+            $_SESSION["id"] = $row['id_user'];
+            $_SESSION["name"] = $row['name'];
+            $_SESSION["username"] = $row['username'];
+            $_SESSION["level"] = $row['level'];
+            $_SESSION["email"] = $row['email'];
 
                 // // cek apakah rememberme dipencet
                 // if (isset($_POST["remember"])) {
@@ -93,33 +93,33 @@ if ($_GET["aksi"] == "login"){
                 //     // setcookie('key', hash('sha256', $row['username']), time() + 60);
                 //     // setcookie('id', $row['id'], time() + 60);       
                 // }
-                if(isset($_SESSION["for"])) {
-                    header("Location: ../forum/buat.php");
-                    exit();
-                }
+            if(isset($_SESSION["for"])) {
+                header("Location: ../forum/buat.php");
+                exit();
+            }
 
-                if($_SESSION["level"] = 'member' || $_SESSION["level"] == "moderator"){
-                    header("Location: ../forum/index.php");
-                    exit();
-                } else {
-                    header("Location: ../admin/index.php");
-                    exit();
-                }
-            }  
+            if($_SESSION["level"] = 'member' || $_SESSION["level"] == "moderator"){
+                header("Location: ../forum/index.php");
+                exit();
+            } else {
+                header("Location: ../admin/index.php");
+                exit();
+            }
+        }  
 
-        } else {
+    } else {
             // akun belum teverifikasi
-            $_SESSION["error1"] = true;
-            header("Location: login.php");
-            exit();
-        }
-            
-    } 
-        // akun tidak terdaftar
-        $_SESSION["error2"] = true;
+        $_SESSION["error1"] = true;
         header("Location: login.php");
         exit();
-    
+    }
+
+} 
+        // akun tidak terdaftar
+$_SESSION["error2"] = true;
+header("Location: login.php");
+exit();
+
 }
 
 
@@ -210,11 +210,11 @@ if($_GET["aksi"] == "reset-password"){
             $to = $get_email;
             $subject = "Reset Password";
             $message = "
-                <h2>Reset Password</h2>
-                <h5>Here is your reset-password request. Click the link given below to reset your password</h5>
-                <br><br>
-                <a href='http://localhost/techcorner/auth/reset-password.php?vkey=$vkey&email=$get_email'>Reset Password</a>
-                ";
+            <h2>Reset Password</h2>
+            <h5>Here is your reset-password request. Click the link given below to reset your password</h5>
+            <br><br>
+            <a href='http://localhost/techcorner/auth/reset-password.php?vkey=$vkey&email=$get_email'>Reset Password</a>
+            ";
             $headers = "From: techcornerPW@gmail.com\r\n";
             $headers .= "MIME-Version: 1.0\r\n";
             $headers .= "Content-type: text/html; charset=UTF-8\r\n";
@@ -296,7 +296,7 @@ if ($_GET["aksi"] == "change-password"){
             header("Location: reset-password.php?vkey=$token&email=$email");
             exit();
         }
-     
+
     // token tidak ada 
     } else {
         $_SESSION["changeStat"] = "not exist";

@@ -19,7 +19,7 @@ $activepage = (isset($_GET['halaman'])) ? $_GET['halaman'] : 1;
 
 $awal = ($jumlah_data_perhalaman * $activepage) - $jumlah_data_perhalaman;
 
-$list = query("SELECT * FROM posting WHERE kategori='gadget' LIMIT $awal,$jumlah_data_perhalaman")
+$list = query("SELECT * FROM posting WHERE kategori='gadget' ORDER BY tanggal_posting DESC LIMIT $awal,$jumlah_data_perhalaman")
 
 
 ?>

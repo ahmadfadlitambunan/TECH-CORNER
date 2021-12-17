@@ -2,7 +2,7 @@
 <?php include('layout/navbar.php'); ?>
 <?php include('funct/function.php'); ?>
 <?php
-$list = query("SELECT * FROM posting ");
+$list = query("SELECT * FROM posting ORDER BY tanggal_posting DESC");
 
 ?>
 <!-- Forum -->
@@ -37,7 +37,7 @@ $list = query("SELECT * FROM posting ");
                     <div class="card-body py-3">
                         <div class="row no-gutters align-items-center">
                             <div class="col"> <a href="view.php?thread=<?= $data['id_thread'] ?>" class="text-big" data-abc="true"><?= $data['judul'] ?></a>
-                                <div class="text-muted small mt-1"> <?= $user['username'] ?>, <?= times(strtotime($data['tanggal_posting'])) ?> ·&nbsp;·&nbsp; <a href="javascript:void(0)" class="text-muted" data-abc="true"></a></div>
+                                <div class="text-muted small mt-1"><?= $user['username'] ?>, <?= times(strtotime($data['tanggal_posting'])) ?> <a href="javascript:void(0)" class="text-muted" data-abc="true"></a></div>
                             </div>
                             <div class="d-none d-md-block col-4">
                                 <div class="row no-gutters align-items-center">

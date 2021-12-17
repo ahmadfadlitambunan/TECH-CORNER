@@ -16,7 +16,7 @@ $activepage = (isset($_GET['halaman'])) ? $_GET['halaman'] : 1;
 
 $awal = ($jumlah_data_perhalaman * $activepage) - $jumlah_data_perhalaman;
 
-$list = query("SELECT * FROM posting WHERE kategori='laptop' LIMIT $awal,$jumlah_data_perhalaman")
+$list = query("SELECT * FROM posting WHERE kategori='laptop' ORDER BY tanggal_posting DESC LIMIT $awal,$jumlah_data_perhalaman")
 ?>
 <!-- Card -->
 <div class="container mb-3 mt-3 align-self-center">

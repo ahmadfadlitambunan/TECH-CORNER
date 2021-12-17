@@ -1,10 +1,10 @@
-<?php 
+ <?php 
 
-include('layout/header.php'); 
-session_start();
-?>
+ include('layout/header.php'); 
+ session_start();
+ ?>
 
-<body>
+ <body>
 
     <div class="container">
 
@@ -59,15 +59,15 @@ session_start();
         </div>
     </div>
 
-<!-- SCRIPT -->
-<script>
+    <!-- SCRIPT -->
+    <script>
 
 
- $(document).ready(function(){
-    $('#email').blur(function(){
-      event.preventDefault();
-        var email = $(this).val();
-        $.ajax({
+       $(document).ready(function(){
+        $('#email').blur(function(){
+          event.preventDefault();
+          var email = $(this).val();
+          $.ajax({
             type    : 'POST',
             url     : 'user.php?aksi=validasi-email',
             data    : 'email='+email,
@@ -78,45 +78,45 @@ session_start();
                   setSucces("#email");
               } else {
                   setError("#email", "Email has been used")
-                }
-            }
-        });
-    });
+              }
+          }
+      });
+      });
 
 
-    $('#uname').blur(function(){
-      event.preventDefault();
-        var uname = $(this).val();
-        $.ajax({
+        $('#uname').blur(function(){
+          event.preventDefault();
+          var uname = $(this).val();
+          $.ajax({
             type    : 'POST',
             url     : 'user.php?aksi=validasi-uname',
             data    : 'uname='+uname,
             success : function(data){
               if(data == "less"){
                 setError("#uname", "Username must be at least 5 characters");
-              } else if (data == "too much"){
+            } else if (data == "too much"){
                 setError("#uname", "Username cannot be more than 20 characters")
-              } else if(data == "ok"){
-                  setSucces("#uname");
-              } else {
-                  setError("#uname", "username has been used")
-              }
-            }
-        });
-    });
+            } else if(data == "ok"){
+              setSucces("#uname");
+          } else {
+              setError("#uname", "username has been used")
+          }
+      }
+  });
+      });
 
 
 
 
-   $('#form-reg').submit(function(){
-       
+        $('#form-reg').submit(function(){
+
        // validasi email
-        if($('#email').val().length == 0){
-            setError("#email", "Email cannot be blank");
-            return false;
-        } else {
-            setSucces("#email");
-        }
+       if($('#email').val().length == 0){
+        setError("#email", "Email cannot be blank");
+        return false;
+    } else {
+        setSucces("#email");
+    }
 
 
         // validasi username
@@ -136,12 +136,12 @@ session_start();
 
 
        // validasi nama
-        if($('#name').val().length == 0){
-            setError("#name", "Name cannot be blank");
-            return false;
-        } else {
-            setSucces("#name");
-        }
+       if($('#name').val().length == 0){
+        setError("#name", "Name cannot be blank");
+        return false;
+    } else {
+        setSucces("#name");
+    }
 
 
         // validasi password 1
@@ -165,58 +165,58 @@ session_start();
 
 
 
-       $('#name').blur(function(){
-        event.preventDefault();
-        if($('#name').val().length == 0){
-            setError("#name", "Name cannot be blank");
+        $('#name').blur(function(){
+            event.preventDefault();
+            if($('#name').val().length == 0){
+                setError("#name", "Name cannot be blank");
 
-        } else {
-            setSucces("#name");
-        }
-       });
+            } else {
+                setSucces("#name");
+            }
+        });
 
 
-       $('#pass1').blur(function(){
-        event.preventDefault();
+        $('#pass1').blur(function(){
+            event.preventDefault();
 
             if($('#pass1').val().length < 8){
                 setError("#pass1", "Password must be at least 8 characters");
             } else {
                 setSucces("#pass1")
-             }
-       });
-       
+            }
+        });
 
-       $('#pass2').blur(function(){
-        event.preventDefault();
+
+        $('#pass2').blur(function(){
+            event.preventDefault();
             if($('#pass2').val() != $('#pass1').val() || $('#pass2').val().legth < 8){
-            setError("#pass2", "Confirmation Password does not match");
+                setError("#pass2", "Confirmation Password does not match");
             } else {
                 setSucces("#pass2");
             }
-       });
+        });
 
 
 
-    function setError(id, message){
-      $(id).removeClass('is-valid');
-      $(id).addClass('is-invalid');
-      $(id+'-validation').removeClass('valid-feedback');
-      $(id+'-validation').addClass('invalid-feedback');
-      $(id+'-validation').html(message);
-      return false;
-    } 
+        function setError(id, message){
+          $(id).removeClass('is-valid');
+          $(id).addClass('is-invalid');
+          $(id+'-validation').removeClass('valid-feedback');
+          $(id+'-validation').addClass('invalid-feedback');
+          $(id+'-validation').html(message);
+          return false;
+      } 
 
-    function setSucces(id){
-      $(id).removeClass('is-invalid');
-      $(id).addClass('is-valid');
-      $(id+'-validation').removeClass('invalid-feedback');
-      $(id+'-validation').html("");
-      return true;     
-    }
+      function setSucces(id){
+          $(id).removeClass('is-invalid');
+          $(id).addClass('is-valid');
+          $(id+'-validation').removeClass('invalid-feedback');
+          $(id+'-validation').html("");
+          return true;     
+      }
 
 
-});
+  });
 
 </script>	
 

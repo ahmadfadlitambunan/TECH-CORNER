@@ -17,7 +17,7 @@ $activepage = (isset($_GET['halaman'])) ? $_GET['halaman'] : 1;
 
 $awal = ($jumlah_data_perhalaman * $activepage) - $jumlah_data_perhalaman;
 
-$list = query("SELECT * FROM posting  LIMIT $awal,$jumlah_data_perhalaman")
+$list = query("SELECT * FROM posting ORDER BY tanggal_posting DESC LIMIT $awal,$jumlah_data_perhalaman ")
 ?>
 
 <!-- Main Content -->
@@ -83,44 +83,44 @@ $list = query("SELECT * FROM posting  LIMIT $awal,$jumlah_data_perhalaman")
                                             <a href="#" target="_self"><i class="fa fa-comments-o"></i>4</a> Comments
                                         </span>
                                     </div> -->
-                                    </div>
                                 </div>
-
                             </div>
+
                         </div>
-                    <?php endforeach; ?>
+                    </div>
                 <?php endforeach; ?>
+            <?php endforeach; ?>
 
-                <!-- Pagination -->
-                <nav aria-label="Page navigation example">
-                    <ul class="pagination justify-content-center">
-                        <li class="page-item">
-                            <?php if ($activepage > 1) : ?>
-                                <a class="page-link" href="index?halaman=<?= $activepage - 1 ?>" aria-label="Previous">
-                                    <span aria-hidden="true">&laquo;</span>
-                                </a>
-                            <?php endif; ?>
-                        </li>
-                        <?php for ($i = 1; $i <= $jumlahpage; $i++) : ?>
-                            <?php if ($i === $activepage) : ?>
-                                <li class="page-item  "><a class="page-link" href="index.php?halaman=<?= $i ?>"><?= $i ?></a></li>
-                            <?php else : ?>
-                                <li class="page-item "><a class="page-link" href="index.php?halaman=<?= $i ?>"><?= $i ?></a></li>
-                            <?php endif; ?>
-                        <?php endfor; ?>
-                        <li class="page-item">
-                            <?php if ($activepage < $jumlahpage) : ?>
-                                <a class="page-link" href="index.php?halaman=<?= $activepage + 1 ?>" aria-label="Next">
-                                    <span aria-hidden="true">&raquo;</span>
-                                </a>
-                            <?php endif; ?>
-                        </li>
-                    </ul>
-                </nav>
+            <!-- Pagination -->
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item">
+                        <?php if ($activepage > 1) : ?>
+                            <a class="page-link" href="index?halaman=<?= $activepage - 1 ?>" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        <?php endif; ?>
+                    </li>
+                    <?php for ($i = 1; $i <= $jumlahpage; $i++) : ?>
+                        <?php if ($i === $activepage) : ?>
+                            <li class="page-item  "><a class="page-link" href="index.php?halaman=<?= $i ?>"><?= $i ?></a></li>
+                        <?php else : ?>
+                            <li class="page-item "><a class="page-link" href="index.php?halaman=<?= $i ?>"><?= $i ?></a></li>
+                        <?php endif; ?>
+                    <?php endfor; ?>
+                    <li class="page-item">
+                        <?php if ($activepage < $jumlahpage) : ?>
+                            <a class="page-link" href="index.php?halaman=<?= $activepage + 1 ?>" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        <?php endif; ?>
+                    </li>
+                </ul>
+            </nav>
 
-            </div>
         </div>
     </div>
+</div>
 </div>
 
 <?php include('layout/footer.php'); ?>
