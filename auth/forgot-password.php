@@ -23,35 +23,35 @@ session_start()
                                     <div class="text-center">
                                         <a href="../forum/index.php"><img src="assets/img/logo.png" width="150px"></a>
                                         <hr>
-                                        <h1 class="h4 text-gray-900 mb-2">Forgot Your Password?</h1>
+                                        <h1 class="h4 text-gray-900 mb-2">Lupa Password Anda?</h1>
                                     <?php if(isset($_SESSION["reset"])) { ?>
                                     <div class="alert alert-danger" role="alert">
-                                        <h4 class="alert-heading">Failed</h4>
-                                        <p>Email does not exist. Please register your email.!</p>
+                                        <h4 class="alert-heading">Gagal</h4>
+                                        <p>Email tidak ada. Silahkan daftarkan email anda!</p>
                                         <hr>
                                         <div class="text-center">
-                                            <a class="small" href="register.php">Create an account!</a>
+                                            <a class="small" href="register.php">Buat Akun!</a>
                                         </div>
                                     </div>
                                     <?php
                                         unset($_SESSION["reset"]); 
                                         } else { 
                                     ?>
-                                        <p class="mb-4">We get it, stuff happens. Just enter your email address below and we'll send you a link to reset your password!</p>
+                                        <p class="mb-4">Cukup masukkan alamat email Anda di bawah ini dan kami akan mengirimkan tautan untuk mengatur ulang password Anda!</p>
                                     <?php } ?>
                                     </div>
                                     <form class="user" action="user.php?aksi=reset-password" method="POST">
                                         <div class="form-group">
-                                            <input type="email" class="form-control form-control-user"  id="email" name="email" aria-describedby="emailHelp" placeholder="Enter Email Address...">
+                                            <input type="email" class="form-control form-control-user"  id="email" name="email" aria-describedby="emailHelp" placeholder="Masukkan Alamat E-mail">
                                         </div>
                                         <button class="btn btn-success btn-user btn-block" name="reset-password">Reset Password</button>
                                     </form>
                                     <hr>
                                     <div class="text-center">
-                                        <a class="small" href="register.php">Create an Account!</a>
+                                        <a class="small" href="register.php">Buat Akun!</a>
                                     </div>
                                     <div class="text-center">
-                                        <a class="small" href="login.php">Already have an account? Login!</a>
+                                        <a class="small" href="login.php">Sudah punya akun? Login!</a>
                                     </div>
                                 </div>
                             </div>

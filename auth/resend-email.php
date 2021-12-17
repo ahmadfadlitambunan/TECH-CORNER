@@ -65,17 +65,17 @@ if(isset($_POST["resend"])){
                             	<div class="text-center">
                                     <a href="../forum/index.php"><img src="assets/img/logo.png" width="150px"></a>
                                     <hr>
-                            		<h5 class="text-gray-900">Resend Email Verification</h5>
+                            		<h5 class="text-gray-900">Kirim Ulang Verifikasi Email</h5>
                             	</div>
                             	<form class="user" action="" method="POST">
 
                                     <?php if(isset($error3)) : ?>
                                     <div class="alert alert-success" role="alert">
-                                        <h4 class="alert-heading">Verified</h4>
-                                        <p>Your account already verified. You may now login to TECH CORNER</p>
+                                        <h4 class="alert-heading">Diverifikasi</h4>
+                                        <p>Akun Anda sudah diverifikasi. Anda sekarang dapat masuk ke TECH CORNER</p>
                                         <hr>
                                         <div class="text-center">
-                                            <a class="small fa fa-fw fa-arrow-left" href="Login.php">login</a>
+                                            <a class="small fa fa-fw fa-arrow-left" href="Login.php">Login</a>
                                         </div>
                                     </div>
                                     <?php endif; ?>
@@ -83,40 +83,40 @@ if(isset($_POST["resend"])){
 
                                     <?php if(isset($error2)) : ?>
                         		    <div class="alert alert-danger" role="alert">
-                                        <h4 class="alert-heading">Failed</h4>
-                                        <p>Email has not been registered. Please register your account.!</p>
+                                        <h4 class="alert-heading">Gagal</h4>
+                                        <p>Email belum terdaftar. Silakan daftarkan akun Anda!</p>
                                         <hr>
                                         <div class="text-center">
-                                            <a class="small" href="register.php">Create an account!</a>
+                                            <a class="small" href="register.php">Buat akun!</a>
                                         </div>
                                     </div>
                                     <?php endif; ?>
 
 
                             		<div class="text-center">
-                                		<p>Enter your email!</p>
+                                		<p>Masukkan E-mail Anda!</p>
                             		</div>
                             		<div class="form-group">
                                     	<input type="email" class="form-control form-control-user" name="email" id="email"
-                                        placeholder="Email Address" required>
+                                        placeholder="Alamat E-mail" required>
                                 	</div>
 
                                     <!-- jika tidak ada email diberikan -->
                                     <?php if(isset($error1)) : ?>
                                     <div class="text-center">
                                         <p class="text-danger">
-                                            Please enter your email address!
+                                            Silakan masukkan alamat email Anda!
                                         </p>
                                     </div>
                                     <?php endif; ?>
 
-                                	<button class="btn btn-success btn-user btn-block" name="resend">Resend</button>
+                                	<button class="btn btn-success btn-user btn-block" name="resend">Kirim ulang</button>
                                 	<hr>
                                 	<div class="text-center">
-                                        <a class="small" href="register.php">Create an Account!</a>
+                                        <a class="small" href="register.php">Buat akun!</a>
                                     </div>
                                     <div class="text-center">
-                                        <a class="small" href="login.php">Already have an account? Login!</a>
+                                        <a class="small" href="login.php">Sudah punya akun? Login!</a>
                                     </div>
                                 	
                                 </form>

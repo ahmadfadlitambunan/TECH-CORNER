@@ -42,11 +42,11 @@ session_start();
 
                                         <?php if(isset($_SESSION["error1"])) : ?>
                                             <div class="alert alert-danger" role="alert">
-                                                <h4 class="alert-heading">Failed</h4>
-                                                <p>Your account has not been verified. Please verify your account.!</p>
+                                                <h4 class="alert-heading">Gagal</h4>
+                                                <p>Akun Anda belum diverifikasi. Harap verifikasi akun Anda!</p>
                                                 <hr>
                                                 <div class="text-center">
-                                                    <a class="small" href="resend-email.php">Did not receive any Email Verification? Resend Email</a>
+                                                    <a class="small" href="resend-email.php">Tidak menerima Verifikasi Email? Kirim Ulang Email</a>
                                                 </div>
                                             </div>
                                             <?php unset($_SESSION["error1"]); ?>
@@ -56,17 +56,17 @@ session_start();
                                         <div class="form-group">
                                             <input type="email" class="form-control form-control-user"
                                             id="exampleInputEmail" name="email" aria-describedby="emailHelp"
-                                            placeholder="Enter Email Address...">
+                                            placeholder="Masukkan Alamat E-mail">
                                         </div>
                                         <div class="form-group">
                                             <input type="password" class="form-control form-control-user"
-                                            id="exampleInputPassword" name="pass" placeholder="Password">
+                                            id="exampleInputPassword" name="pass" placeholder="Masukkan Password">
                                         </div>
 
                                         <?php if(isset($_SESSION["error2"])) : ?>
                                             <div class="text-center">
                                                 <p class="text-danger">
-                                                    You entered the wrong Email/Password. Fill in the data correctly.!
+                                                    Anda memasukkan Email/Password yang salah. Isi data dengan benar!
                                                 </p>
                                             </div>
                                             <?php unset($_SESSION["error2"]); ?>
@@ -75,18 +75,17 @@ session_start();
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
                                                 <input type="checkbox" class="custom-control-input" id="customCheck">
-                                                <label class="custom-control-label" for="customCheck">Remember
-                                                Me</label>
+                                                <label class="custom-control-label" for="customCheck">Ingat saya</label>
                                             </div>
                                         </div>
                                         <button class="btn btn-success btn-user btn-block" type="submit" name="login">Login</button>
                                     </form>
                                     <hr>
                                     <div class="text-center">
-                                        <a class="small" href="forgot-password.php">Forgot Password?</a>
+                                        <a class="small" href="forgot-password.php">Lupa Password?</a>
                                     </div>
                                     <div class="text-center">
-                                        <a class="small" href="register.php">Create an Account!</a>
+                                        <a class="small" href="register.php">Buat akun!</a>
                                     </div>
                                 </div>
                             </div>

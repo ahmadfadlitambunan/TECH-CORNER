@@ -20,30 +20,30 @@ session_start();
                             <?php if (isset($_SESSION["regStat"])) : ?>
                                 <?php if($_SESSION["regStat"] == "success") : ?>
                             	<div class="text-center">
-                            		<h3 class="text-gray-900">Registration Success</h3>
+                            		<h3 class="text-gray-900">Registrasi berhasil</h3>
                             	</div>
                             	<hr>
 
                             	<div class="text-center">
                             		<img class="img-fluid px-1 px-sm-2 mt-1 mb-2 w-50 " src="https://image.freepik.com/free-vector/mail-sent-concept-illustration_114360-96.jpg">
                             	</div>
-                            		<p class="text-center">Thanks for registering. We have sent Email Verification to your Email Address. Please verify your account.</p>
+                            		<p class="text-center">Terima kasih telah mendaftar. Kami telah mengirimkan verifikasi e-mail ke alamat e-mail Anda. Harap verifikasi akun Anda.</p>
                             	<div class="text-center">
-                                    <a class="small" href="resend-email.php">Did not receive any Email? Resend Email</a>
+                                    <a class="small" href="resend-email.php">Tidak menerima e-mail apa pun? Kirim Ulang e-mail</a>
                                 </div>
                                 <?php endif; ?>
 
                                <?php if($_SESSION["regStat"] == "failed") : ?>         
                                 <div class="text-center">
-                                    <h3 class="text-gray-900">Registration Failed</h3>
+                                    <h3 class="text-gray-900">Registrasi gagal</h3>
                                 </div>
                                 <hr>
                                 <div class="text-center">
                                     <img class="img-fluid px-1 px-sm-2 mt-1 mb-2 w-50 " src="https://image.freepik.com/free-vector/no-data-concept-illustration_114360-626.jpg">
                                 </div>
-                                    <p class="text-center">We are so sorry. There is something wrong. We cannot finish your registration.</p>
+                                    <p class="text-center">Mohon maaf. Ada sesuatu yang salah. Kami tidak dapat menyelesaikan pendaftaran Anda.</p>
                                 <div class="text-center">
-                                    <a class="small" href="register.php">Try to register again? Create an Account</a>
+                                    <a class="small" href="register.php">Coba daftar lagi? Buat sebuah akun</a>
                                 </div>
                                 <?php endif; ?>
 
@@ -60,9 +60,9 @@ session_start();
                                 <div class="text-center">
                                     <img class="img-fluid px-1 px-sm-2 mt-1 mb-2 w-50 " src="https://image.freepik.com/free-vector/mail-sent-concept-illustration_114360-96.jpg">
                                 </div>
-                                    <p class="text-center">We have sent E-mail for your reset-password request. Please check your E-mail inbox</p>
+                                    <p class="text-center">Kami telah mengirimkan e-mail untuk permintaan reset-password Anda. Silakan periksa kotak masuk e-mail Anda</p>
                                 <div class="text-center">
-                                    <a class="small" href="resend-email.php">Did not receive any Email? Try again</a>
+                                    <a class="small" href="resend-email.php">Tidak menerima e-mail apa pun? Coba lagi</a>
                                 </div>
                                 <?php endif; ?>
 
@@ -74,9 +74,9 @@ session_start();
                                 <div class="text-center">
                                     <img class="img-fluid px-1 px-sm-2 mt-1 mb-2 w-50 " src="https://image.freepik.com/free-vector/no-data-concept-illustration_114360-626.jpg">
                                 </div>
-                                    <p class="text-center">We are so sorry. There is something wrong. We cannot finish your reset-password request</p>
+                                    <p class="text-center">Mohon maaf. Ada sesuatu yang salah. Kami tidak dapat menyelesaikan permintaan reset-password Anda.</p>
                                 <div class="text-center">
-                                    <a class="small" href="forgot-password.php">Try again?</a>
+                                    <a class="small" href="forgot-password.php">Coba lagi?</a>
                                 </div>
                                 <?php endif; ?>
                             <?php 
