@@ -110,6 +110,18 @@ if(isset($_POST["balas"])) {
 
 <?php include('layout/navbar.php'); ?>
 
+<?php if(isset($_SESSION["thread_message"])) : ?>
+<div class="container align-self-center">
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Pesan :</strong> <?= $_SESSION["thread_message"]; ?> 
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+</div>
+<?php unset($_SESSION["thread_message"]); ?>
+<?php endif; ?>
+
 <!-- Main Content -->
 <div class="container mb-3 mt-3 align-self-center">
     <div class="main-content">
@@ -129,30 +141,42 @@ if(isset($_POST["balas"])) {
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-body">
-                        <div class="d-flex align-items-center flex-shrink-0 me-3">
-                                <?php
-                                    $uid = $data['user_id'];
-                                    $resu = mysqli_query($conn, "SELECT * FROM users WHERE id_user = $uid ");
-                                    $datu = mysqli_fetch_assoc($resu);
-                                ?>
-                                <div class="mx-3">
-                                    <img width="50px" src="assets/img/icon.png" alt="">
-                                </div>
-                                <div class="d-flex flex-column fw-bold">
-                                    <a class="text-dark mb-1"> <?php echo $datu['username']. " | " .date("d-M-Y g:i a", strtotime($data['tanggal_posting'])) ?> </a>
-                                    <div class="small text-muted"><b><?= $datu['level']; ?></b></div>
-                                </div>
+                        <div class="d-flex">
+                            <?php
+                                $uid = $data['user_id'];
+                                $resu = mysqli_query($conn, "SELECT * FROM users WHERE id_user = $uid ");
+                                $datu = mysqli_fetch_assoc($resu);
+                            ?>
+                            <div class="mx-3">
+                                <img width="50px" src="assets/img/icon.png" alt="">
                             </div>
-                            <hr>
-                        <h1 class="card-title">
-                            <b><?=$data['judul']?></b>
-                        </h1>
-                        <p>
-                            <?=$data['konten']?>
-                        </p>
-                    </div>
+                            <div class="d-flex flex-column fw-bold">
+                                <a class="text-dark mb-1"> <?php echo $datu['username']. " | " .date("d-M-Y g:i a", strtotime($data['tanggal_posting'])) ?> </a>
+                                <div class="small text-muted"><b><?= $datu['level']; ?></b></div>
+                            </div>
+                            <?php if(isset($_SESSION["username"])) : ?>
+                                <?php if($_SESSION["username"] == $datu['username']) : ?>
+                            <div class="d-flex flex-column fw-bold ml-auto">
+                                  <a href="#" class="text-success" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-v"></i>
+                                  </a>
+                                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="buat.php?aksi=edit&id=<?= $data['id_thread']; ?>"><i class="fa fa-edit"></i> Edit</a>
+                                    <a onclick="return confirm ('Anda Yakin Mau Menghapus Data?');" class="dropdown-item" href="thread.php?aksi=hapus&id=<?= $data['id_thread']; ?>"><i class="fa fa-trash"></i> Hapus</a>
+                                  </div>
+                            </div>
+                            <?php endif; ?>
+                        <?php endif; ?>
+                        </div>
+                        <hr>
+                    <h1 class="card-title">
+                        <b><?=$data['judul']?></b>
+                    </h1>
+                    <p>
+                        <?=$data['konten']?>
+                    </p>
                 </div>
             </div>
+        </div>
         <?php endforeach; ?>
 
         <div class="col-6 col-md-4">
@@ -177,8 +201,8 @@ if(isset($_POST["balas"])) {
                                 <img width="50px" src="assets/img/icon.png" alt="">
                             </div>
                             <div class="d-flex flex-column fw-bold">
-                                <a href="#" class="btn-link text-semibold media-heading box-inline">Johndoe</a>
-                                <div class="small text-muted">member</div>
+                                <a href="#" class="btn-link text-semibold media-heading box-inline"><?= $_SESSION["username"]; ?></a>
+                                <div class="small text-muted"><?= $_SESSION['level']; ?></div>
                             </div>
                         </div>     
                         <br>
@@ -189,7 +213,9 @@ if(isset($_POST["balas"])) {
                             <textarea class="form-control" rows="2" name="komentar" id="komentar" placeholder="Bagaimana pendapatmu?"></textarea>
                             <div class="mar-top clearfix">
                                 <button class="btn btn-sm btn-success pull-right" type="submit" name="post"><i class="fa fa-pencil fa-fw"></i>Post</button>
+                                <a href="komentar.php?aksi=tambah" class="btn btn-sm btn-outline-success pull-right mx-2"> Komentar lebih detail</a>
                             </form>
+                                
                         </div>
                     </div>
                 </div>

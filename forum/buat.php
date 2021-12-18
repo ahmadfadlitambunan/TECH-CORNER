@@ -6,6 +6,32 @@
         echo("<script>location.href = '../auth/login.php?for=tulis';</script>");
     }
 
+    $judul = null;
+    $konten = null;
+    $kategori = null;
+
+
+    if(isset($_GET["aksi"]) && isset($_GET["id"])) {
+        if ($_GET['aksi'] == 'edit') {
+            $id = $_GET['id'];
+            $id_user = $_SESSION["id"];
+            $check_id_user = $conn->query("SELECT user_id From posting WHERE id_thread = $id");
+
+            $check_data = mysqli_fetch_assoc($check_id_user);
+
+            if($check_data['user_id'] === $id_user){
+                $data = $conn->query("SELECT * FROM posting WHERE id_thread = '$id' AND user_id = '$id_user' ");
+                while ($list = $data->fetch_array(MYSQLI_ASSOC)) :
+                    $judul = $list['judul'];
+                    $konten = $list['konten'];
+                    $kategori = $list['kategori'];
+                endwhile;
+            } else {
+                echo("<script>location.href = 'view.php?thread=".$id."';</script>");
+                exit;
+            }
+        }
+    }
 
 ?>
 
@@ -19,7 +45,15 @@
                   <li class="breadcrumb-item active" aria-current="page">Tulis Thread</li>
                 </ol>
             </nav>
-            <form action="thread.php?aksi=buat" method="POST">
+
+            <?php if(isset($_GET["aksi"])) { ?>
+            <?php if($_GET["aksi"] == 'edit') :?>
+            <form action="thread.php?aksi=edit&id=<?= $id; ?>" method="POST" novalidate class="needs-validation">
+            <?php endif;?>
+            <?php } else { ?>
+            <form action="thread.php?aksi=buat" method="POST" novalidate class="needs-validation">
+            <?php } ?>
+
             <div class="row">
                 <div class="col-md-8">
                     <div class="card">
@@ -37,12 +71,18 @@
                         <div class="card-body">
 							<div class="form-group">
 								<label for="judul">Judul Thread</label>
-                                <input type="text" class="form-control" name="judul" id="judul" placeholder="Tulis judul.!" required>
+                                <input type="text" class="form-control" name="judul" id="judul" placeholder="Tulis judul.!" value="<?= $judul; ?>" required>
+                                <div class="invalid-feedback">
+                                    Judul belum diisi!
+                                </div>
                             </div>
                             <hr>
                             <div class="form-group">
                                 <label for="konten">Isi Thread</label>
-                                <textarea class="form-control" name="konten" id="konten" required>Mulai menulis.!</textarea>
+                                <textarea class="form-control" name="konten" id="konten" placeholder="mulai menulis!" required><?= $konten; ?></textarea>
+                                <div class="invalid-feedback">
+                                    Konten belum diisi!
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -54,12 +94,16 @@
                     	<div class="card-body">
                     		<label for="kategori">Pilih Kategori</label>
                         	<select class="custom-select" id="kategori" name="kategori">
-								<option selected value="thread">-- Pilih Kategori --</option>
-								<option value="komputer">Komputer & PC</option>
-								<option value="laptop">Laptop / Notebook</option>
-								<option value="gadget">Gadget</option>
+                                <?php if(isset($kategori)) { ?>
+								<option selected value="<?= $kategori; ?>"><?= $kategori; ?></option>
+                                <?php } else { ?>
+                                <option selected value="Tidak Berkategori">--- Pilih Kategori ---</option>
+                                <?php } ?>
+								<option value="Komputer & PC">Komputer & PC</option>
+								<option value="Laptop / Notebook">Laptop / Notebook</option>
+								<option value="Gadget">Gadget</option>
 							</select>
-                            <button class="btn btn-success btn-block my-2" type="submit" name="posting">POST</button>		
+                            <button class="btn btn-success btn-block mt-2" type="submit">POST</button>		
 	                    </div>
                     </div>
                 </div>
@@ -72,6 +116,22 @@
     <script src="https://cdn.tiny.cloud/1/ffkt0kthki1a1tyctuzcwuihr3s2n0x7swxyqyf330f2ovr7/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 
         <script>
+            (function() {
+                'use strict';
+                window.addEventListener('load', function() {
+                    var forms = document.getElementsByClassName('needs-validation');
+                    var validation = Array.prototype.filter.call(forms, function(form) {
+                        form.addEventListener('submit', function(event) {
+                            if (form.checkValidity() === false) {
+                                event.preventDefault();
+                                event.stopPropagation();
+                            }
+                            form.classList.add('was-validated');
+                        }, false);
+                    });
+                }, false);
+            })();
+
             tinymce.init({        
                 selector: '#konten',        
                 height: 400, 

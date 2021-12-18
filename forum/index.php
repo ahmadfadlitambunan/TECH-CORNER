@@ -20,6 +20,18 @@ $awal = ($jumlah_data_perhalaman * $activepage) - $jumlah_data_perhalaman;
 $list = query("SELECT * FROM posting ORDER BY tanggal_posting DESC LIMIT $awal,$jumlah_data_perhalaman ")
 ?>
 
+<?php if(isset($_SESSION["thread_message"])) : ?>
+<div class="container align-self-center">
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Pesan :</strong> <?= $_SESSION["thread_message"]; ?> 
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+</div>
+<?php unset($_SESSION["thread_message"]); ?>
+<?php endif; ?>
+
 <!-- Main Content -->
 <div class="container align-self-center">
     <div class="main-content">
@@ -67,22 +79,13 @@ $list = query("SELECT * FROM posting ORDER BY tanggal_posting DESC LIMIT $awal,$
                 <?php foreach ($list as $data) : ?>
                     <?php foreach ($res = users($data['user_id']) as $user) : ?>
                         <div class="widget">
-                            <div class="card media  d-flex justify-content-center align-items-center">
-
+                            <div class="card media d-flex justify-content-center align-items-center">
                                 <div class="card-body d-flex justify-content-center align-items-center  ">
                                     <div class="media-body ">
                                         <h4 class="media-heading justify-content-center">
                                             <a href="view.php?thread=<?= $data['id_thread'] ?>" target="_self"><b><?= $data['judul'] ?></b></a>
                                         </h4><span class="media-date"><a><?= times(strtotime($data['tanggal_posting'])) ?></a>, by: <a><?= $user['username'] ?></a></span>
                                         <br><a href="view.php?thread=<?= $data['id_thread'] ?>"><img class="media-object" src="assets/img/pict1.png" width="300px" alt=""></a>
-                                        <!-- <div class="widget_article_social">
-                                        <span>
-                                            <a href="#" target="_self"> <i class="fa fa-share-alt"></i>424</a> Shares &nbsp; &nbsp; &nbsp;
-                                        </span> 
-                                        <span>
-                                            <a href="#" target="_self"><i class="fa fa-comments-o"></i>4</a> Comments
-                                        </span>
-                                    </div> -->
                                 </div>
                             </div>
 

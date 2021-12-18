@@ -10,7 +10,7 @@ $jumlah_data_perhalaman = 2;
 
 
 //cari jumlah data ada brp
-$jumlahData = count(query("SELECT * FROM posting WHERE kategori ='gadget'"));
+$jumlahData = count(query("SELECT * FROM posting WHERE kategori ='Gadget'"));
 $jumlahpage = ceil($jumlahData / $jumlah_data_perhalaman);
 
 
