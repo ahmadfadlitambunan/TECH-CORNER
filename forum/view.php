@@ -58,9 +58,6 @@ if(isset($_POST["balas"])) {
 ?>
 
 
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -111,9 +108,9 @@ if(isset($_POST["balas"])) {
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">
-                            <?=$data['judul']?>
-                        </h5>
+                        <h1 class="card-title">
+                            <b><?=$data['judul']?></b>
+                        </h1>
                         <p>
                             <?=$data['konten']?>
                         </p>
@@ -282,38 +279,49 @@ if(isset($_POST["balas"])) {
     </div>
 </div>
 
-<script src="assets\ckeditor5-build-classic\ckeditor.js"></script>
-<script src="assets\ckfinder\ckfinder.js"></script>
+<script src="https://cdn.tiny.cloud/1/ffkt0kthki1a1tyctuzcwuihr3s2n0x7swxyqyf330f2ovr7/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
 <script>
-    ClassicEditor
-    .create( document.querySelector( '#komentar'), {
-        ckfinder: {
-            uploadUrl: 'http://localhost/techcorner/forum/assets/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files&responseType=json',
-        },
-        toolbar: {
-            items: [
-            'heading',
-            '|',
-            'alignment',                                               
-            'bold',
-            'italic',
-            'link',
-            'bulletedList',
-            'numberedList',
-            'CKFinder',
-            'uploadImage',
-            'blockQuote',
-            'undo',
-            'redo'
-            ]
-        },
+    tinymce.init({        
+        selector: 'textarea',        
+        height: 175, 
+        document_base_url: 'localhost/techcorner/forum/upload',
+        file_browser_callback_types: 'file image media',
+        file_picker_types: 'file image media',        
+        forced_root_block : "",        
+        force_br_newlines : true,        
+        force_p_newlines : false,
+        plugins: ['autolink lists link image charmap print preview hr anchor pagebreak','searchreplace wordcount visualblocks visualchars code fullscreen','insertdatetime media nonbreaking save table contextmenu directionality','emoticons template paste textcolor colorpicker textpattern imagetools codesample toc'],
+        toolbar1: 
+        'bold italic underline |emoticons| link image ',
+        templates: [          
+        { title: 'Test template 1', content: '' },          
+        { title: 'Test template 2', content: '' }        
+        ],   
 
-    } )
-    .catch( error => {
-        console.error( error );
-    } );
+        images_upload_handler: function (blobInfo, success, failure) {
+            var xhr, formData;
 
+            xhr = new XMLHttpRequest();            
+            xhr.withCredentials = false;            
+            xhr.open('POST', 'upload.php');
+            xhr.onload = function() {              
+                var json;              
 
+                if (xhr.status != 200) {                
+                    failure('HTTP Error: ' + xhr.status);                
+                    return;              
+                }              
+
+                console.log(xhr.response);
+                success(xhr.response);            
+            };
+            formData = new FormData();            
+            formData.append('file', blobInfo.blob(), blobInfo.filename()); 
+            xhr.send(formData);       
+        }      
+
+    });
 </script>
 
 <?php include('layout/footer.php'); ?>

@@ -54,7 +54,7 @@
                     	<div class="card-body">
                     		<label for="kategori">Pilih Kategori</label>
                         	<select class="custom-select" id="kategori" name="kategori">
-								<option selected>-- Pilih Kategori --</option>
+								<option selected value="all">-- Pilih Kategori --</option>
 								<option value="komputer">Komputer & PC</option>
 								<option value="laptop">Laptop / Notebook</option>
 								<option value="gadget">Gadget</option>
@@ -69,40 +69,51 @@
 
         </div>
     </div>
-    <script src="assets\ckeditor5-build-classic\ckeditor.js"></script>
-    <script src="assets\ckfinder\ckfinder.js"></script>
+    <script src="https://cdn.tiny.cloud/1/ffkt0kthki1a1tyctuzcwuihr3s2n0x7swxyqyf330f2ovr7/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 
-    <script>
+        <script>
+            tinymce.init({        
+                selector: '#konten',        
+                height: 400, 
+                document_base_url: 'localhost/techcorner/forum/upload',
+                file_browser_callback_types: 'file image media',
+                file_picker_types: 'file image media',        
+                forced_root_block : "",        
+                force_br_newlines : true,        
+                force_p_newlines : false,
+                plugins: ['autolink lists link image charmap print preview hr anchor pagebreak','searchreplace wordcount visualblocks visualchars code fullscreen','insertdatetime media nonbreaking save table contextmenu directionality','emoticons template paste textcolor colorpicker textpattern imagetools codesample toc'],
+                toolbar1: 
+                'undo redo | insert | styleselect table | bold italic | hr alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image media ',        
+                toolbar2: 'print preview | forecolor backcolor emoticons | fontselect | fontsizeselect | codesample code fullscreen',
+                templates: [          
+                { title: 'Test template 1', content: '' },          
+                { title: 'Test template 2', content: '' }        
+                ],   
 
-    ClassicEditor
-    .create( document.querySelector( '#konten' ), {
-        ckfinder: {
-            uploadUrl: 'http://localhost/techcorner/forum/assets/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files&responseType=json',
-        },
-        toolbar: {
-        items: [
-            'heading',
-            '|',
-            'alignment',                                               
-            'bold',
-            'italic',
-            'link',
-            'bulletedList',
-            'numberedList',
-            'CKFinder',
-            'uploadImage',
-            'blockQuote',
-            'undo',
-            'redo'
-            ]
-        },
+                images_upload_handler: function (blobInfo, success, failure) {
+                    var xhr, formData;
 
-    } )
-    .catch( error => {
-        console.error( error );
-    } );
+                    xhr = new XMLHttpRequest();            
+                    xhr.withCredentials = false;            
+                    xhr.open('POST', 'upload.php');
+                    xhr.onload = function() {              
+                        var json;              
 
-    </script>
+                        if (xhr.status != 200) {                
+                            failure('HTTP Error: ' + xhr.status);                
+                            return;              
+                        }              
+
+                        console.log(xhr.response);
+                        success(xhr.response);            
+                    };
+                    formData = new FormData();            
+                    formData.append('file', blobInfo.blob(), blobInfo.filename()); 
+                    xhr.send(formData);       
+                }      
+
+            });
+        </script>
 
 
 <?php include('layout/footer.php'); ?>
