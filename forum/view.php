@@ -1,12 +1,33 @@
 <?php
 require("../_config/connect.php");
 require("funct/function.php");
+
+// cek ketersediaan kuki
+    if(isset($_COOKIE["id"]) && isset($_COOKIE["key"])){
+        $id = $_COOKIE["id"];
+        $key = $_COOKIE["key"];
+
+        $result_cookie = mysqli_query($conn, "SELECT * FROM users WHERE id_user = '$id' LIMIT 1;");
+        $row = mysqli_fetch_assoc($result_cookie);
+
+        // cek apakah kuki sesuai dengan sistem
+        if($key === hash("sha256", $row['email'])){
+            // set session
+            $_SESSION["login"] = true;
+            $_SESSION["id"] = $row['id_user'];
+            $_SESSION["name"] = $row['name'];
+            $_SESSION["username"] = $row['username'];
+            $_SESSION["level"] = $row['level'];
+            $_SESSION["email"] = $row['email'];
+        }
+    }
+
 session_start();
 if(isset($_GET['thread'])&& $_GET['thread'] !="")
 {
     $id_thread=$_GET['thread'];
 }
-$thread=query("SELECT * FROM posting WHERE id_thread='$id_thread'");
+$thread = query("SELECT * FROM posting WHERE id_thread='$id_thread'");
 
 
 if(isset($_POST["post"])) {
@@ -108,6 +129,21 @@ if(isset($_POST["balas"])) {
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-body">
+                        <div class="d-flex align-items-center flex-shrink-0 me-3">
+                                <?php
+                                    $uid = $data['user_id'];
+                                    $resu = mysqli_query($conn, "SELECT * FROM users WHERE id_user = $uid ");
+                                    $datu = mysqli_fetch_assoc($resu);
+                                ?>
+                                <div class="mx-3">
+                                    <img width="50px" src="assets/img/icon.png" alt="">
+                                </div>
+                                <div class="d-flex flex-column fw-bold">
+                                    <a class="text-dark mb-1"> <?php echo $datu['username']. " | " .date("d-M-Y g:i a", strtotime($data['tanggal_posting'])) ?> </a>
+                                    <div class="small text-muted"><b><?= $datu['level']; ?></b></div>
+                                </div>
+                            </div>
+                            <hr>
                         <h1 class="card-title">
                             <b><?=$data['judul']?></b>
                         </h1>
@@ -180,7 +216,7 @@ if(isset($_POST["balas"])) {
                                 <a class="media-left" href="#"><img class="img-circle img-sm mr-3" alt="Profile Picture" src="https://bootdey.com/img/Content/avatar/avatar1.png"></a>
                                 <div class="media-body">
                                     <div class="d-flex flex-column fw-bold">
-                                        <a href="#" class="btn-link text-semibold media-heading box-inline"><?= $row['username']; ?></a>
+                                        <a href="#" class="btn-link text-semibold media-heading box-inline"><?= $row['username']; ?> | <?= date("d-M-Y g:i a", strtotime($komen['created_at'])); ?></a>
                                         <div class="small text-muted"><?= $row['level']; ?></div>
                                     </div>
                                 <?php endforeach; ?>
@@ -213,7 +249,7 @@ if(isset($_POST["balas"])) {
                                 $result2 = mysqli_query($conn, $query2);
                                 ?>
                                 <div class="mb-3" id="toggle-balasan">
-                                    <span>Lihat <?= mysqli_num_rows($result2); ?> Balasan</span> <i class="fa fa-angle-down"></i>
+                                    <span><?= mysqli_num_rows($result2); ?> Balasan</span> <i class="fa fa-angle-down"></i>
                                 </div>
 
 
@@ -230,7 +266,7 @@ if(isset($_POST["balas"])) {
                                             <a class="media-left" href="#"><img class="img-circle img-sm mr-3" alt="Profile Picture" src="https://bootdey.com/img/Content/avatar/avatar2.png"></a>
                                             <div class="media-body">
                                                 <div class="d-flex flex-column fw-bold">
-                                                    <a href="#" class="btn-link text-semibold media-heading box-inline"><?= $user['username']; ?></a>
+                                                    <a href="#" class="btn-link text-semibold media-heading box-inline"><?= $user['username']; ?> | <?= date("d-M-Y g:i a", strtotime($balas['created_at'])); ?></a>
                                                     <div class="small text-muted">
                                                         <?= $user['level']; ?>
                                                     </div>

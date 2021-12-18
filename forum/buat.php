@@ -54,7 +54,7 @@
                     	<div class="card-body">
                     		<label for="kategori">Pilih Kategori</label>
                         	<select class="custom-select" id="kategori" name="kategori">
-								<option selected value="all">-- Pilih Kategori --</option>
+								<option selected value="thread">-- Pilih Kategori --</option>
 								<option value="komputer">Komputer & PC</option>
 								<option value="laptop">Laptop / Notebook</option>
 								<option value="gadget">Gadget</option>
