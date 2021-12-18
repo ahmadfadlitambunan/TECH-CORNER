@@ -77,48 +77,52 @@ if ($_GET["aksi"] == "login"){
 
         // cek password
         $row = mysqli_fetch_assoc($result);
+
         if($row['verified'] == 1){
-         if ( password_verify($password, $row["password"]) ) {
+            if ( password_verify($password, $row["password"]) ) {
                 // set session
-            $_SESSION["login"] = true;
-            $_SESSION["id"] = $row['id_user'];
-            $_SESSION["name"] = $row['name'];
-            $_SESSION["username"] = $row['username'];
-            $_SESSION["level"] = $row['level'];
-            $_SESSION["email"] = $row['email'];
+                $_SESSION["login"] = true;
+                $_SESSION["id"] = $row['id_user'];
+                $_SESSION["name"] = $row['name'];
+                $_SESSION["username"] = $row['username'];
+                $_SESSION["level"] = $row['level'];
+                $_SESSION["email"] = $row['email'];
 
-                // // cek apakah rememberme dipencet
-                // if (isset($_POST["remember"])) {
-                //     // set cookie
-                //     // setcookie('key', hash('sha256', $row['username']), time() + 60);
-                //     // setcookie('id', $row['id'], time() + 60);       
-                // }
-            if(isset($_SESSION["for"])) {
-                header("Location: ../forum/buat.php");
-                exit();
+
+                // cek apakah remember me ditekan
+                if (isset($_POST["remember"])) {
+                    // set cookie
+                    setcookie('key', hash('sha256', $row['email']), time() + (10 * 365 * 24 * 60 * 60), "/techcorner/forum");
+                    setcookie('id', $row['id_user'], time() + (10 * 365 * 24 * 60 * 60), "/techcorner/forum");       
+
+                }
+
+                if(isset($_SESSION["for"])) {
+                    header("Location: ../forum/buat.php");
+                    exit();
+                }
+
+                if($_SESSION["level"] == 'member' || $_SESSION["level"] == "moderator"){
+                    header("Location: ../forum/index.php");
+                    exit();
+                } else {
+                    header("Location: ../admin/index.php");
+                    exit();
+                }
             }
 
-            if($_SESSION["level"] = 'member' || $_SESSION["level"] == "moderator"){
-                header("Location: ../forum/index.php");
-                exit();
-            } else {
-                header("Location: ../admin/index.php");
-                exit();
-            }
-        }  
+        } else {
+                // akun belum teverifikasi
+            $_SESSION["error1"] = true;
+            header("Location: login.php");
+            exit();
+        }
 
-    } else {
-            // akun belum teverifikasi
-        $_SESSION["error1"] = true;
-        header("Location: login.php");
-        exit();
-    }
-
-} 
-        // akun tidak terdaftar
-$_SESSION["error2"] = true;
-header("Location: login.php");
-exit();
+    } 
+    // akun tidak terdaftar
+    $_SESSION["error2"] = true;
+    header("Location: login.php");
+    exit();
 
 }
 
@@ -181,6 +185,9 @@ if($_GET["aksi"] == "logout"){
     $_SESSION = [];
     session_unset();
     session_destroy();
+
+    setcookie('id', '', time() - 3600, "/techcorner/forum");
+    setcookie('key', '', time() - 3600, "/techcorner/forum");
 
     header("Location: ../forum/index.php");
     exit();
@@ -305,9 +312,6 @@ if ($_GET["aksi"] == "change-password"){
     }
 
 }
-
-
-
 
 
 ?>

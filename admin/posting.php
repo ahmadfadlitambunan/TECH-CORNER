@@ -44,15 +44,14 @@ include("../forum/funct/function.php");
                     $result2= mysqli_query($conn, $query2);
                         echo "<table class = 'table table-bordered'>";
                         echo "<tr>";
-                        echo "<th>Id</th><th>Judul</th><th>Konten</th><th>Kategori</th><th>Tanggal Posting</th>";
+                        echo "<th>Id</th><th>Judul</th><th>Kategori</th><th>Tanggal Posting</th>";
                         echo "</tr>";
                     foreach ($result2 as $data) {
                         echo "<tr>";
                             echo "<td>$data[id_thread]</td>";
                             echo "<td>$data[judul]</td>";
-                            echo "<td>$data[konten]</td>";
                             echo "<td>$data[kategori]</td>";
-                            echo "<td>$data[tanggal_posting]</td>";
+                            echo "<td>" .date('d M Y', strtotime($data['tanggal_posting'])). "</td>";
 
                              //tombol update
                              echo "<td><form method='POST' action='ubah.php'>

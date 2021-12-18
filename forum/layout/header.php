@@ -2,8 +2,27 @@
 
     include('../_config/connect.php');
     session_start();
-
     $url = $_SERVER['REQUEST_URI'];
+
+    // cek ketersediaan kuki
+    if(isset($_COOKIE["id"]) && isset($_COOKIE["key"])){
+        $id = $_COOKIE["id"];
+        $key = $_COOKIE["key"];
+
+        $result = mysqli_query($conn, "SELECT * FROM users WHERE id_user = '$id' LIMIT 1;");
+        $row = mysqli_fetch_assoc($result);
+
+        // cek apakah kuki sesuai dengan sistem
+        if($key === hash("sha256", $row['email'])){
+            // set session
+            $_SESSION["login"] = true;
+            $_SESSION["id"] = $row['id_user'];
+            $_SESSION["name"] = $row['name'];
+            $_SESSION["username"] = $row['username'];
+            $_SESSION["level"] = $row['level'];
+            $_SESSION["email"] = $row['email'];
+        }
+    }
 ?>
 
 

@@ -2,7 +2,7 @@
 session_start();
 
 if (empty($_SESSION['login'])) {
-	header("Location: login.php");
+	header("Location: ../auth/login.php");
 }
 ?>
 <!doctype html>
