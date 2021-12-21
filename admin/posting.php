@@ -3,7 +3,6 @@ include ("layout/header.php");
 include ("../_config/connect.php");
 include("../forum/funct/function.php");
 ?>
-
 <div class="container-fluid">
     <div class="row">
         <div class="col-xl-12 col-lg-12">
@@ -16,57 +15,59 @@ include("../forum/funct/function.php");
                 <!-- Card Body -->
                 <div class="card-body">
                 <?php
-                    // memeriksa apakah ada nilai halaman yang dikirimkan
-                    if (isset($_GET['halaman']) && $_GET['halaman'] != "") {
-                        $halaman = $_GET['halaman'];
-                    } else {
-                        $halaman = 1;
-                    }
-
-                    //jumlah data yang  ditampilkan dalam 1 halaman
-                    $limit = 10; 
-                    if ($halaman > 1) {
-                        $offset = ($halaman * $limit) - $limit;
-                    } else $offset = 0;
-                    $sebelum = $halaman - 1; 
-                    $sesudah = $halaman + 1; 
-
-                    $query = "SELECT * FROM posting";
-                    $result = mysqli_query($conn, $query);
-                    $jlh_data = mysqli_num_rows($result);      
-
-                    //menghitung jumlah halaman
-                    $jlh_halaman = ceil($jlh_data / $limit);    
-                    $hal_akhir = $jlh_halaman;
 
                     //tampilkan data
-                    $query2 = "SELECT * FROM posting LIMIT $offset,$limit"; 
-                    $result2= mysqli_query($conn, $query2);
-                        echo "<table class = 'table table-bordered'>";
-                        echo "<tr>";
-                        echo "<th>Id</th><th>Judul</th><th>Kategori</th><th>Tanggal Posting</th>";
-                        echo "</tr>";
-                    foreach ($result2 as $data) {
-                        echo "<tr>";
-                            echo "<td>$data[id_thread]</td>";
-                            echo "<td>$data[judul]</td>";
-                            echo "<td>$data[kategori]</td>";
-                            echo "<td>" .date('d M Y', strtotime($data['tanggal_posting'])). "</td>";
+                    $query = "SELECT * FROM posting"; 
+                    $result= mysqli_query($conn, $query);
+                    ?>
+                    <div class="table-responsive">
+                        <table class = 'table table-bordered' id="adminTable">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Thread Starter</th>
+                                    <th>Judul</th>
+                                    <th>Kategori</th>
+                                    <th>Tanggal Posting</th>
+                                    <th>Tanggal Ubah</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                    <?php
+                    foreach ($result as $data) {
+                    ?>
+                               <tr>
+                                    <td><?= $data['id_thread']; ?></td>
 
-                             //tombol update
-                             echo "<td><form method='POST' action='ubah.php'>
-                             <input hidden type='text' name='id' value=$data[id_thread]>
-                             <button type='submit' name='btnUpdate' class='btn btn-success'><i class='fa fa-wrench' aria-hidden='true'></i> Update</button></form></td>";
+                                    <?php 
+                                        $resUname = mysqli_query($conn, "SELECT username FROM users WHERE id_user = ".$data['user_id']." LIMIT 1;" );
+                                        $dataUname = mysqli_fetch_assoc($resUname);
+                                    ?>
+                                    <td><?= $dataUname['username']; ?></t>
 
-                             //tombol delete
-                             echo "<td><form onsubmit=\"return confirm ('Anda Yakin Mau Menghapus Data?');\" method='POST'>";
-                             echo "<input hidden type='text' name='id' value=$data[id_thread]>";
-                             echo "<button type='submit' name='btnHapus' class='btn btn-danger'><i class='fa fa-trash' aria-hidden='true'></i> Delete</button></form></td>";
 
-                        echo "</tr>";
-                    }
-                    echo "</table>";
-                ?>
+                                    <td><a href="../forum/view.php?thread=<?= $data['id_thread']; ?>"><?= $data['judul']; ?></a></td>
+                                    <td><?= $data['kategori']; ?></td>
+                                    <td><?= date('d M Y g:i a', strtotime($data['tanggal_posting'])); ?></td>
+                                    <td><?= $data['diubah']; ?></td>
+
+                                    <td >
+                                        <div class="text-center">
+                                            <!-- tombol update --> 
+                                            <a href="#" class="btn btn-success btn-sm mr-1"><i class="fa fa-edit"></i></a>
+
+                                            <!-- tombol delete -->
+                                            <a href="#" class="btn btn-danger btn-sm ml-1" onclick="return confirm ('Anda Yakin Mau Menghapus Data?');"><i class="fa fa-trash"></i></a>
+                                        </div>
+                                    </td>
+                                </tr>
+                    <?php } ?>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    
 
                 <?php
                     if (isset($_POST['btnHapus'])) {
@@ -83,47 +84,11 @@ include("../forum/funct/function.php");
                         }
                     }
                 ?>
-                </div>
-                <div class="mx-auto">
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination">
-                            <!-- Tombol sebelumnya -->
-                            <?php 
-                            if ($halaman <=1) {
-                                echo "";
-                            } else {
-                            ?>
-
-                            <li class="page-item"><a class="page-link" href="<?php echo "posting.php?halaman=1"; ?>">&lt;&lt;</a></li>
-                            <li class="page-item"><a class="page-link" href="<?php echo "posting.php?halaman=$sebelum"; ?>">&lt;</a></li>
-
-                            <?php } ?>
-
-                            <!-- Nomor halaman -->
-                            <?php 
-                            for ($i = 1; $i<=$jlh_halaman; $i++) {
-                                echo "<li class=page-item><a class=page-link href=posting.php?halaman=$i >$i</a></li>";
-                            }
-                            ?>
-                            
-
-                            <!-- Tombol selanjutnya -->
-                            <?php 
-                            if ($halaman >= $jlh_halaman) {
-                                echo "";
-                            } else {
-                            ?>
-
-                            <li class="page-item"><a class="page-link" href="<?php echo "posting.php?halaman=$sesudah"; ?>">&gt;</a></li>
-                            <li class="page-item"><a class="page-link" href="<?php echo "posting.php?halaman=$hal_akhir"; ?>">&gt;&gt;</a></li>
-
-                            <?php } ?>
-                        </ul>
-                    </nav>
-            </div>
+            </div> 
         </div>
     </div>
 </div>
+    
 
 <?php
 include ("layout/footer.php");
