@@ -48,10 +48,10 @@
 
             <?php if(isset($_GET["aksi"])) { ?>
             <?php if($_GET["aksi"] == 'edit') :?>
-            <form action="thread.php?aksi=edit&id=<?= $id; ?>" method="POST" novalidate class="needs-validation">
+            <form action="thread.php?for=thread&aksi=edit&id=<?= $id; ?>" method="POST" novalidate class="needs-validation">
             <?php endif;?>
             <?php } else { ?>
-            <form action="thread.php?aksi=buat" method="POST" novalidate class="needs-validation">
+            <form action="thread.php?for=thread&aksi=buat" method="POST" novalidate class="needs-validation">
             <?php } ?>
 
             <div class="row">
@@ -174,6 +174,7 @@
 
             });
         </script>
+    </body>
 
 
 <?php include('layout/footer.php'); ?>

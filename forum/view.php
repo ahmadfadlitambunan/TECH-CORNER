@@ -1,6 +1,7 @@
 <?php
 require("../_config/connect.php");
 require("funct/function.php");
+session_start();
 
 // cek ketersediaan kuki
     if(isset($_COOKIE["id"]) && isset($_COOKIE["key"])){
@@ -22,12 +23,11 @@ require("funct/function.php");
         }
     }
 
-session_start();
 if(isset($_GET['thread'])&& $_GET['thread'] !="")
 {
     $id_thread=$_GET['thread'];
+    $thread = query("SELECT * FROM posting WHERE id_thread='$id_thread'");
 }
-$thread = query("SELECT * FROM posting WHERE id_thread='$id_thread'");
 
 
 if(isset($_POST["post"])) {
@@ -161,7 +161,7 @@ if(isset($_POST["balas"])) {
                                   </a>
                                   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                     <a class="dropdown-item" href="buat.php?aksi=edit&id=<?= $data['id_thread']; ?>"><i class="fa fa-edit"></i> Edit</a>
-                                    <a onclick="return confirm ('Anda Yakin Mau Menghapus Data?');" class="dropdown-item" href="thread.php?aksi=hapus&id=<?= $data['id_thread']; ?>"><i class="fa fa-trash"></i> Hapus</a>
+                                    <a onclick="return confirm ('Anda Yakin Mau Menghapus Data?');" class="dropdown-item" href="thread.php?for=thread&aksi=hapus&id=<?= $data['id_thread']; ?>"><i class="fa fa-trash"></i> Hapus</a>
                                   </div>
                             </div>
                             <?php endif; ?>
@@ -213,7 +213,7 @@ if(isset($_POST["balas"])) {
                             <textarea class="form-control" rows="2" name="komentar" id="komentar" placeholder="Bagaimana pendapatmu?"></textarea>
                             <div class="mar-top clearfix">
                                 <button class="btn btn-sm btn-success pull-right" type="submit" name="post"><i class="fa fa-pencil fa-fw"></i>Post</button>
-                                <a href="komentar.php?aksi=tambah" class="btn btn-sm btn-outline-success pull-right mx-2"> Komentar lebih detail</a>
+                                <a href="komentar.php?aksi=tambah&id_thread=<?= $_GET["thread"]; ?>&parent=0" class="btn btn-sm btn-outline-success pull-right mx-2"> Komentar lebih detail</a>
                             </form>
                                 
                         </div>
@@ -224,7 +224,7 @@ if(isset($_POST["balas"])) {
             <?php 
 
             $thread_id = $_GET["thread"];
-            $result1 = query("SELECT * FROM komentar WHERE thread_id = '$thread_id' AND parent = 0");
+            $result1 = query("SELECT * FROM komentar WHERE thread_id = '$thread_id' AND parent = 0 ORDER BY created_at DESC;");
 
             foreach ($result1 as $komen) :
                 ?>
@@ -241,13 +241,31 @@ if(isset($_POST["balas"])) {
                             <div class="media-block pad-all">
                                 <a class="media-left" href="#"><img class="img-circle img-sm mr-3" alt="Profile Picture" src="https://bootdey.com/img/Content/avatar/avatar1.png"></a>
                                 <div class="media-body">
-                                    <div class="d-flex flex-column fw-bold">
-                                        <a href="#" class="btn-link text-semibold media-heading box-inline"><?= $row['username']; ?> | <?= date("d-M-Y g:i a", strtotime($komen['created_at'])); ?></a>
-                                        <div class="small text-muted"><?= $row['level']; ?></div>
+                                    <div class="d-flex fw-bold mb-2">
+                                        <div class="mr-auto">
+                                            <a href="#" class="btn-link text-semibold media-heading box-inline"><?= $row['username']; ?> | <?= date("d-M-Y g:i a", strtotime($komen['created_at'])); ?></a>
+                                            <div class="small text-muted"><?= $row['level']; ?></div>
+                                        </div>
+                                        <?php if(isset($_SESSION["username"])) : ?>
+                                            <?php if($_SESSION["username"] == $row['username']) : ?>
+                                        <div class="ml-auto">
+                                            <a href="#" class="text-success" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-v"></i>
+                                            </a>
+                                              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                <a class="dropdown-item" href="komentar.php?aksi=edit&id_thread=<?= $_GET["thread"]; ?>&id_komentar=<?= $komen['id']; ?>"><i class="fa fa-edit"></i> Edit</a>
+                                                <a onclick="return confirm ('Anda Yakin Mau Menghapus Komentar?');" class="dropdown-item" href="thread.php?for=komen&aksi=hapus&id_komentar=<?= $komen['id']; ?>&id_thread=<?= $id_thread; ?>"><i class="fa fa-trash"></i> Hapus</a>
+                                              </div>
+                                        </div> 
+                                            <?php endif; ?>
+                                        <?php endif; ?>
                                     </div>
-                                <?php endforeach; ?>
 
-                                <?= $komen['konten']; ?>
+                                    
+
+                                <?php endforeach; ?>
+                                <div>
+                                    <?= $komen['konten']; ?>
+                                </div>
                                 <div class="pad-ver">
                                     <div class="btn-group">
                                         <a class="btn" href=""><i class="fa fa-thumbs-up"></i></a>
@@ -271,7 +289,7 @@ if(isset($_POST["balas"])) {
                                 <?php 
                                 $thread_id = $_GET["thread"];
                                 $parent = $komen['id'];
-                                $query2 = "SELECT * FROM komentar WHERE thread_id = '$thread_id' AND parent = $parent";
+                                $query2 = "SELECT * FROM komentar WHERE thread_id = '$thread_id' AND parent = $parent ORDER BY created_at DESC;";
                                 $result2 = mysqli_query($conn, $query2);
                                 ?>
                                 <div class="mb-3" id="toggle-balasan">
@@ -291,16 +309,29 @@ if(isset($_POST["balas"])) {
                                         <div class="media-block pad-all">
                                             <a class="media-left" href="#"><img class="img-circle img-sm mr-3" alt="Profile Picture" src="https://bootdey.com/img/Content/avatar/avatar2.png"></a>
                                             <div class="media-body">
-                                                <div class="d-flex flex-column fw-bold">
-                                                    <a href="#" class="btn-link text-semibold media-heading box-inline"><?= $user['username']; ?> | <?= date("d-M-Y g:i a", strtotime($balas['created_at'])); ?></a>
-                                                    <div class="small text-muted">
-                                                        <?= $user['level']; ?>
+                                                <div class="d-flex fw-bold mb-2">
+                                                    <div class="mr-auto">
+                                                        <a href="#" class="btn-link text-semibold media-heading box-inline"><?= $user['username']; ?> | <?= date("d-M-Y g:i a", strtotime($komen['created_at'])); ?></a>
+                                                        <div class="small text-muted"><?= $user['level']; ?></div>
                                                     </div>
+                                                <?php if(isset($_SESSION["username"])) : ?>
+                                                    <?php if($_SESSION["username"] == $user['username']) : ?>
+                                                    <div class="ml-auto">
+                                                        <a href="#" class="text-success" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-v"></i></a>
+                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                        <a class="dropdown-item" href="komentar.php?aksi=edit&id_thread=<?= $_GET["thread"]; ?>&id_komentar=<?= $balas['id']; ?>"><i class="fa fa-edit"></i> Edit</a>
+                                                        <a onclick="return confirm ('Anda Yakin Mau Menghapus Komentar?');" class="dropdown-item" href="thread.php?for=komen&aksi=hapus&id_komentar=<?= $balas['id']; ?>&id_thread=<?= $id_thread; ?>"><i class="fa fa-trash"></i> Hapus</a>
+                                                      </div>
+                                                    </div> 
+                                                    <?php endif; ?>
+                                                <?php endif; ?>
                                                 </div>
                                             <?php endforeach; ?>
 
-
-                                            <?= $balas['konten']; ?>
+                                            <div>
+                                                <?= $balas['konten']; ?>
+                                            </div>
+                                            
                                             <div class="pad-ver">
                                                 <div class="btn-group">
                                                     <a class="btn" href=""><i class="fa fa-thumbs-up"></i></a>

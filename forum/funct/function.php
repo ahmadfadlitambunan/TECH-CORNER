@@ -1,7 +1,5 @@
 <?php  
 
-
-
 function query($query)
 {
     global $conn;
@@ -11,18 +9,20 @@ function query($query)
     {
         $rows[]=$row;
     }
+
     return $rows;
 }
+
 
 function users($id_user)
 {
   
      $query="SELECT * FROM users WHERE
         id_user ='$id_user';";
-        return query($query);
-      
-      
+
+     return query($query);    
 }
+
 
 function times( $time )
 {
