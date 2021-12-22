@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 14, 2021 at 11:13 PM
+-- Generation Time: Dec 22, 2021 at 05:59 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.24
 
@@ -34,19 +34,8 @@ CREATE TABLE `komentar` (
   `thread_id` int(11) NOT NULL,
   `parent` int(11) NOT NULL DEFAULT 0,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `update_at` date NOT NULL
+  `diubah` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `komentar`
---
-
-INSERT INTO `komentar` (`id`, `konten`, `id_user`, `thread_id`, `parent`, `created_at`, `update_at`) VALUES
-(1, '<p>keren</p>', 5, 3, 0, '2021-12-14 19:51:03', '0000-00-00'),
-(3, '<p>CHIILLL</p>', 6, 3, 1, '2021-12-14 20:37:17', '0000-00-00'),
-(10, '<p>fdasfasfsa</p>', 6, 3, 1, '2021-12-14 21:08:58', '0000-00-00'),
-(11, '<p>TEST</p>', 6, 3, 0, '2021-12-14 21:16:20', '0000-00-00'),
-(12, '<p>fdsafas</p>', 6, 3, 0, '2021-12-14 21:35:46', '0000-00-00');
 
 --
 -- Indexes for dumped tables
@@ -66,7 +55,7 @@ ALTER TABLE `komentar`
 -- AUTO_INCREMENT for table `komentar`
 --
 ALTER TABLE `komentar`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

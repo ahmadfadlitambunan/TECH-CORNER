@@ -57,7 +57,7 @@
     <div class="header">
         <div class="container mb-3 mt-2">
             <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
-                <a href="index.php"><img src="../assets/img/logo.png" width="100"></a>
+                <a href="../index.php"><img src="../assets/img/logo.png" width="100"></a>
                 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -65,20 +65,10 @@
                 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-3">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="../all.php"><i class="fa fa-users" aria-hidden="true"></i>
-                                Forum<span class="sr-only">(current)</span>
-                            </a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#"><i class="fa fa-users" aria-hidden="true"></i>
-                                Carikom<span class="sr-only">(current)</span>
-                            </a>
-                        </li>
                         <?php if(isset($_SESSION["level"])) { ?>
                             <?php if($_SESSION["level"] == "admin") { ?>
                         <li class="nav-item active">
-                            <a class="nav-link" href="../../admin/index.php"><i class="fa fa-users" aria-hidden="true"></i>
+                            <a class="nav-link" href="../../admin/index.php"><i class="fa fa-user" aria-hidden="true"></i>
                                 Admin<span class="sr-only">(current)</span>
                             </a>
                         </li>
@@ -94,6 +84,11 @@
                                 <button type="submit" class="fa fa-search search__icon"></button>
                                 </div>
                             </form>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="../all.php"><i class="fa fa-users" aria-hidden="true"></i>
+                                Forum<span class="sr-only">(current)</span>
+                            </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="../buat.php"><i class="fa fa-pencil" aria-hidden="true"></i>

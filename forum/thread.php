@@ -120,8 +120,9 @@ if($_GET["for"] == "komen"){
 		$komentar = $_POST["komentar"];
 		$id_komentar = $_GET["id_komentar"];
 		$id_thread = $_POST["id_thread"];
+		$date_edit = date("Y-m-d g:i a");
 
-		$query = "UPDATE komentar SET konten = '$komentar' WHERE id = '$id_komentar';";
+		$query = "UPDATE komentar SET konten = '$komentar', diubah = '$date_edit' WHERE id = '$id_komentar';";
 
 		$result = mysqli_query($conn, $query);
 
@@ -151,27 +152,6 @@ if($_GET["for"] == "komen"){
 			exit;
 		}
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }

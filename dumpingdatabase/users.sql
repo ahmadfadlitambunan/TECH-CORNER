@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 13, 2021 at 03:57 PM
+-- Generation Time: Dec 22, 2021 at 05:59 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.24
 
@@ -33,6 +33,7 @@ CREATE TABLE `users` (
   `email` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
   `name` varchar(100) NOT NULL,
+  `foto` varchar(50) NOT NULL,
   `level` varchar(20) NOT NULL,
   `vkey` varchar(200) NOT NULL,
   `verified` enum('0','1') NOT NULL DEFAULT '0' COMMENT '0 = not verified\r\n1 = verified\r\n',
@@ -43,9 +44,9 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id_user`, `username`, `email`, `password`, `name`, `level`, `vkey`, `verified`, `created_at`) VALUES
-(5, 'ahmadfadlitambunan', 'ahmadfadlitambunan12@gmail.com', '$2y$10$8YGMHtaGkhR5wUrhH.nHcOEkaQ1glIotnsczb01EXhSODLao3VUU2', 'Ahmad Fadli Tambunan', 'admin', '3554a33ffaae3a45896d52891ecddb87', '1', '2021-12-05 13:05:21.611547'),
-(6, 'aftambunan', 'ahmad.fadlitbn1253@gmail.com', '$2y$10$wGsZPtYq1baQoMcNe3IKw.0BJy5VV9wJHWJ8hhyylecfNA2DWzjBu', 'Ahmad Fadli Tambunan', 'member', '3dff46628175481c5faf21997e8184e9', '1', '2021-12-08 12:02:03.023568');
+INSERT INTO `users` (`id_user`, `username`, `email`, `password`, `name`, `foto`, `level`, `vkey`, `verified`, `created_at`) VALUES
+(5, 'ahmadfadlitambunan', 'ahmadfadlitambunan12@gmail.com', '$2y$10$8YGMHtaGkhR5wUrhH.nHcOEkaQ1glIotnsczb01EXhSODLao3VUU2', 'Ahmad Fadli Tambunan', '', 'admin', '3554a33ffaae3a45896d52891ecddb87', '1', '2021-12-05 13:05:21.611547'),
+(6, 'aftambunan', 'ahmad.fadlitbn1253@gmail.com', '$2y$10$8BzAgYmRsyEXqoqKTCiIWOFz5PsOZOkH4ihps4YiNjhfnd8.50lMq', 'Ahmad Fadli Tambunan', '', 'member', '4bbdaecad6a739bcb27b8705050ef1db', '1', '2021-12-08 12:02:03.023568');
 
 --
 -- Indexes for dumped tables
@@ -65,7 +66,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

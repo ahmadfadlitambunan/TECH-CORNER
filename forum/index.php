@@ -4,7 +4,7 @@
 <?php
 
 
-$jumlah_data_perhalaman = 2;
+$jumlah_data_perhalaman = 4;
 
 
 //cari jumlah data ada brp
