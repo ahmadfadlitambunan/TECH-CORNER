@@ -3,6 +3,29 @@ include ("layout/header.php");
 include ("../_config/connect.php");
 include("../forum/funct/function.php");
 ?>
+<?php
+
+
+if(isset($_POST['btndel']))
+{
+    $userid=$_POST['id'];
+    if($conn){
+    $sql="DELETE FROM users WHERE id_user ='$userid'";
+    $check=mysqli_query($conn,$sql);
+   
+}
+?>
+
+<div class="container align-self-center">
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Pesan : User berhasil di Hapus.</strong>   
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+</div>
+<?php }; ?>
+
 
 <div class="container-fluid">
     <div class="row">
@@ -64,11 +87,14 @@ include("../forum/funct/function.php");
                                     <td><?= date('d M Y g:i a', strtotime($data['created_at'])); ?></td>
                                     <td>
                                         <div class="text-center">
-                                            <!-- tombol update --> 
-                                            <a href="#" class="btn btn-success btn-sm mr-1"><i class="fa fa-edit"></i></a>
-
-                                            <!-- tombol delete -->
-                                            <a href="#" class="btn btn-danger btn-sm ml-1" onclick="return confirm ('Anda Yakin Mau Menghapus Data?');"><i class="fa fa-trash"></i></a>
+                                             <!-- tombol update -->
+                                             <a href="edituser.php?id=<?=$data['id_user']?>"  class="btn btn-success btn-sm ml-1"><i class="fa fa-edit"></i></a>
+                                                <!-- tombol delete -->
+                                                <form method="POST" onsubmit="return confirm ('Anda Yakin Mau Menghapus Data?')">
+                                                <input hidden name='id' type='number' value=<?=$data['id_user'] ?>>
+                                                <button type='submit' name='btndel' class='btn btn-danger'><i class="fa fa-trash"></i></button>
+                                            
+                                                </form>
                                         </div>
                                     </td>
                                 </tr>
