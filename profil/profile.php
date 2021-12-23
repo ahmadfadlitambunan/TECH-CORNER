@@ -1,97 +1,107 @@
-<?php
-session_start();
+<?php 
+	include("layout/header.php");
+	include("layout/navbar.php");
 
-//include koneksi
-include "../_config/connect.php";
+	if(isset($_GET["id"])){
+		// cek apakah id get dengan sesi sama
+		if($_GET["id"] == $_SESSION["id"]){
+			$id_user = $_GET["id"];
 
-//get user detail
-$username = "ahmadfadlitambunan";
-$query = "SELECT * from USERS WHERE USERNAME = ? limit 1";
-$stmt = $conn->stmt_init();
-$stmt->prepare($query);
-$stmt->bind_param('s', $username);
-$stmt->execute();
-$result = $stmt->get_result();
-$user = $result->fetch_array(MYSQLI_ASSOC);
+			// ambil data berdasarkan id
+			$query = "SELECT * FROM users WHERE id_user = '$id_user' LIMIT 1;";
+			$result = mysqli_query($conn, $query);
+			if ($result) {
+				// fetch data
+				foreach($result as $row) :
+					$name = $row['name'];
+					$username = $row['username'];
+					$email = $row['email'];
+					$level = $row['level'];
+					$foto = $row['foto'];
+				endforeach;
+			} else {
+				echo mysqli_error($conn);
+				exit;
+			}
+		} else {
+			header("Location: ../forum/index.php");
+			exit;
+		}
+	} else {
+		header("Location: ../forum/index.php");
+		exit;
+	}
+
+
 ?>
-<!doctype html>
-<html lang="en">
-<head>
-	<!-- Required meta tags -->
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<!-- Bootstrap CSS -->
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<div class="container align-self-center">
+    <div class="main-content">
 
-	<title>Update Profile - PHP</title>
-</head>
-<body>
-	<div class="container">
+    	<!-- Breadcrumb -->
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb forum">
+              <li class="breadcrumb-item"><a href="../index.php">Home</a></li>
+              <li class="breadcrumb-item"><a href="all.php">All</a></li>
 
-		<div class="row">
-			<div class="col-md-4 offset-md-4 mt-5">
+              
+                <li class="breadcrumb-item"><a href="#">fsafdas</a></li>
+                <li class="breadcrumb-item active" aria-current="page">fasfas</li>
+            </ol>
+        </nav>
 
-				<?php
-				if(isset($_SESSION['error'])) {
-				?>
-				<div class="alert alert-warning" role="alert">
-				  <?php echo $_SESSION['error']?>
-				</div>
-				<?php
-				}
-				?>
-
-				<?php
-				if(isset($_SESSION['message'])) {
-				?>
-				<div class="alert alert-success" role="alert">
-				  <?php echo $_SESSION['message']?>
-				</div>
-				<?php
-				}
-				?>
-
-
-				<div class="card ">
-					<div class="card-title text-center">
-						<h1>Profile Form</h1>
-					</div>
-					<div class="card-body">
-						<form action="update-profile.php" method="post">
-                            <input type="hidden" name="id_user" class="form-control" id="id_user" value="<?php echo @$user['id_user']?>" >
-							<div class="form-group">
-								<label for="username">Nama Lengkap</label>
-								<input type="text" name="name" class="form-control" id="name" value="<?php echo @$user['name']?>" aria-describedby="name" placeholder="Nama lengkap" autocomplete="off">
-
-							</div>
-							<div class="form-group">
-								<label for="username">Username</label>
-								<input type="text" name="username" class="form-control" id="username" value="<?php echo @$user['username']?>" aria-describedby="username" placeholder="username" autocomplete="off">
-
-							</div>
-							<div class="form-group">
-								<label for="password">Password</label>
-								<input type="password" name="password" class="form-control" id="password" value="<?php echo @$_SESSION['password']?>" placeholder="Password">
-							</div>
-							<div class="form-group">
-								<label for="password">Konfirmasi Password</label>
-								<input type="password" name="password_confirmation" class="form-control" id="password_confirmation" value="<?php echo @$_SESSION['password_confirmation']?>"  placeholder="Password">
-							</div>
-
-							<button type="submit" class="btn btn-primary">Update Data</button>
-						</form>
-
-						<a href="/index.php">Batal</a>
-					</div>
-				</div>
-			</div>
-
-		</div>
-
-	</div>
-</body>
-<?php
-unset($_SESSION['error']);
-unset($_SESSION['message']);
-?>
+    	<div class="row">
+            <div class="col-xl-4">
+                <!-- Profile picture card-->
+                <div class="card mb-4 mb-xl-0">
+                    <div class="card-header">Profile</div>
+                    <div class="card-body">
+                    	<div class="text-center">
+                        <!-- Profile picture image-->
+	                        <img class="rounded-circle mb-2" width="150px" src="assets/img/<?= $foto; ?>" alt="">
+	                        <div class="profile-label">
+		                        <h4><?= $name; ?></h4>
+		                        <h6><?= $username; ?></h6>
+	                        	<span class="badge badge-danger badge-pill"><?= $level ?></span>
+	                        </div>
+	                    </div>
+                        <hr>
+                        <div class="text-muted small forum">
+                        	<ul style="list-style: none;">
+	                        	<li><a href="update-profile.php?id=<?= $id_user; ?>" class="text-big">Edit Profil<span><i class="fa fa-cog mx-2"></i></span></a></li>
+	                        	<li><a href="ubah-password.php?id=<?= $id_user; ?>" class="text-big">Ubah Password<span><i class="fa fa-lock mx-2"></i></span></a></li>
+                        	</ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-8">
+                <!-- Account details card-->
+                <div class="card mb-4">
+                    <div class="card-header">Account Details</div>
+                    <div class="card-body">
+                        <form>
+                            <!-- Form Group (Email) -->
+                            <div class="form-group">
+                                <label class="small mb-1" for="email">Email</label>
+                                <input type="email" name="email" id="email" class="form-control-plaintext" readonly value="<?= $email; ?>">
+                            </div>
+                            <!-- Form Group (username)-->
+                            <div class="form-group mb-3">
+                                <label class="small mb-1" for="uname">Username (Nama yang akan tampil di website forum)</label>
+                                <input class="form-control-plaintext" id="uname" type="text" placeholder="Enter your username" name="username" value="<?= $username; ?>" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label class="small mb-1" for="name">Nama Lengkap</label>
+                                <input class="form-control-plaintext" id="name" type="text" placeholder="Enter your username" name="name" value="<?= $name; ?>" readonly>
+                            </div>
+                            <div class="mt-3">
+                                <a href="update-profile.php?id=<?= $id_user; ?>" class="btn btn-success">Edit Profile</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
