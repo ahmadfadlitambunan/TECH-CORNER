@@ -54,11 +54,9 @@ include("../forum/funct/function.php");
 
                                     <td >
                                         <div class="text-center">
-                                            <!-- tombol update --> 
-                                            <a href="#" class="btn btn-success btn-sm mr-1"><i class="fa fa-edit"></i></a>
-
-                                            <!-- tombol delete -->
-                                            <a href="#" class="btn btn-danger btn-sm ml-1" onclick="return confirm ('Anda Yakin Mau Menghapus Data?');"><i class="fa fa-trash"></i></a>
+                                        <form method="POST" onsubmit="return confirm ('Anda Yakin Mau Menghapus Data?')">
+                                                <input hidden name='id' type='number' value=<?=$data['id_thread'] ?>>
+                                                <button type='submit' name='btndel' class='btn btn-danger'><i class="fa fa-trash"></i></button>
                                         </div>
                                     </td>
                                 </tr>
@@ -70,7 +68,7 @@ include("../forum/funct/function.php");
                     
 
                 <?php
-                    if (isset($_POST['btnHapus'])) {
+                    if (isset($_POST['btndel'])) {
 
                         // inisiasi variabel untuk menampung isian id
                         $id = $_POST['id'];

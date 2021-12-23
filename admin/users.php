@@ -1,27 +1,53 @@
 <?php
-include ("layout/header.php");
-include ("../_config/connect.php");
+include("layout/header.php");
+include("../_config/connect.php");
 include("../forum/funct/function.php");
 ?>
+<?php
+
+
+if (isset($_POST['btndel'])) {
+    $userid = $_POST['id'];
+    if ($conn) {
+        $sql = "DELETE FROM users WHERE id_user ='$userid'";
+        $check = mysqli_query($conn, $sql);
+    }
+?>
+
+    <div class="container align-self-center">
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Pesan : User berhasil di Hapus.</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    </div>
+<?php }; ?>
+
 
 <div class="container-fluid">
     <div class="row">
         <div class="col-xl-12 col-lg-12">
             <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
-                <div
-                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                     <h6 class="m-0 font-weight-bold text-primary">Daftar Pengguna</h6>
+                    <div>
+                        <form method="POST" onsubmit="return confirm ('Download Pdf Daftar User?')" action="pdf.php">
+
+                            <button type='submit' name='btndel' class='btn btn-outline-success'>Report</button>
+                            </form>
+                    </div>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                <?php
+                    <?php
                     //tampilkan data
-                    $query = "SELECT * FROM users"; 
-                    $result= mysqli_query($conn, $query);
-                ?>
-                <div class="table-responsive">
-                    <table class = 'table table-bordered' id="adminTable">
+                    $query = "SELECT * FROM users";
+                    $result = mysqli_query($conn, $query);
+                    ?>
+                    <div class="table-responsive">
+                        <table class='table table-bordered' id="adminTable">
                             <thead>
                                 <tr>
                                     <th>Id</th>
@@ -35,53 +61,56 @@ include("../forum/funct/function.php");
                                 </tr>
                             </thead>
                             <tbody>
-                            <?php foreach($result as $data) :?>
-                                <tr>
-                                    <td><?= $data['id_user']; ?></td>
-                                    <td><?= $data['username']; ?></td>
-                                    <td><?= $data['email']; ?></td>
-                                    <td><?= $data['name']; ?></td>
-                                    <td>
-                                        <?php 
+                                <?php foreach ($result as $data) : ?>
+                                    <tr>
+                                        <td><?= $data['id_user']; ?></td>
+                                        <td><?= $data['username']; ?></td>
+                                        <td><?= $data['email']; ?></td>
+                                        <td><?= $data['name']; ?></td>
+                                        <td>
+                                            <?php
                                             switch ($data['level']) {
                                                 case 'admin':
-                                                    $badge='danger';
+                                                    $badge = 'danger';
                                                     break;
                                                 case 'moderator':
-                                                    $badge='warning';
+                                                    $badge = 'warning';
                                                     break;
-                                                
+
                                                 default:
-                                                    $badge='success';
+                                                    $badge = 'success';
                                                     break;
                                             }
-                                        ?>
-                                        <div class="badge bg-<?= $badge; ?> text-white rounded-pill">
-                                            <?= $data['level']; ?>
-                                        </div>
-                                    </td>
-                                    <td><?= $data['verified']; ?></td>
-                                    <td><?= date('d M Y g:i a', strtotime($data['created_at'])); ?></td>
-                                    <td>
-                                        <div class="text-center">
-                                            <!-- tombol update --> 
-                                            <a href="#" class="btn btn-success btn-sm mr-1"><i class="fa fa-edit"></i></a>
+                                            ?>
+                                            <div class="badge bg-<?= $badge; ?> text-white rounded-pill">
+                                                <?= $data['level']; ?>
+                                            </div>
+                                        </td>
+                                        <td><?= $data['verified']; ?></td>
+                                        <td><?= date('d M Y g:i a', strtotime($data['created_at'])); ?></td>
+                                        <td>
+                                            <div class="text-center">
+                                                <!-- tombol update -->
+                                                <a href="edituser.php?id=<?= $data['id_user'] ?>" class="btn btn-success btn-sm ml-1"><i class="fa fa-edit"></i></a>
+                                                <!-- tombol delete -->
+                                                <form method="POST" onsubmit="return confirm ('Anda Yakin Mau Menghapus Data?')">
+                                                    <input hidden name='id' type='number' value=<?= $data['id_user'] ?>>
+                                                    <button type='submit' name='btndel' class='btn btn-danger'><i class="fa fa-trash"></i></button>
 
-                                            <!-- tombol delete -->
-                                            <a href="#" class="btn btn-danger btn-sm ml-1" onclick="return confirm ('Anda Yakin Mau Menghapus Data?');"><i class="fa fa-trash"></i></a>
-                                        </div>
-                                    </td>
-                                </tr>
-                            <?php endforeach; ?>
+                                                </form>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
                             </tbody>
                         </table>
                     </div>
-                </div>    
+                </div>
             </div>
         </div>
     </div>
 </div>
 
 <?php
-include ("layout/footer.php");
+include("layout/footer.php");
 ?>
