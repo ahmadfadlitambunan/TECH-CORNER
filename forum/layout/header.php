@@ -41,13 +41,13 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <!-- CSS Eksternal -->
     <link rel="stylesheet" href="assets/css/style.css">
-    <?php if($url == '/techcorner/forum/tim.php') : ?>
+    <?php if($url == '/tech-corner/forum/tim.php') : ?>
     <link rel="stylesheet" href="assets/css/tim.css">
     <?php endif; ?>
-    <?php if($url == '/techcorner/forum/all.php') : ?>
+    <?php if($url == '/tech-corner/forum/all.php') : ?>
     <link rel="stylesheet" href="assets/css/forum.css">
     <?php endif; ?>
-    <?php if($url == '/techcorner/forum/buat.php') : ?>
+    <?php if($url == '/tech-corner/forum/buat.php') : ?>
     <link rel="stylesheet" href="assets/css/buat.css">
     <?php endif; ?>
 

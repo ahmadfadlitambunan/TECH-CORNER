@@ -37,19 +37,58 @@ $list = query("SELECT * FROM posting ORDER BY tanggal_posting DESC LIMIT $awal,$
     <div class="main-content">
         <!-- Banner -->
         <div class="banner p-5">
-            <div class="row">
-                <div class="col-lg-6 col-sm-12 text-center d-none d-lg-block d-xl-block">
-                    <img width="500px" src="assets/img/pict1.png" alt="">
-                </div>
-                <div class="col-lg-6 col-sm-12 text-center">
-                    <h1>Selamat datang di<br>Tech Corner!</h1>
-                    <p>
-                        Tech Corner adalah ruang untukmu yang ingin menjelajahi dunia teknologi.
-                        Di sini akan ada teman untuk saling belajar dan berbagi pengetahuan bersama. 
-                        Yuk, diskusi terkait perkembangan era 4.0 yang sudah kita duduki. Ada banyak yang harus disampaikan.
-                        <br>Ayo lakukan itu di sini!
-                    </p>
-                    <a class="btn btn-success" href="../auth/login.php" role="button">Masuk</a>
+                <div class="bd-example">
+                    <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+                            <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+                            <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+                        </ol>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <center>
+                                <img width="400px" src="assets/img/pict5.png">
+                                <div class="d-none d-md-block">
+                                    <h1>Tech Corner</h1>
+                                    <p>Tech Corner adalah ruang untukmu yang ingin menjelajahi dunia teknologi.
+                                        <br>Di sini akan ada teman untuk saling belajar dan berbagi pengetahuan bersama.
+                                    </p>
+                                </div>
+                                </center>
+                            </div>
+                            <div class="carousel-item">
+                                <center>
+                                <img width="400px" src="assets/img/pict4.png">
+                                <div class="d-none d-md-block">
+                                    <h1>Forum di Tech Corner</h1>
+                                    <p>Kamu bisa berdiskusi dengan banyak teman di Forum Tech Corner.
+                                        <br>Ada 3 kategori yang akan dibahas, yaitu komputer & PC, laptop/notebook, dan gadget.
+                                    </p>
+                                </div>
+                                </center>
+                            </div>
+                            <div class="carousel-item">
+                                <center>
+                                <img width="400px" src="assets/img/pict3.png">
+                                <div class="d-none d-md-block">
+                                    <h1>Tulis Thread di Tech Corner</h1>
+                                    <p>Bagikan pengetahuanmu tentang komputer & PC, laptop/notebook, ataupun gadget di sini.
+                                        <br>Tulis dan lihat respon dari yang lain. Kamu juga bisa membalas komentar!
+                                    </p>
+                                </div>
+                                </center>
+                            </div>
+                        </div>
+                        <br>
+                        <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>

@@ -44,6 +44,8 @@
     <!-- data tables -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
     
+    <!-- CDN Font Awesome -->
+    <script src="https://use.fontawesome.com/57879be922.js"></script>
 
 </head>
 
@@ -58,9 +60,9 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../index.php">
                 <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
+                    <img src="../admin/assets/img/icon.png" alt="" width="50px">
                 </div>
-                <div class="sidebar-brand-text mx-3">Admin<br>Tech-Corner</div>
+                <div class="sidebar-brand-text mx-3">Admin Tech Corner</div>
             </a>
 
             <!-- Divider -->
@@ -86,7 +88,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="../forum/buat.php">
-                    <i class="fas fa-fw fa-users"></i>
+                    <i class="fa fa-pencil"></i>
                     <span>Buat Thread</span></a>
             </li>
 
@@ -101,8 +103,9 @@
             <!-- Nav Item - Data Users -->
             <li class="nav-item">
                 <a class="nav-link" href="../admin/users.php">
-                    <i class="fas fa-fw fa-users"></i>
-                    <span>Pengguna</span></a>  
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                    <span>Pengguna</span>
+                </a> 
             </li>
 
 
@@ -118,12 +121,13 @@
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link" href="../admin/posting.php">
-                    <i class="fas fa-fw fa-atlas"></i>
-                    <span>Posting</span></a>
-
+                    <i class="fa fa-upload" aria-hidden="true"></i>
+                    <span>Posting</span>
+                </a>
                 <a class="nav-link" href="../admin/komentar.php">
-                    <i class="fas fa-fw fa-atlas"></i>
-                    <span>Komentar</span></a>
+                    <i class="fa fa-comments" aria-hidden="true"></i>
+                    <span>Komentar</span>
+                </a>
             </li>
 
             <!-- Divider -->
@@ -150,20 +154,6 @@
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
                     </button>
-
-                    <!-- Topbar Search -->
-                    <form
-                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                        <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Cari.."
-                                aria-label="Search" aria-describedby="basic-addon2">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
-                                    <i class="fas fa-search fa-sm"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
