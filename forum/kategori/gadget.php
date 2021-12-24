@@ -77,9 +77,9 @@ $row = mysqli_fetch_assoc($list);
 
                                 <div class="card-body d-flex justify-content-center align-items-center">
                                     <div class="media-body">
-                                        <h4 class="media-heading">
+                                        <h6 class="media-heading">
                                             <a href="../view.php?thread=<?= $data['id_thread'] ?>" target="_self"><b><?= $data['judul'] ?></b></a>
-                                        </h4><span class="media-date"><a><?= times(strtotime($data['tanggal_posting'])) ?></a>, by: <a><?= $user['username'] ?></a></span>
+                                        </h6><span class="media-date"><a><?= times(strtotime($data['tanggal_posting'])) ?></a>, by: <a><?= $user['username'] ?></a></span>
                                         <br><a href="../view.php?thread=<?= $data['id_thread'] ?>"><img class="media-object" src="../assets/img/pict1.png" width="300px" alt=""></a>
                                         <!-- <div class="widget_article_social">
                                         <span>

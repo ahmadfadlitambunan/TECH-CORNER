@@ -41,8 +41,13 @@ include("../forum/funct/function.php");
 
                             </div>
                             <div class="form-group">
-                                <label for="level">Level</label>
-                                <input value="<?= $data['level'] ?>" id="level" type="text" class="form-control" name="level" required autofocus>
+                                <label for="level">Level User</label>
+                                <select class="form-control" id="level" name="level">
+                                    <option selected value="<?= $data['level']; ?>"><?= $data['level']; ?></option>
+                                    <option value="admin">Admin</option>
+                                    <option value="moderator">Moderator</option>
+                                    <option value="member">Member</option>
+                                </select>
                             </div>
 
                             <?php endforeach; ?>

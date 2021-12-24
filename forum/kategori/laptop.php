@@ -25,9 +25,10 @@ $row = mysqli_fetch_assoc($list);
     <div class="card-fitur text-center">
         <div class="row">
             <?php 
-
+                if(isset($row['id_thread'])) :
                 $komentar_query = "SELECT * FROM komentar WHERE thread_id = ".$row['id_thread']." ORDER BY created_at DESC LIMIT 3 ";
                 $komentar_result = mysqli_query($conn, $komentar_query);
+                endif;
             ?>
             <div class="col-6 col-md-4 mb-3 pull-left">
                 <h2><i class="fa fa-comments-o" aria-hidden="true"></i>Obrolan Hangat</h2>
@@ -71,12 +72,11 @@ $row = mysqli_fetch_assoc($list);
                     <?php foreach ($res = users($data['user_id']) as $user) : ?>
                         <div class="widget">
                             <div class="card media d-flex justify-content-center align-items-center">
-
                                 <div class="card-body d-flex justify-content-center align-items-center">
                                     <div class="media-body">
-                                        <h4 class="media-heading">
+                                        <h6 class="media-heading">
                                             <a href="../view.php?thread=<?= $data['id_thread'] ?>" target="_self"><b><?= $data['judul'] ?></b></a>
-                                        </h4><span class="media-date"><a><?= times(strtotime($data['tanggal_posting'])) ?></a>, by: <a><?= $user['username'] ?></a></span>
+                                        </h6><span class="media-date"><a><?= times(strtotime($data['tanggal_posting'])) ?></a>, by: <a><?= $user['username'] ?></a></span>
                                         <br><a href="../view.php?thread=<?= $data['id_thread'] ?>"><img class="media-object" src="../assets/img/pict1.png" width="300px" alt=""></a>
                                     </div>
                                 </div>
