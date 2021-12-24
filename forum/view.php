@@ -232,7 +232,7 @@ if(isset($_POST["balas"])) {
 
 
             //cari jumlah data ada brp
-            $jumlahData = count(query("SELECT * FROM posting "));
+            $jumlahData = count(query("SELECT * FROM komentar WHERE thread_id = '$thread_id' AND parent = 0;"));
             $jumlahpage = ceil($jumlahData / $jumlah_data_perhalaman);
 
 
