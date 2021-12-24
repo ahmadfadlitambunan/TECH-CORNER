@@ -3,25 +3,7 @@ include("layout/header.php");
 include("../_config/connect.php");
 include("../forum/funct/function.php");
 ?>
-<?php
-if (isset($_POST['btnUbah'])) {
-   
-    $id_ = $_POST['id'];
-    $username = trim(mysqli_real_escape_string($conn,$_POST['uname']));
-    $pass = password_hash($_POST['password'], PASSWORD_DEFAULT);
-    $nama = trim(mysqli_real_escape_string($conn,$_POST['nama']));
-    $email = trim(mysqli_real_escape_string($conn,$_POST['email']));
-    $lvl = $_POST['level'];
-    $sql = "UPDATE users SET username='$username', password='$pass',name='$nama',email='$email',level='$lvl' WHERE id_user=$id_";
-    if ($conn) {
-        mysqli_query($conn, $sql);
-        echo "<p class='alert alert-success text-center'><b>Perubahan Akun Berhasil Disimpan. <a href='users.php' class='btn btn-primary'>Kembali</a></b></p>";
-    } else {
-        echo "<p class='alert alert-danger text-center><b>Terjadi kesalahan: $error</b></p>";
-    }
-}
 
-?>
 <div class="container-fluid">
     <div class="row">
         <div class="col-xl-12 col-lg-12">
@@ -76,13 +58,13 @@ if (isset($_POST['btnUbah'])) {
 
                             $id_ = $_POST['id'];
                             $username = $_POST['uname'];
-                            $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+                          
                             $nama = $_POST['nama'];
                             $email = $_POST['email'];
                             $level = $_POST['level'];
 
                             if ($conn) {
-                                $sql = "UPDATE users SET username='$username', password='$password',nama='$nama',email='$email',level='$level' WHERE id_user=$id_";
+                                $sql = "UPDATE users SET username='$username',name='$nama',email='$email',level='$level' WHERE id_user=$id_";
                                 mysqli_query($conn, $sql);
                                 echo "<p class='alert alert-success text-center'><b>Perubahan Akun Berhasil Disimpan. <a href='users.php' class='btn btn-primary'>Kembali</a></b></p>";
                             } else {
