@@ -99,7 +99,7 @@ $list = query("SELECT * FROM posting ORDER BY tanggal_posting DESC LIMIT $awal,$
     <div class="card-fitur">
         <div class="row">
             <?php 
-                $komentar_query = "SELECT * FROM komentar ORDER BY created_at DESC LIMIT 8 ";
+                $komentar_query = "SELECT * FROM komentar ORDER BY created_at DESC LIMIT 5 ";
                 $komentar_result = mysqli_query($conn, $komentar_query);
             ?>
             <div class="col-6 col-md-4 mb-3 pull-left">
@@ -124,12 +124,14 @@ $list = query("SELECT * FROM posting ORDER BY tanggal_posting DESC LIMIT $awal,$
                                 $thread =  mysqli_fetch_assoc($thread_result);
 
                             ?>
+                        <?php if(isset($thread['judul'])) : ?>
                         <li class="list-group-item">
                             <span class="text-muted"><b><?= $user['username']; ?></b> mengomentari thread</span>
                             <div class="forum">
                                 <a href="view.php?thread=<?= $komen['thread_id']; ?>"><h5><?= $thread['judul']; ?></h5></a>
                             </div>
                         </li>
+                        <?php endif; ?>
                         <?php endforeach ?>
                     </ul>
                 </div>
@@ -144,10 +146,10 @@ $list = query("SELECT * FROM posting ORDER BY tanggal_posting DESC LIMIT $awal,$
                             <div class="card media d-flex justify-content-center align-items-center">
                                 <div class="card-body d-flex justify-content-center align-items-center  ">
                                     <div class="media-body ">
-                                        <h4 class="media-heading justify-content-center">
+                                        <h6 class="media-heading justify-content-center">
                                             <a href="view.php?thread=<?= $data['id_thread'] ?>" target="_self"><b><?= $data['judul'] ?></b></a>
-                                        </h4><span class="media-date"><a><?= times(strtotime($data['tanggal_posting'])) ?></a>, by: <a><?= $user['username'] ?></a></span>
-                                        <br><a href="view.php?thread=<?= $data['id_thread'] ?>"><img class="media-object" src="assets/thumbnail/<?= $data['thumb']; ?>" width="300px" alt=""></a>
+                                        </h6><span class="media-date"><a><?= times(strtotime($data['tanggal_posting'])) ?></a>, by: <a><?= $user['username'] ?></a></span>
+                                        <br><a href="view.php?thread=<?= $data['id_thread'] ?>"><img class="media-object" src="assets/thumbnail/<?= $data['thumb']; ?>" width="250px" alt=""></a>
                                 </div>
                             </div>
 

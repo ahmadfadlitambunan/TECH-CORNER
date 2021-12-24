@@ -51,12 +51,14 @@ $row = mysqli_fetch_assoc($list);
                                 $thread =  mysqli_fetch_assoc($thread_result);
 
                             ?>
+                        <?php if(isset($thread['judul'])) : ?>
                         <li class="list-group-item">
                             <span class="text-muted"><b><?= $user['username']; ?></b> mengomentari thread</span>
                             <div class="forum">
                                 <a href="../view.php?thread=<?= $komen['thread_id']; ?>"><h5><?= $thread['judul']; ?></h5></a>
                             </div>
                         </li>
+                        <?php endif; ?>
                         <?php endforeach ?>
                     </ul>
                 </div>

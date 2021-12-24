@@ -41,10 +41,9 @@
         <!-- Breadcrumb -->
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb forum">
-                <li class="breadcrumb-item"><a href="../index.php">Home</a></li>
-                <li class="breadcrumb-item"><a href="all.php">All</a></li>
-                <li class="breadcrumb-item"><a href="#">fsafdas</a></li>
-                <li class="breadcrumb-item active" aria-current="page">fasfas</li>
+                <li class="breadcrumb-item"><a href="../forum/index.php">Home</a></li>
+                <li class="breadcrumb-item"><a href="profile.php?id=<?= $id_user; ?>">Profile</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Edit Profile</li>
             </ol>
         </nav>
 

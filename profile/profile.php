@@ -41,12 +41,9 @@
     	<!-- Breadcrumb -->
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb forum">
-              <li class="breadcrumb-item"><a href="../index.php">Home</a></li>
-              <li class="breadcrumb-item"><a href="all.php">All</a></li>
-
-              
-                <li class="breadcrumb-item"><a href="#">fsafdas</a></li>
-                <li class="breadcrumb-item active" aria-current="page">fasfas</li>
+                <li class="breadcrumb-item"><a href="../forum/index.php">Home</a></li>
+                <li class="breadcrumb-item"><a href="">Profile</a></li>
+                <li class="breadcrumb-item active" aria-current="page"><?= $username; ?></li>
             </ol>
         </nav>
 
@@ -62,7 +59,20 @@
 	                        <div class="profile-label">
 		                        <h4><?= $name; ?></h4>
 		                        <h6><?= $username; ?></h6>
-	                        	<span class="badge badge-danger badge-pill"><?= $level ?></span>
+		                        <?php
+	                                switch ($level) {
+	                                    case 'admin':
+	                                        $badge = 'danger';
+	                                        break;
+	                                    case 'moderator':
+	                                        $badge = 'warning';
+	                                        break;
+	                                    default:
+	                                        $badge = 'success';
+	                                        break;
+	                                }
+	                            ?>
+	                        	<span class="badge badge-<?= $badge; ?> badge-pill"><?= $level ?></span>
 	                        </div>
 	                    </div>
                         <hr>

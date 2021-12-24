@@ -154,18 +154,21 @@ if(isset($_POST["balas"])) {
                                 <a class="text-dark mb-1"> <?php echo $datu['username']. " | " .date("d-M-Y g:i a", strtotime($data['tanggal_posting'])) ?> </a>
                                 <div class="small text-muted"><b><?= $datu['level']; ?></b></div>
                             </div>
-                            <?php if(isset($_SESSION["username"])) : ?>
+                            <div class="ml-auto">
+                            <?php if(isset($_SESSION["level"])) : ?>
+                                <?php if($_SESSION["level"] == 'moderator' || $_SESSION["level"] == 'admin') : ?>
+                                
+                                    <a href="thread.php?for=thread&aksi=hapus&id=<?= $data['id_thread']; ?>" onclick="return confirm ('Apakah thread ini melanggar peraturan & kebijakan TECHCORNER? Anda yakin ingin Menghapus thread ini?');" class="mr-2 text-danger"><i class="fa fa-trash"></i></a>
+                                <?php endif; ?>
                                 <?php if($_SESSION["username"] == $datu['username']) : ?>
-                            <div class="d-flex flex-column fw-bold ml-auto">
-                                  <a href="#" class="text-success" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-v"></i>
-                                  </a>
-                                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="buat.php?aksi=edit&id=<?= $data['id_thread']; ?>"><i class="fa fa-edit"></i> Edit</a>
-                                    <a onclick="return confirm ('Anda Yakin Mau Menghapus Data?');" class="dropdown-item" href="thread.php?for=thread&aksi=hapus&id=<?= $data['id_thread']; ?>"><i class="fa fa-trash"></i> Hapus</a>
-                                  </div>
-                            </div>
+                                    <a href="#" class="text-success" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-v"></i></a>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" href="buat.php?aksi=edit&id=<?= $data['id_thread']; ?>"><i class="fa fa-edit"></i> Edit</a>
+                                        <a onclick="return confirm ('Anda Yakin Mau Menghapus Data?');" class="dropdown-item" href="thread.php?for=thread&aksi=hapus&id=<?= $data['id_thread']; ?>"><i class="fa fa-trash"></i> Hapus</a>
+                                    </div>
+                                <?php endif; ?>
                             <?php endif; ?>
-                        <?php endif; ?>
+                            </div>
                         </div>
                         <hr>
                     <h1 class="card-title">
@@ -224,7 +227,20 @@ if(isset($_POST["balas"])) {
             <?php 
 
             $thread_id = $_GET["thread"];
-            $result1 = query("SELECT * FROM komentar WHERE thread_id = '$thread_id' AND parent = 0 ORDER BY created_at DESC;");
+
+            $jumlah_data_perhalaman = 2;
+
+
+            //cari jumlah data ada brp
+            $jumlahData = count(query("SELECT * FROM posting "));
+            $jumlahpage = ceil($jumlahData / $jumlah_data_perhalaman);
+
+
+
+            $activepage = (isset($_GET['halaman'])) ? $_GET['halaman'] : 1;
+
+            $awal = ($jumlah_data_perhalaman * $activepage) - $jumlah_data_perhalaman;
+            $result1 = query("SELECT * FROM komentar WHERE thread_id = '$thread_id' AND parent = 0 ORDER BY created_at DESC LIMIT $awal,$jumlah_data_perhalaman ;");
 
             foreach ($result1 as $komen) :
                 ?>
@@ -246,18 +262,20 @@ if(isset($_POST["balas"])) {
                                             <a href="#" class="btn-link text-semibold media-heading box-inline"><?= $row['username']; ?> | <?= date("d-M-Y g:i a", strtotime($komen['created_at'])); ?></a>
                                             <div class="small text-muted"><?= $row['level']; ?></div>
                                         </div>
-                                        <?php if(isset($_SESSION["username"])) : ?>
-                                            <?php if($_SESSION["username"] == $row['username']) : ?>
                                         <div class="ml-auto">
-                                            <a href="#" class="text-success" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-v"></i>
-                                            </a>
-                                              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <?php if(isset($_SESSION["level"])) : ?>
+                                            <?php if($_SESSION["level"] == 'moderator' || $_SESSION["level"] == 'admin') : ?>
+                                            <a href="thread.php?for=komen&aksi=hapus&id_komentar=<?= $komen['id']; ?>&id_thread=<?= $id_thread; ?>" onclick="return confirm ('Apakah thread ini melanggar peraturan & kebijakan TECHCORNER? Anda yakin ingin Menghapus thread ini?');" class="mr-2 text-danger"><i class="fa fa-trash"></i></a>
+                                            <?php endif; ?>
+                                            <?php if($_SESSION["username"] == $row['username']) : ?>
+                                            <a href="#" class="text-success" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-v"></i></a>
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                                 <a class="dropdown-item" href="komentar.php?aksi=edit&id_thread=<?= $_GET["thread"]; ?>&id_komentar=<?= $komen['id']; ?>"><i class="fa fa-edit"></i> Edit</a>
-                                                <a onclick="return confirm ('Anda Yakin Mau Menghapus Komentar?');" class="dropdown-item" href="thread.php?for=komen&aksi=hapus&id_komentar=<?= $komen['id']; ?>&id_thread=<?= $id_thread; ?>"><i class="fa fa-trash"></i> Hapus</a>
-                                              </div>
-                                        </div> 
+                                                <a onclick="return confirm ('Anda Yakin Mau Menghapus Data?');" class="dropdown-item" href="thread.php?for=thread&aksi=hapus&id=<?= $data['id_thread']; ?>"><i class="fa fa-trash"></i> Hapus</a>
+                                            </div>
                                             <?php endif; ?>
                                         <?php endif; ?>
+                                        </div>
                                     </div>
 
                                     
@@ -307,18 +325,21 @@ if(isset($_POST["balas"])) {
                                                         <a href="#" class="btn-link text-semibold media-heading box-inline"><?= $user['username']; ?> | <?= date("d-M-Y g:i a", strtotime($komen['created_at'])); ?></a>
                                                         <div class="small text-muted"><?= $user['level']; ?></div>
                                                     </div>
-                                                <?php if(isset($_SESSION["username"])) : ?>
-                                                    <?php if($_SESSION["username"] == $user['username']) : ?>
-                                                    <div class="ml-auto">
-                                                        <a href="#" class="text-success" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-v"></i></a>
-                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                        <a class="dropdown-item" href="komentar.php?aksi=edit&id_thread=<?= $_GET["thread"]; ?>&id_komentar=<?= $balas['id']; ?>"><i class="fa fa-edit"></i> Edit</a>
-                                                        <a onclick="return confirm ('Anda Yakin Mau Menghapus Komentar?');" class="dropdown-item" href="thread.php?for=komen&aksi=hapus&id_komentar=<?= $balas['id']; ?>&id_thread=<?= $id_thread; ?>"><i class="fa fa-trash"></i> Hapus</a>
-                                                      </div>
-                                                    </div> 
+                                               <div class="ml-auto">
+                                                <?php if(isset($_SESSION["level"])) : ?>
+                                                    <?php if($_SESSION["level"] == 'moderator' || $_SESSION["level"] == 'admin') : ?>
+                                                        <a href="thread.php?for=komen&aksi=hapus&id_komentar=<?= $balas['id']; ?>&id_thread=<?= $id_thread; ?>" onclick="return confirm ('Apakah thread ini melanggar peraturan & kebijakan TECHCORNER? Anda yakin ingin Menghapus thread ini?');" class="mr-2 text-danger"><i class="fa fa-trash"></i></a>
                                                     <?php endif; ?>
-                                                <?php endif; ?>
+                                                    <?php if($_SESSION["username"] == $user['username']) : ?>
+                                                        <a href="#" class="text-success" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-v"></i></a>
+                                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                            <a class="dropdown-item" href="komentar.php?aksi=edit&id_thread=<?= $_GET["thread"]; ?>&id_komentar=<?= $balas['id']; ?>"><i class="fa fa-edit"></i>Edit</a>
+                                                            <a onclick="return confirm ('Anda Yakin Mau Menghapus Komentar?');" class="dropdown-item" href="thread.php?for=komen&aksi=hapus&id_komentar=<?= $balas['id']; ?>&id_thread=<?= $id_thread; ?>"><i class="fa fa-trash"></i> Hapus</a>
+                                                        </div>
+                                                        <?php endif; ?>
+                                                    <?php endif; ?>
                                                 </div>
+                                            </div>
                                             <?php endforeach; ?>
 
                                             <div>
@@ -337,23 +358,31 @@ if(isset($_POST["balas"])) {
     </div> 
     <div>
         <!-- Pagination -->
-        <!-- <nav aria-label="Page navigation example">
+        <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-center">
                 <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Previous">
+                <?php if ($activepage > 1) : ?>
+                    <a class="page-link" href="view.php?thread=<?= $thread_id; ?>&halaman=<?= $activepage - 1 ?>" aria-label="Previous">
                         <span aria-hidden="true">&laquo;</span>
                     </a>
+                <?php endif; ?>
                 </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <?php for ($i = 1; $i <= $jumlahpage; $i++) : ?>
+                    <?php if ($i === $activepage) : ?>
+                    <li class="page-item  "><a class="page-link" href="view.php?thread=<?= $thread_id; ?>&halaman=<?= $i ?>"><?= $i ?></a></li>
+                     <?php else : ?>
+                    <li class="page-item "><a class="page-link" href="view.php?thread=<?= $thread_id; ?>&halaman=<?= $i ?>"><?= $i ?></a></li>
+                    <?php endif; ?>
+                <?php endfor; ?>
                 <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Next">
+                <?php if ($activepage < $jumlahpage) : ?>
+                    <a class="page-link" href="view.php?thread=<?= $thread_id; ?>&halaman=<?= $activepage + 1 ?>" aria-label="Next">
                         <span aria-hidden="true">&raquo;</span>
                     </a>
+                <?php endif; ?>
                 </li>
             </ul>
-        </nav> -->
+        </nav>
     </div>
 </div>
 

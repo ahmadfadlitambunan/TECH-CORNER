@@ -32,12 +32,12 @@
                             </form>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link" href="all.php"><i class="fa fa-users" aria-hidden="true"></i>
+                            <a class="nav-link" href="../forum/all.php"><i class="fa fa-users" aria-hidden="true"></i>
                                 Forum<span class="sr-only">(current)</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="buat.php"><i class="fa fa-pencil" aria-hidden="true"></i>
+                            <a class="nav-link" href="../forum/buat.php"><i class="fa fa-pencil" aria-hidden="true"></i>
                                 Tulis Thread
                             </a>
                         </li>
@@ -47,9 +47,9 @@
                             Kategori
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="kategori/komputer.php">Komputer & PC</a>
-                                <a class="dropdown-item" href="kategori/laptop.php">Laptop / Notebook</a>
-                                <a class="dropdown-item" href="kategori/gadget.php">Gadget</a>
+                                <a class="dropdown-item" href="../forum/kategori/komputer.php">Komputer & PC</a>
+                                <a class="dropdown-item" href="../forum/kategori/laptop.php">Laptop / Notebook</a>
+                                <a class="dropdown-item" href="../forum/kategori/gadget.php">Gadget</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="all.php">Semua</a>
                             </div>
@@ -64,14 +64,6 @@
                                 <a class="dropdown-item" href="#">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Settings
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Activity Log
                                 </a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="../auth/user.php?aksi=logout">

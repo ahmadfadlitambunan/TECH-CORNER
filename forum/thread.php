@@ -134,7 +134,7 @@ if($_GET["for"] == "thread") {
 		$result_query_delete = mysqli_query($conn, $query_delete);
 
 		if($result_query_delete){
-			$_SESSION["thread_message"] = "Thread anda berhasil dihapus";
+			$_SESSION["thread_message"] = "Thread berhasil dihapus";
 			header("Location: index.php");
 			exit;
 		} else {
