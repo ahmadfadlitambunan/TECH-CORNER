@@ -24,11 +24,11 @@
                 exit;
             }
         } else {
-            header("Location: ../forum/index.php");
+            echo("<script>location.href = '../forum/index.php';</script>");
             exit;
         }
     } else {
-        header("Location: ../forum/index.php");
+        echo("<script>location.href = '../forum/index.php';</script>");
         exit;
     }
 

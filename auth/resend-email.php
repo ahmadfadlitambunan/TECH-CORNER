@@ -2,7 +2,6 @@
 
 include('layout/header.php'); 
 
-session_start();
 
 if(isset($_POST["resend"])){
     if(!empty(trim($_POST["email"]))){
