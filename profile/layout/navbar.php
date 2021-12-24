@@ -3,7 +3,7 @@
     <div class="header">
         <div class="container mb-3 mt-2">
             <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
-                <a href="index.php"><img src="assets/img/logo.png" width="100"></a>
+                <a href="../forum/index.php"><img src="assets/img/logo.png" width="100"></a>
                 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -57,7 +57,7 @@
                         <?php if(isset($_SESSION["login"])) { ?>
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img width="50px" style="border-radius: 50%;" src="assets/img/logo.png">
+                                <img width="50px" style="border-radius: 50%;" src="assets/img/<?= $_SESSION["foto"]; ?>">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">

@@ -76,6 +76,10 @@ function ubah_profile($data) {
 
 	mysqli_query($conn, $update);
 
+	unset($_SESSION["foto"]);
+
+	$_SESSION["foto"] = $gambar;
+
 	return mysqli_affected_rows($conn);
 }
 

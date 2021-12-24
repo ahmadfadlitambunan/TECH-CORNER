@@ -59,7 +59,7 @@
                         <div class="card-body">
                             <div class="text-center">
                             <!-- Profile picture image-->
-                                <img class="rounded-circle mb-2" width="150px"> src="assets/img/<?= $foto; ?>" alt="">
+                                <img class="rounded-circle mb-2" width="150px" src="assets/img/<?= $foto; ?>" alt="">
                             </div>
                             <div class="input-group">
                                 <div class="form-group">

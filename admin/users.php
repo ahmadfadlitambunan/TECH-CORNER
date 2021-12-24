@@ -90,13 +90,12 @@ if (isset($_POST['btndel'])) {
                                         <td><?= date('d M Y g:i a', strtotime($data['created_at'])); ?></td>
                                         <td>
                                             <div class="text-center">
-                                                <!-- tombol update -->
-                                                <a href="edituser.php?id=<?= $data['id_user'] ?>" class="btn btn-success btn-sm ml-1"><i class="fa fa-edit"></i></a>
                                                 <!-- tombol delete -->
                                                 <form method="POST" onsubmit="return confirm ('Anda Yakin Mau Menghapus Data?')">
+                                                    <!-- tombol update -->
+                                                    <a href="edituser.php?id=<?= $data['id_user'] ?>" class="btn btn-success btn-sm ml-1"><i class="fa fa-edit"></i></a>
                                                     <input hidden name='id' type='number' value=<?= $data['id_user'] ?>>
-                                                    <button type='submit' name='btndel' class='btn btn-danger'><i class="fa fa-trash"></i></button>
-
+                                                    <button type='submit' name='btndel' class='btn btn-danger btn-sm'><i class="fa fa-trash"></i></button>
                                                 </form>
                                             </div>
                                         </td>
