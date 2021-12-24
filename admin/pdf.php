@@ -27,7 +27,7 @@ $pdf = new FPDF('P', 'mm','Letter');
 
         $pdf->Cell(40,6,'Tanggal Dibuat',1,1,'C');
 
-        $pdf->SetFont('Times','',8);
+        $pdf->SetFont('Times','',6);
 
         $sql="SELECT* FROM users ORDER BY id_user ASC";
         //Query untuk mengambil data userspada tabel users
@@ -63,7 +63,7 @@ $pdf = new FPDF('P', 'mm','Letter');
         
         $pdf->Cell(40,6,'Tanggal Dibuat',1,1,'C');
         
-        $pdf->SetFont('Times','',8);
+        $pdf->SetFont('Times','',6);
         $sql="SELECT* FROM komentar ORDER BY id ASC";
         //Query untuk mengambil data mahasiswa pada tabel mahasiswa
         $hasil = query($sql);
@@ -96,8 +96,8 @@ $pdf = new FPDF('P', 'mm','Letter');
         
         $pdf->Cell(8,6,'Id',1,0,'C');
         $pdf->Cell(45,6,'Username',1,0,'C');
-        $pdf->Cell(55,6,'Judul',1,0,'C');
-        $pdf->Cell(38,6,'Kategori',1,0,'C');
+        $pdf->Cell(80,6,'Judul',1,0,'C');
+        $pdf->Cell(23,6,'Kategori',1,0,'C');
        
         
         $pdf->Cell(40,6,'Tanggal Dibuat',1,1,'C');
@@ -111,8 +111,10 @@ $pdf = new FPDF('P', 'mm','Letter');
              $resUname = mysqli_query($conn, "SELECT username FROM users WHERE id_user = " . $data['user_id'] . " LIMIT 1;");
             $dataUname = mysqli_fetch_assoc($resUname);
             $pdf->Cell(45,6,$dataUname['username'],1,0);
-            $pdf->Cell(55,6,$data['judul'],1,0);
-            $pdf->Cell(38,6,$data['kategori'],1,0);
+            $pdf->SetFont('Times','',5);
+            $pdf->Cell(80,6,$data['judul'],1,0);
+            $pdf->SetFont('Times','',8);
+            $pdf->Cell(23,6,$data['kategori'],1,0);
             $pdf->Cell(40,6,$data['tanggal_posting'],1,1);
         }
     }
