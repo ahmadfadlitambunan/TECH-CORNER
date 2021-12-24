@@ -10,6 +10,7 @@ if($_GET["aksi"] == 'register'){
     $pass1 = trim(mysqli_real_escape_string($conn, $_POST["pass1"]));
     $name  = trim(mysqli_real_escape_string($conn, $_POST["name"]));
     $level = "member";
+    $foto = 'icon.png';
 
     // hashing vkey
     $vkey = md5(time().$uname);
@@ -19,13 +20,14 @@ if($_GET["aksi"] == 'register'){
 
 
     // insert data
-    $query = "INSERT INTO users (email, username, password, name, level, vkey) VALUES (
+    $query = "INSERT INTO users (email, username, password, name, level, vkey, foto) VALUES (
         '".$email."',
         '".$uname."',
         '".$pass1."',
         '".$name."',
         '".$level."',
-        '".$vkey."'
+        '".$vkey."',
+        '".$foto."'
     )";
 
     $result = mysqli_query($conn, $query);
@@ -87,6 +89,7 @@ if ($_GET["aksi"] == "login"){
                 $_SESSION["username"] = $row['username'];
                 $_SESSION["level"] = $row['level'];
                 $_SESSION["email"] = $row['email'];
+                $_SESSION["foto"] = $row['foto'];
 
 
                 // cek apakah remember me ditekan

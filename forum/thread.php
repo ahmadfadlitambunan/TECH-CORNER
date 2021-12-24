@@ -4,6 +4,53 @@
 
 	session_start();
 
+	function upload(){
+	
+	$namaFile = $_FILES['gambar']['name'];
+	$ukuranFile = $_FILES['gambar']['size'];
+	$error = $_FILES['gambar']['error'];
+	$tmpName = $_FILES['gambar']['tmp_name'];
+
+	// cek apakah gambar sudah dipilih
+	if($error === 4) {
+		echo "<script>
+					alert('Masukkan gambar terlebih dahulu!');
+			  </script>";
+		return false;
+	}
+
+	// cek ekstensi gambar yang diupload
+	$ekstensiGambarValid = ['jpg', 'jpeg', 'png'];
+	$ekstensiGambar = explode('.', $namaFile);
+	$ekstensiGambar = strtolower(end($ekstensiGambar));
+
+	if( !in_array($ekstensiGambar, $ekstensiGambarValid)){
+		echo "<script>
+					alert('Yang anda pilih bukan gambar');
+			  </script>";
+		return false;
+	}
+
+	// cek ukuran file
+	if( $ukuranFile > 1000000){
+		echo "<script>
+					alert('Ukuran file terlalu besar');
+			  </script>";
+		return false;
+	}
+
+	// jika lulus pengecekan
+	// generate nama gambar baru
+	$namaFileBaru = uniqid();
+	$namaFileBaru .= '.';
+	$namaFileBaru .= $ekstensiGambar;
+
+	move_uploaded_file($tmpName, 'assets/thumbnail/'. $namaFileBaru);
+
+	return $namaFileBaru;
+
+}
+
 
 if($_GET["for"] == "thread") {
 
@@ -14,8 +61,19 @@ if($_GET["for"] == "thread") {
 		$konten = $_POST["konten"];
 		$kategori = $_POST["kategori"];
 
-		$sql = "INSERT INTO posting (user_id, judul, konten, kategori) VALUES(
-					'$id_user', '$judul', '$konten', '$kategori');";
+		// cek apakah user upload gambar / tidak
+		if($_FILES['gambar']['error'] === 4){
+			$gambar = "pict1.png";
+		} else {
+			$gambar = upload();
+			if(!$gambar){
+				return false;
+			}
+		}
+
+
+		$sql = "INSERT INTO posting (user_id, judul, konten, kategori, thumb) VALUES(
+					'$id_user', '$judul', '$konten', '$kategori', '$gambar');";
 
 		$result = mysqli_query($conn, $sql);
 
@@ -46,14 +104,15 @@ if($_GET["for"] == "thread") {
 		$kategori = $_POST["kategori"];
 		$date_edit = date("Y-m-d g:i a");
 
-		// $query_edit = "UPDATE posting SET
-		// 					judul = '$judul',
-		// 					konten = '$konten',
-		// 					kategori = '$kategori',
-		// 					diubat_at = $date_edit
-		// 				WHERE id_thread = '$id';";
+		// cek apakah user upload gambar / tidak
+		if($_FILES['gambar']['error'] === 4){
+			$gambar = $_POST["gambarLama"];
+		} else {
+			$gambar = upload();
+		}
 
-		$query_edit = "UPDATE posting SET judul = '$judul', konten = '$konten', kategori = '$kategori', diubah = '$date_edit' WHERE id_thread = $id;";
+
+		$query_edit = "UPDATE posting SET judul = '$judul', konten = '$konten', kategori = '$kategori', diubah = '$date_edit', thumb = '$gambar' WHERE id_thread = $id;";
 
 		$result_query_edit = mysqli_query($conn, $query_edit);
 

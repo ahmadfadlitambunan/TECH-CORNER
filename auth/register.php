@@ -111,12 +111,12 @@
         $('#form-reg').submit(function(){
 
        // validasi email
-       if($('#email').val().length == 0){
-        setError("#email", "Email cannot be blank");
-        return false;
-    } else {
-        setSucces("#email");
-    }
+        if($('#email').val().length == 0){
+            setError("#email", "Email cannot be blank");
+                return false;
+            } else {
+                setSucces("#email");
+        }
 
 
         // validasi username
@@ -169,7 +169,6 @@
             event.preventDefault();
             if($('#name').val().length == 0){
                 setError("#name", "Name cannot be blank");
-
             } else {
                 setSucces("#name");
             }

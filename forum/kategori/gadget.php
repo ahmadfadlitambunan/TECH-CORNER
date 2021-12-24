@@ -19,23 +19,48 @@ $activepage = (isset($_GET['halaman'])) ? $_GET['halaman'] : 1;
 
 $awal = ($jumlah_data_perhalaman * $activepage) - $jumlah_data_perhalaman;
 
-$list = query("SELECT * FROM posting WHERE kategori='gadget' ORDER BY tanggal_posting DESC LIMIT $awal,$jumlah_data_perhalaman")
+$list = mysqli_query($conn, "SELECT * FROM posting WHERE kategori='gadget' ORDER BY tanggal_posting DESC LIMIT $awal,$jumlah_data_perhalaman");
 
+$row = mysqli_fetch_assoc($list);
 
 ?>
 <!-- Card -->
 <div class="container mb-3 mt-3 align-self-center">
     <div class="card-fitur text-center">
         <div class="row">
-            <div class="col-6 col-md-4">
+            <?php 
+                $komentar_query = "SELECT * FROM komentar WHERE thread_id = ".$row['id_thread']." ORDER BY created_at DESC LIMIT 3 ";
+                $komentar_result = mysqli_query($conn, $komentar_query);
+            ?>
+            <div class="col-6 col-md-4 mb-3 pull-left">
                 <h2><i class="fa fa-comments-o" aria-hidden="true"></i>Obrolan Hangat</h2>
                 <div class="card">
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><a href="#">Canon launches photo centric 00214 Model supper shutter camera</a></li>
-                        <li class="list-group-item"><a href="#">Canon launches photo centric 00214 Model supper shutter camera</a></li>
-                        <li class="list-group-item"><a href="#">Canon launches photo centric 00214 Model supper shutter camera</a></li>
-                        <li class="list-group-item"><a href="#">Canon launches photo centric 00214 Model supper shutter camera</a></li>
-                        <li class="list-group-item"><a href="#">Canon launches photo centric 00214 Model supper shutter camera</a></li>
+                        <?php if(mysqli_num_rows($komentar_result) == 0) : ?>
+                        <li class="list-group-item">
+                            <div class="text-muted">
+                                Belum ada aktivitas terbaru
+                            </div>
+                        </li>
+                        <?php endif; ?>
+                        <?php foreach($komentar_result as $komen) : ?>
+                            <?php 
+                                $user_query = "SELECT * FROM users WHERE id_user = ".$komen['id_user']." LIMIT 1;";
+                                $user_result = mysqli_query($conn, $user_query);
+                                $user =  mysqli_fetch_assoc($user_result);
+
+                                $thread_query = "SELECT * FROM posting WHERE id_thread = ".$komen['thread_id']."     LIMIT 1;";
+                                $thread_result = mysqli_query($conn, $thread_query);
+                                $thread =  mysqli_fetch_assoc($thread_result);
+
+                            ?>
+                        <li class="list-group-item">
+                            <span class="text-muted"><b><?= $user['username']; ?></b> mengomentari thread</span>
+                            <div class="forum">
+                                <a href="../view.php?thread=<?= $komen['thread_id']; ?>"><h5><?= $thread['judul']; ?></h5></a>
+                            </div>
+                        </li>
+                        <?php endforeach ?>
                     </ul>
                 </div>
             </div>
