@@ -25,6 +25,7 @@
                     $judul = $list['judul'];
                     $konten = $list['konten'];
                     $kategori = $list['kategori'];
+                    $thumb = $list['thumb'];
                 endwhile;
             } else {
                 echo("<script>location.href = 'view.php?thread=".$id."';</script>");
@@ -48,10 +49,11 @@
 
             <?php if(isset($_GET["aksi"])) { ?>
             <?php if($_GET["aksi"] == 'edit') :?>
-            <form action="thread.php?for=thread&aksi=edit&id=<?= $id; ?>" method="POST" novalidate class="needs-validation">
+            <form action="thread.php?for=thread&aksi=edit&id=<?= $id; ?>" method="POST" novalidate class="needs-validation" enctype="multipart/form-data">
+                <input type="hidden" name="gambarLama" value="<?= $thumb; ?>">
             <?php endif;?>
             <?php } else { ?>
-            <form action="thread.php?for=thread&aksi=buat" method="POST" novalidate class="needs-validation">
+            <form action="thread.php?for=thread&aksi=buat" method="POST" novalidate class="needs-validation" enctype="multipart/form-data">
             <?php } ?>
 
             <div class="row">
@@ -74,6 +76,21 @@
                                 <input type="text" class="form-control" name="judul" id="judul" placeholder="Tulis judul.!" value="<?= $judul; ?>" required>
                                 <div class="invalid-feedback">
                                     Judul belum diisi!
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="form-group">
+                                
+                                <?php if(isset($_GET["aksi"]) && $_GET["aksi"] == "edit") :?>
+                                    <div>
+                                        <p>Tumbhnail</p>
+                                        <img src="assets/thumbnail/<?= $thumb; ?>" width="400px">
+                                    </div>
+                                <?php endif; ?>
+                                <label for="thumb">Ubah thumbnail</label>
+                                <input type="file" class="form-control-file" name="gambar" id="thumb" placeholder="Upload thumbnail anda!">
+                                <div class="invalid-feedback">
+                                    Thumbnail belum diupload!
                                 </div>
                             </div>
                             <hr>
