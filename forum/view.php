@@ -148,7 +148,7 @@ if(isset($_POST["balas"])) {
                                 $datu = mysqli_fetch_assoc($resu);
                             ?>
                             <div class="mx-3">
-                                <img width="50px" src="../profile/assets/img/<?= $_SESSION['foto']; ?>" alt="">
+                                <img width="50px" style="border-radius: 50%;" src="../profile/assets/img/<?= $datu['foto']; ?>" alt="">
                             </div>
                             <div class="d-flex flex-column fw-bold">
                                 <a class="text-dark mb-1"> <?php echo $datu['username']. " | " .date("d-M-Y g:i a", strtotime($data['tanggal_posting'])) ?> </a>
@@ -337,7 +337,7 @@ if(isset($_POST["balas"])) {
     </div> 
     <div>
         <!-- Pagination -->
-        <nav aria-label="Page navigation example">
+        <!-- <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-center">
                 <li class="page-item">
                     <a class="page-link" href="#" aria-label="Previous">
@@ -353,7 +353,7 @@ if(isset($_POST["balas"])) {
                     </a>
                 </li>
             </ul>
-        </nav>
+        </nav> -->
     </div>
 </div>
 

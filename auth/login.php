@@ -6,7 +6,7 @@ include('layout/header.php');
 ?>
 
 
-<body class="bg-gradient-success">
+<body>
 
     <div class="container">
         <!-- Outer Row -->

@@ -168,4 +168,4 @@ include('layout/header.php');
     </script> -->
 
 
-<?php include('layout/header.php') ?>
+<?php include('layout/footer.php') ?>
