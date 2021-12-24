@@ -198,7 +198,7 @@ if(isset($_POST["balas"])) {
                     <div class="panel-body">
                         <div class="d-flex align-items-center flex-shrink-0 me-3">
                             <div class="mx-3">
-                                <img width="50px" src="../profile/assets/img/<?= $_SESSION["foto"]; ?>" alt="">
+                                <img width="50px" style="border-radius: 50%;" src="../profile/assets/img/<?= $_SESSION["foto"]; ?>" alt="">
                             </div>
                             <div class="d-flex flex-column fw-bold">
                                 <a href="#" class="btn-link text-semibold media-heading box-inline"><?= $_SESSION["username"]; ?></a>
@@ -239,7 +239,7 @@ if(isset($_POST["balas"])) {
                         foreach($rows as $row) :
                             ?>
                             <div class="media-block pad-all">
-                                <a class="media-left" href="#"><img class="img-circle img-sm mr-3" alt="Profile Picture" src="../profile/assets/img/<?= $row["foto"]; ?>"></a>
+                                <a class="media-left" href="#"><img class="img-circle img-sm mr-3" style="border-radius: 50%;"  alt="Profile Picture" src="../profile/assets/img/<?= $row["foto"]; ?>"></a>
                                 <div class="media-body">
                                     <div class="d-flex fw-bold mb-2">
                                         <div class="mr-auto">
@@ -265,12 +265,6 @@ if(isset($_POST["balas"])) {
                                 <?php endforeach; ?>
                                 <div>
                                     <?= $komen['konten']; ?>
-                                </div>
-                                <div class="pad-ver">
-                                    <div class="btn-group">
-                                        <a class="btn" href=""><i class="fa fa-thumbs-up"></i></a>
-                                        <a class="btn" href=""><i class="fa fa-thumbs-down"></i></a>
-                                    </div>
                                 </div>
                                 <hr>
                                 <?php if(isset($_SESSION["login"])) : ?>
@@ -306,7 +300,7 @@ if(isset($_POST["balas"])) {
                                     foreach($users as $user) :
                                         ?>
                                         <div class="media-block pad-all">
-                                            <a class="media-left" href="#"><img class="img-circle img-sm mr-3" alt="Profile Picture" src="../profile/assets/img/<?= $user["foto"]; ?>"></a>
+                                            <a class="media-left" href="#"><img class="img-circle img-sm mr-3" style="border-radius: 50%;" alt="Profile Picture" src="../profile/assets/img/<?= $user["foto"]; ?>"></a>
                                             <div class="media-body">
                                                 <div class="d-flex fw-bold mb-2">
                                                     <div class="mr-auto">
@@ -329,13 +323,6 @@ if(isset($_POST["balas"])) {
 
                                             <div>
                                                 <?= $balas['konten']; ?>
-                                            </div>
-                                            
-                                            <div class="pad-ver">
-                                                <div class="btn-group">
-                                                    <a class="btn" href=""><i class="fa fa-thumbs-up"></i></a>
-                                                    <a class="btn" href=""><i class="fa fa-thumbs-down"></i></a>
-                                                </div>  
                                             </div>
                                         </div>
                                         <hr>
