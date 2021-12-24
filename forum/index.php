@@ -33,10 +33,10 @@ $list = query("SELECT * FROM posting ORDER BY tanggal_posting DESC LIMIT $awal,$
 <?php endif; ?>
 
 <!-- Main Content -->
-<div class="container align-self-center">
+<div class="container">
     <div class="main-content">
         <!-- Banner -->
-        <div class="banner p-5">
+        <div class="banner p-5  text-center">
             <div class="bd-example">
                 <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
@@ -96,23 +96,47 @@ $list = query("SELECT * FROM posting ORDER BY tanggal_posting DESC LIMIT $awal,$
 
 <!-- Card -->
 <div class="container mb-3 mt-3 align-self-center">
-    <div class="card-fitur text-center">
+    <div class="card-fitur">
         <div class="row">
-            <div class="col-6 col-md-4 mb-3">
+            <?php 
+                $komentar_query = "SELECT * FROM komentar ORDER BY created_at DESC LIMIT 8 ";
+                $komentar_result = mysqli_query($conn, $komentar_query);
+            ?>
+            <div class="col-6 col-md-4 mb-3 pull-left">
                 <h2><i class="fa fa-comments-o" aria-hidden="true"></i>Obrolan Hangat</h2>
                 <div class="card">
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><a href="#">Canon launches photo centric 00214 Model supper shutter camera</a></li>
-                        <li class="list-group-item"><a href="#">Canon launches photo centric 00214 Model supper shutter camera</a></li>
-                        <li class="list-group-item"><a href="#">Canon launches photo centric 00214 Model supper shutter camera</a></li>
-                        <li class="list-group-item"><a href="#">Canon launches photo centric 00214 Model supper shutter camera</a></li>
-                        <li class="list-group-item"><a href="#">Canon launches photo centric 00214 Model supper shutter camera</a></li>
+                        <?php if(mysqli_num_rows($komentar_result) == 0) : ?>
+                        <li class="list-group-item">
+                            <div class="text-muted">
+                                Belum ada aktivitas terbaru
+                            </div>
+                        </li>
+                        <?php endif; ?>
+                        <?php foreach($komentar_result as $komen) : ?>
+                            <?php 
+                                $user_query = "SELECT * FROM users WHERE id_user = ".$komen['id_user']." LIMIT 1;";
+                                $user_result = mysqli_query($conn, $user_query);
+                                $user =  mysqli_fetch_assoc($user_result);
+
+                                $thread_query = "SELECT * FROM posting WHERE id_thread = ".$komen['thread_id']."     LIMIT 1;";
+                                $thread_result = mysqli_query($conn, $thread_query);
+                                $thread =  mysqli_fetch_assoc($thread_result);
+
+                            ?>
+                        <li class="list-group-item">
+                            <span class="text-muted"><b><?= $user['username']; ?></b> mengomentari thread</span>
+                            <div class="forum">
+                                <a href="view.php?thread=<?= $komen['thread_id']; ?>"><h5><?= $thread['judul']; ?></h5></a>
+                            </div>
+                        </li>
+                        <?php endforeach ?>
                     </ul>
                 </div>
             </div>
 
             <!-- Thread -->
-            <div class="col-md-8">
+            <div class="col-md-8  text-center">
                 <h2><i class="fa fa-fire" aria-hidden="true"></i>Hot Thread</h2>
                 <?php foreach ($list as $data) : ?>
                     <?php foreach ($res = users($data['user_id']) as $user) : ?>
