@@ -11,6 +11,10 @@ include("../forum/funct/function.php");
                 <div
                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                     <h6 class="m-0 font-weight-bold text-primary">Daftar Postingan</h6>
+                    <form method="GET" onsubmit="return confirm ('Download Pdf Daftar Posting?')" action="pdf.php?pdf=2">
+
+                            <button type='submit' name='btnpost'class='btn btn-outline-success'>Report</button>
+                            </form>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">

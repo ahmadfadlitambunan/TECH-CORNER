@@ -33,9 +33,9 @@ if (isset($_POST['btndel'])) {
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                     <h6 class="m-0 font-weight-bold text-primary">Daftar Pengguna</h6>
                     <div>
-                        <form method="POST" onsubmit="return confirm ('Download Pdf Daftar User?')" action="pdf.php">
+                        <form method="GET" onsubmit="return confirm ('Download Pdf Daftar User?')" action="pdf.php">
 
-                            <button type='submit' name='btndel' class='btn btn-outline-success'>Report</button>
+                            <button type='submit' name='btnuser'  class='btn btn-outline-success'>Report</button>
                             </form>
                     </div>
                 </div>

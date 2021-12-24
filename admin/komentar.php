@@ -12,6 +12,10 @@ include("../forum/funct/function.php");
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                     <h6 class="m-0 font-weight-bold text-primary">Daftar Komentar</h6>
+                    <form method="GET" onsubmit="return confirm ('Download Pdf Daftar Posting?')" action="pdf.php">
+
+                            <button type='submit' name='btnkom'class='btn btn-outline-success'>Report</button>
+                            </form>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
