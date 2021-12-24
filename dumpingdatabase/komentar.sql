@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 22, 2021 at 05:59 PM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 7.4.24
+-- Waktu pembuatan: 24 Des 2021 pada 04.58
+-- Versi server: 10.4.21-MariaDB
+-- Versi PHP: 8.0.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `komentar`
+-- Struktur dari tabel `komentar`
 --
 
 CREATE TABLE `komentar` (
@@ -38,24 +38,31 @@ CREATE TABLE `komentar` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
+-- Dumping data untuk tabel `komentar`
+--
+
+INSERT INTO `komentar` (`id`, `konten`, `id_user`, `thread_id`, `parent`, `created_at`, `diubah`) VALUES
+(59, 'mantap', 5, 32, 0, '2021-12-24 03:49:27', NULL);
+
+--
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `komentar`
+-- Indeks untuk tabel `komentar`
 --
 ALTER TABLE `komentar`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `komentar`
+-- AUTO_INCREMENT untuk tabel `komentar`
 --
 ALTER TABLE `komentar`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
