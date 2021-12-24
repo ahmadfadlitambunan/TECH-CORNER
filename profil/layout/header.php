@@ -23,6 +23,11 @@
             $_SESSION["email"] = $row['email'];
         }
     }
+
+    if(!isset($_SESSION["login"])){
+        header("Location: ../forum/index.php");
+        exit;
+    }
 ?>
 
 

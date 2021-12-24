@@ -1,7 +1,14 @@
 <?php 
 
-include ('../_config/connect.php');
+session_start();
 
+
+if (isset($_SESSION["login"])) {
+    header("Location: ../forum/index.php");
+    exit();
+}
+
+include ('../_config/connect.php');
 ?>
 
 <!DOCTYPE html>

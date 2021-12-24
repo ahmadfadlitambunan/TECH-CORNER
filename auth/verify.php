@@ -1,7 +1,6 @@
 <?php 
 
 include('layout/header.php');
-session_start();
 
 if(isset($_GET["vkey"])){
     $vkey = $_GET["vkey"];

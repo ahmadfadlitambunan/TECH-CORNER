@@ -2,7 +2,6 @@
 <?php 
 
 include('layout/header.php');
-session_start()
 
 ?>
 
@@ -62,4 +61,4 @@ session_start()
         </div>
     </div>
 
-    <?php include('layout/header.php'); ?>
+    <?php include('layout/footer.php'); ?>

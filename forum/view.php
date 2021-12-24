@@ -271,7 +271,6 @@ if(isset($_POST["balas"])) {
                                         <a class="btn" href=""><i class="fa fa-thumbs-up"></i></a>
                                         <a class="btn" href=""><i class="fa fa-thumbs-down"></i></a>
                                     </div>
-                                    <a href="../auth/login.php?for=komen" class="btn btn-outline-success btn-sm"><i class="fa fa-share"></i>Balas</a>
                                 </div>
                                 <hr>
                                 <?php if(isset($_SESSION["login"])) : ?>
@@ -336,8 +335,7 @@ if(isset($_POST["balas"])) {
                                                 <div class="btn-group">
                                                     <a class="btn" href=""><i class="fa fa-thumbs-up"></i></a>
                                                     <a class="btn" href=""><i class="fa fa-thumbs-down"></i></a>
-                                                </div>
-                                                <a href="../auth/login.php?for=komen" class="btn btn-outline-success btn-sm"><i class="fa fa-share"></i>Balas</a>
+                                                </div>  
                                             </div>
                                         </div>
                                         <hr>
