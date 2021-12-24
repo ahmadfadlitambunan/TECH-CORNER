@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 24 Des 2021 pada 04.58
--- Versi server: 10.4.21-MariaDB
--- Versi PHP: 8.0.10
+-- Generation Time: Dec 24, 2021 at 07:22 AM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 7.3.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `komentar`
+-- Table structure for table `komentar`
 --
 
 CREATE TABLE `komentar` (
@@ -38,31 +38,35 @@ CREATE TABLE `komentar` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `komentar`
+-- Dumping data for table `komentar`
 --
 
 INSERT INTO `komentar` (`id`, `konten`, `id_user`, `thread_id`, `parent`, `created_at`, `diubah`) VALUES
-(59, 'mantap', 5, 32, 0, '2021-12-24 03:49:27', NULL);
+(59, 'mantap', 5, 32, 0, '2021-12-24 03:49:27', NULL),
+(60, 'Wah bermanfaat sekali', 4, 37, 0, '2021-12-24 06:20:10', NULL),
+(61, 'Keren', 4, 32, 0, '2021-12-24 06:20:39', NULL),
+(62, 'Iya, manteb kali', 4, 32, 59, '2021-12-24 06:20:57', NULL),
+(63, 'WOAAAH', 4, 36, 0, '2021-12-24 06:21:25', NULL);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `komentar`
+-- Indexes for table `komentar`
 --
 ALTER TABLE `komentar`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `komentar`
+-- AUTO_INCREMENT for table `komentar`
 --
 ALTER TABLE `komentar`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
