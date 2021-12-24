@@ -148,7 +148,7 @@ if(isset($_POST["balas"])) {
                                 $datu = mysqli_fetch_assoc($resu);
                             ?>
                             <div class="mx-3">
-                                <img width="50px" src="assets/img/icon.png" alt="">
+                                <img width="50px" src="../profile/assets/img/<?= $_SESSION['foto']; ?>" alt="">
                             </div>
                             <div class="d-flex flex-column fw-bold">
                                 <a class="text-dark mb-1"> <?php echo $datu['username']. " | " .date("d-M-Y g:i a", strtotime($data['tanggal_posting'])) ?> </a>
@@ -198,7 +198,7 @@ if(isset($_POST["balas"])) {
                     <div class="panel-body">
                         <div class="d-flex align-items-center flex-shrink-0 me-3">
                             <div class="mx-3">
-                                <img width="50px" src="assets/img/icon.png" alt="">
+                                <img width="50px" src="../profile/assets/img/<?= $_SESSION["foto"]; ?>" alt="">
                             </div>
                             <div class="d-flex flex-column fw-bold">
                                 <a href="#" class="btn-link text-semibold media-heading box-inline"><?= $_SESSION["username"]; ?></a>
@@ -239,7 +239,7 @@ if(isset($_POST["balas"])) {
                         foreach($rows as $row) :
                             ?>
                             <div class="media-block pad-all">
-                                <a class="media-left" href="#"><img class="img-circle img-sm mr-3" alt="Profile Picture" src="https://bootdey.com/img/Content/avatar/avatar1.png"></a>
+                                <a class="media-left" href="#"><img class="img-circle img-sm mr-3" alt="Profile Picture" src="../profile/assets/img/<?= $row["foto"]; ?>"></a>
                                 <div class="media-body">
                                     <div class="d-flex fw-bold mb-2">
                                         <div class="mr-auto">
@@ -306,7 +306,7 @@ if(isset($_POST["balas"])) {
                                     foreach($users as $user) :
                                         ?>
                                         <div class="media-block pad-all">
-                                            <a class="media-left" href="#"><img class="img-circle img-sm mr-3" alt="Profile Picture" src="https://bootdey.com/img/Content/avatar/avatar2.png"></a>
+                                            <a class="media-left" href="#"><img class="img-circle img-sm mr-3" alt="Profile Picture" src="../profile/assets/img/<?= $user["foto"]; ?>"></a>
                                             <div class="media-body">
                                                 <div class="d-flex fw-bold mb-2">
                                                     <div class="mr-auto">

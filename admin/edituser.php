@@ -34,46 +34,37 @@ if (isset($_POST['btnUbah'])) {
                 <div class="card-body">
                     <div class="table-responsive">
                         <form method="POST" class="form-reg" novalidate="" action="edituser.php">
-                            <!-- <?php
-                                    if (isset($_GET['id'])) {
-                                        $id = $_GET['id'];
-                                        $query = "SELECT *FROM users WHERE id_user = $id";
-                                        $result = mysqli_query($conn, $query);
-                                        foreach ($result as $data) :
-                                    ?> -->
+                            <?php
+                                if (isset($_GET['id'])) {
+                                    $id = $_GET['id'];
+                                    $query = "SELECT *FROM users WHERE id_user = $id";
+                                    $result = mysqli_query($conn, $query);
+                                    foreach ($result as $data) :
+                            ?>
 
 
                             <div class="form-group">
                                 <input hidden type="number" name="id" id="u_id" value="<?= $data['id_user'] ?>">
                                 <label for="uname">Username</label>
                                 <input value="<?= $data['username'] ?>" id="uname" type="text" class="form-control" name="uname" required autofocus>
-
-                                <div class="form-group">
-                                    <label for="email">Email</label>
-                                    <input value="<?= $data['email'] ?>" id="email" type="email" class="form-control" name="email" required data-eye>
-
-                                </div>
                             </div>
                             <div class="form-group">
-                                <label for="password">Password</label>
-                                <input value="<?= $data['password'] ?>" id="password" type="password" class="form-control" name="password" required data-eye>
-
+                                <label for="email">Email</label>
+                                <input value="<?= $data['email'] ?>" id="email" type="email" class="form-control" name="email" required data-eye>
                             </div>
+                            
                             <div class="form-group">
                                 <label for="name">Name</label>
                                 <input value="<?= $data['name'] ?>" id="name" type="text" class="form-control" name="nama" required autofocus>
 
                             </div>
-
                             <div class="form-group">
                                 <label for="level">Level</label>
                                 <input value="<?= $data['level'] ?>" id="level" type="text" class="form-control" name="level" required autofocus>
-
-
-
+                            </div>
 
                             <?php endforeach; ?>
-                        <?php } ?>
+                            <?php } ?>
                         <div class="form-group mt-2 m-0">
                             <button name="btnUbah" type="submit" class="btn btn-primary btn-block">
                                 Update
