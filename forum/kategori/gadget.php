@@ -80,15 +80,7 @@ $row = mysqli_fetch_assoc($list);
                                         <h6 class="media-heading">
                                             <a href="../view.php?thread=<?= $data['id_thread'] ?>" target="_self"><b><?= $data['judul'] ?></b></a>
                                         </h6><span class="media-date"><a><?= times(strtotime($data['tanggal_posting'])) ?></a>, by: <a><?= $user['username'] ?></a></span>
-                                        <br><a href="../view.php?thread=<?= $data['id_thread'] ?>"><img class="media-object" src="../assets/img/pict1.png" width="300px" alt=""></a>
-                                        <!-- <div class="widget_article_social">
-                                        <span>
-                                            <a href="#" target="_self"> <i class="fa fa-share-alt"></i>424</a> Shares &nbsp; &nbsp; &nbsp;
-                                        </span> 
-                                        <span>
-                                            <a href="#" target="_self"><i class="fa fa-comments-o"></i>4</a> Comments
-                                        </span>
-                                    </div> -->
+                                        <br><a href="../view.php?thread=<?= $data['id_thread'] ?>"><img class="media-object" src="../assets/thumbnail/<?= $data['thumb']; ?>" width="250px" alt=""></a>
                                     </div>
                                 </div>
 
