@@ -18,6 +18,7 @@
         $_SESSION["username"] = $row['username'];
         $_SESSION["level"] = $row['level'];
         $_SESSION["email"] = $row['email'];
+        $_SESSION["foto"] = $row['foto'];
     }
  }
 

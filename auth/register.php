@@ -72,11 +72,11 @@
             data    : 'email='+email,
             success : function(data){
               if (data == "invalid"){
-                  setError("#email", "Email is not valid");
+                  setError("#email", "Email tidak valid");
               } else if(data == "ok"){
                   setSucces("#email");
               } else {
-                  setError("#email", "Email has been used")
+                  setError("#email", "Email telah digunakan")
               }
           }
       });
@@ -92,13 +92,13 @@
             data    : 'uname='+uname,
             success : function(data){
               if(data == "less"){
-                setError("#uname", "Username must be at least 5 characters");
+                setError("#uname", "Username setidaknya terdiri dari 5 karakter");
             } else if (data == "too much"){
-                setError("#uname", "Username cannot be more than 20 characters")
+                setError("#uname", "Username tidak boleh lebih dari 20 karakter")
             } else if(data == "ok"){
               setSucces("#uname");
           } else {
-              setError("#uname", "username has been used")
+              setError("#uname", "Username telah digunakan")
           }
       }
   });
@@ -111,7 +111,7 @@
 
        // validasi email
         if($('#email').val().length == 0){
-            setError("#email", "Email cannot be blank");
+            setError("#email", "Email tidak boleh kosong");
                 return false;
             } else {
                 setSucces("#email");
@@ -120,14 +120,14 @@
 
         // validasi username
         if($('#uname').val().length < 5){
-            setError("#uname", "Username must be at least 5 characters");
+            setError("#uname", "Username setidaknya terdiri dari 5 karakter");
             return false;
         }   else {
             setSucces("#uname");
         }
 
         if($('#uname').val().length >= 20){
-            setError("#uname", "Username cannot be more than 20 characters");
+            setError("#uname", "Username tidak boleh lebih dari 20 karakter");
             return false;
         }   else {
             setSucces("#uname");
@@ -136,7 +136,7 @@
 
        // validasi nama
        if($('#name').val().length == 0){
-        setError("#name", "Name cannot be blank");
+        setError("#name", "Nama tidak boleh kosong");
         return false;
     } else {
         setSucces("#name");
@@ -145,7 +145,7 @@
 
         // validasi password 1
         if($('#pass1').val().length < 8){
-            setError("#pass1", "Password must be at least 8 characters");
+            setError("#pass1", "Password setidaknya terdiri dari 8 karakter");
             return false;
         } else {
             setSucces("#pass1");
@@ -153,7 +153,7 @@
 
         // validasi password 2
         if($('#pass2').val() != $('#pass1').val() || $('#pass2').val().legth < 8){
-            setError("#pass2", "Confirmation Password does not match");
+            setError("#pass2", "Konfirmasi password tidak sesuai");
             return false;
         } else {
             setSucces("#pass2");
@@ -167,7 +167,7 @@
         $('#name').blur(function(){
             event.preventDefault();
             if($('#name').val().length == 0){
-                setError("#name", "Name cannot be blank");
+                setError("#name", "Nama tidak boleh kosong");
             } else {
                 setSucces("#name");
             }
@@ -178,7 +178,7 @@
             event.preventDefault();
 
             if($('#pass1').val().length < 8){
-                setError("#pass1", "Password must be at least 8 characters");
+                setError("#pass1", "Password setidaknya terdiri dari 8 karakter");
             } else {
                 setSucces("#pass1")
             }
@@ -188,7 +188,7 @@
         $('#pass2').blur(function(){
             event.preventDefault();
             if($('#pass2').val() != $('#pass1').val() || $('#pass2').val().legth < 8){
-                setError("#pass2", "Confirmation Password does not match");
+                setError("#pass2", "Konfirmasi password tidak sesuai");
             } else {
                 setSucces("#pass2");
             }

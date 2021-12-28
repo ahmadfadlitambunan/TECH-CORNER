@@ -8,10 +8,9 @@ include("../forum/funct/function.php");
 
 if (isset($_POST['btndel'])) {
     $userid = $_POST['id'];
-    if ($conn) {
-        $sql = "DELETE FROM users WHERE id_user ='$userid'";
-        $check = mysqli_query($conn, $sql);
-    }
+    $sql = "DELETE FROM users WHERE id_user ='$userid'";
+    $check = mysqli_query($conn, $sql);
+    if ($check) {
 ?>
 
     <div class="container align-self-center">
@@ -22,7 +21,9 @@ if (isset($_POST['btndel'])) {
             </button>
         </div>
     </div>
-<?php }; ?>
+<?php 
+    }
+}; ?>
 
 
 <div class="container-fluid">
@@ -94,7 +95,7 @@ if (isset($_POST['btndel'])) {
                                                 <form method="POST" onsubmit="return confirm ('Anda Yakin Mau Menghapus Data?')">
                                                     <!-- tombol update -->
                                                     <a href="edituser.php?id=<?= $data['id_user'] ?>" class="btn btn-success btn-sm ml-1"><i class="fa fa-edit"></i></a>
-                                                    <input hidden name='id' type='number' value=<?= $data['id_user'] ?>>
+                                                    <input hidden name='id' type='number' value="<?= $data['id_user'] ?>">
                                                     <button type='submit' name='btndel' class='btn btn-danger btn-sm'><i class="fa fa-trash"></i></button>
                                                 </form>
                                             </div>

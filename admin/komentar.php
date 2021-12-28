@@ -4,6 +4,25 @@ include("../_config/connect.php");
 include("../forum/funct/function.php");
 ?>
 
+<?php
+if (isset($_POST['btndel'])) {
+    $id_komen = $_POST['id'];
+    $sql = "DELETE FROM komentar WHERE id ='$id_komen'";
+    $check = mysqli_query($conn, $sql);
+    if ($check) {
+?>
+
+    <div class="container align-self-center">
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Pesan : Komentar berhasil di Hapus.</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    </div>
+<?php 
+    }
+}; ?>
 
 <div class="container-fluid">
     <div class="row">
@@ -66,9 +85,8 @@ include("../forum/funct/function.php");
                                         <td>
                                             <div class="text-center">
                                                 <form method="POST" onsubmit="return confirm ('Anda Yakin Mau Menghapus Data?')">
-                                                    <input hidden name='id' type='number' value=<?= $data['id'] ?>>
-                                                    <button type='submit' name='btndel' class='btn btn-danger'><i class="fa fa-trash"></i></button>
-
+                                                    <input hidden name='id' type='number' value="<?= $data['id'] ?>">
+                                                    <button type="submit" name='btndel' class='btn btn-danger'><i class="fa fa-trash"></i></button>
                                                 </form>
                                             </div>
                                         </td>
@@ -77,21 +95,6 @@ include("../forum/funct/function.php");
                             </tbody>
                         </table>
                     </div>
-                    <?php
-                    if (isset($_POST['btndel'])) {
-
-                        // inisiasi variabel untuk menampung isian id
-                        $id = $_POST['id'];
-
-                        if ($conn) {
-                            $sql = "DELETE FROM komentar WHERE id=$id";
-                            mysqli_query($conn, $sql);
-                            echo "<p class='alert alert-success text-center'><b>Data komentar Berhasil Dihapus.</b></p>";
-                        } else if ($conn->connect_error) {
-                            echo "<p class='alert alert-danger text-center'><b>Data Gagal Dihapus. Terjadi Kesalahan: " . $conn->connect_error . "</b></p>";
-                        }
-                    }
-                    ?>
                 </div>
             </div>
         </div>
